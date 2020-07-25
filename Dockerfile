@@ -4,7 +4,7 @@ FROM node:12-slim
 WORKDIR /app
 
 # Copy Package.json
-COPY alphabot/package.json .
+COPY alphabot/package*.json .
 
 # Install app dependencies
 RUN npm install
@@ -13,4 +13,4 @@ RUN npm install
 COPY ./alphabot .
 
 EXPOSE 8080
-CMD ["node", "server.js"]
+CMD ["node", "src/server.js"]
