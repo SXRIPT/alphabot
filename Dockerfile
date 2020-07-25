@@ -4,13 +4,13 @@ FROM node:12-slim
 WORKDIR /app
 
 # Copy Package.json
-COPY package.json ./app
+COPY alphabot/package.json ./app
 
 # Install app dependencies
 RUN npm install
 
 # Bundle app source
-COPY . .
+COPY ./alphabot .
 
 EXPOSE 8080
 CMD ["node", "server.js"]
