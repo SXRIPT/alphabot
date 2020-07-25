@@ -12,7 +12,7 @@ const limiter = rateLimit({
 });
 
 app.get('/', (req,res) => {
-   res.status(200).send('ok')
+   res.status(200).send('ALPHABOT UI NEEDED')
 });
 
 // routes
