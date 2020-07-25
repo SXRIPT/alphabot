@@ -4,7 +4,7 @@ FROM node:12-slim
 WORKDIR /app
 
 # Copy Package.json
-COPY alphabot/package.json ./app
+COPY alphabot/package.json .
 
 # Install app dependencies
 RUN npm install
