@@ -16,13 +16,13 @@ router.post('/join', async (req, res) => {
     // add to database
 });
 
-router.post('/disconnect', async (req, res) => {
+router.post('/part', async (req, res) => {
     let username = req.body.username;
     if(!username) return res.status(404).send('No username provided');
 
     client.part(username)
         .then((data) => {
-            console.log(data);
+            res.status(200).send(data);
         }).catch((err) => {
         res.status(400).send('Something went wrong: ' + err);
     });
