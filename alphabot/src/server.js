@@ -11,6 +11,9 @@ const limiter = rateLimit({
     max: 50 // limit each IP to 50 requests per windowMs
 });
 
+app.get('/', (req,res) => {
+   res.status(200).send('ok')
+});
 
 // routes
 const session = require('../routes/session');
