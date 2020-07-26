@@ -17,7 +17,7 @@ let client = new tmi.client(options);
 // Connect the client to the server..
 client.connect();
 
-let getClient = () => {
+let getClient = async () => {
   return client;
 };
 
