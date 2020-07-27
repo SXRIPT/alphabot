@@ -17,7 +17,7 @@ app.get('/', (req,res) => {
 
 // routes
 const session = require('../routes/session');
-const commands = require('../routes/commands');
+const commands = require('../routes/dashboardCommands');
 const chat = require('../routes/chat');
 
 // middleware

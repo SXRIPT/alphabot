@@ -13,4 +13,4 @@ RUN npm install
 COPY ./alphabot .
 
 EXPOSE 8080
-CMD ["node", "src/server.js"]
+CMD ["npm", "start"]
