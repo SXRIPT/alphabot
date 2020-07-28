@@ -8,6 +8,7 @@ jobs:
     steps:
       - checkout
       - run: cd alphabot && npm install
+      - run: cd alphabot && npm test
 workflows:
     build-and-test:
       jobs:
