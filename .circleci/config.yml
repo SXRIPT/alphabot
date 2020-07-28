@@ -5,11 +5,12 @@ jobs:
   build-and-test:
     executor:
       name: node/default
-    working_directory: ~/alphabot
     steps:
       - checkout
-      - run: npm install
-      - run: npm test
+      - node/with-cache:
+          steps:
+            - run: cd alphabot && npm install
+            - run: cd alphabot && npm test
 workflows:
     build-and-test:
       jobs:
