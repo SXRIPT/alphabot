@@ -37,6 +37,6 @@ app.use((req, res) => {
 
 
 
-/*let server = */ app.listen(port, () => console.log('Server started on port: ' + port));
+const server = app.listen(port, () => console.log('Server started on port: ' + port));
 
-module.exports = app;
+module.exports = server;
