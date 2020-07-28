@@ -7,9 +7,7 @@ jobs:
       name: node/default
     steps:
       - checkout
-      - node/with-cache:
-          steps:
-            - run: cd alphabot && npm install
+      - run: cd alphabot && npm install
 workflows:
     build-and-test:
       jobs:
