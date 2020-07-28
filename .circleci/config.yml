@@ -3,11 +3,11 @@ orbs:
   node: circleci/node@1.1.6
 jobs:
   build-and-test:
-    working_directory: ~/alphabot/alphabot
     executor:
       name: node/default
     steps:
       - checkout
+      - working_directory: ~/alphabot
       - node/with-cache:
           steps:
             - run: npm install
