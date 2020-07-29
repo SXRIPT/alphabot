@@ -1,14 +1,8 @@
 let checkCommand = require('./checkCommand');
-let string = '[20:17] info: [#scriptx] <scriptx>: !HahaElf 14 ok';
 
 let tokenizer = async (message) => {
     let token = message.split(' ');
     token = token.slice(2);
-
-    // Lists to check:
-    // 1. does the command start with the prefix
-    // 2. is the command a command the channel has (enabled)
-
 
     /*
     Checks if user message start with the ! prefix
@@ -22,7 +16,7 @@ let tokenizer = async (message) => {
     // TODO: build in check if token[2] is a command (need db help)
     if(!await checkCommand.isCommand(token[0], token[2])) { return; }
 
-    return await createObject(token);
+    return createObject(token).then(obj => { return obj });
 };
 
 // creates a object from the message array
@@ -38,8 +32,6 @@ let createObject = async (array) => {
       args
     }
 };
-
-let r = tokenizer(string);
 
 module.exports = {
   tokenizer
