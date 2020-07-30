@@ -7,8 +7,37 @@ jobs:
       name: node/default
     steps:
       - checkout
+      
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+          
       - run: cd alphabot && npm install
+      
+      
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+          
+      - run: cd alphabot && npm test
+      
+    push-image:
+        machine: true
+        steps:
+        - checkout
+        - run: echo ${GOOGLE_AUTH} > ${HOME}/gcp-key.json
+        - run: docker build --rm=false -t eu.gcr.io/${GCP_PROJECT}/${IMAGE_NAME}:$CIRCLE_SHA1 .
+        - run: gcloud auth activate-service-account --key-file ${HOME}/gcp-key.json
+        - run: gcloud --quiet config set project ${GCP_PROJECT}
+        - run: gcloud docker -- push eu.gcr.io/${GCP_PROJECT}/${IMAGE_NAME}:$CIRCLE_SHA1
 workflows:
-    build-and-test:
+    test-and-build-image:
       jobs:
         - build-and-test
+        - push-image:
+            requires:
+                - build-and-test
