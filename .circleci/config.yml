@@ -42,4 +42,6 @@ workflows:
       jobs:
         - build-and-test
         - push-image
+            requires:
+                - build-and-test
         
