@@ -16,7 +16,6 @@ jobs:
           - v1-dependencies-
           
       - run: cd alphabot && npm install
-
       
       
       - save_cache:
@@ -37,9 +36,7 @@ jobs:
         - run: gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
         - run: gcloud docker -- push eu.gcr.io/${GOOGLE_PROJECT_ID}/alphabot:$CIRCLE_SHA1
 
-    
-      - run: cd alphabot && npm test
-
+        
 workflows:
     test-and-build-image:
       jobs:
