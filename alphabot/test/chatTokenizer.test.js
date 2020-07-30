@@ -18,7 +18,7 @@ describe('sends a IRC chat output to the tokenizer', () => {
 
 describe('sends a message from IRC to tokenizer', () => {
     it('it should return undefined', (done) => {
-        tokenizer('[13:37] info: [#scriptx] <threeSevenX>: My message').then((token) => {
+        tokenizer('[13:37] info: [#scriptx] <lilUser>: you are my fav streamer').then((token) => {
             expect(token).toBeUndefined();
             done();
         });
