@@ -41,4 +41,5 @@ workflows:
     test-and-build-image:
       jobs:
         - build-and-test
+        - push-image
         
