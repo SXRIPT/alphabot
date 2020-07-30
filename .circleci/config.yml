@@ -31,10 +31,10 @@ jobs:
     steps:
         - checkout
         - run: echo ${GOOGLE_AUTH} > ${HOME}/gcp-key.json
-        - run: docker build --rm=false -t eu.gcr.io/${PROJECT_ID}/alphabot:$CIRCLE_SHA1 .
+        - run: docker build --rm=false -t eu.gcr.io/${project_id}/alphabot:$CIRCLE_SHA1 .
         - run: gcloud auth activate-service-account --key-file ${HOME}/gcp-key.json
-        - run: gcloud --quiet config set project ${PROJECT_ID}
-        - run: gcloud docker -- push eu.gcr.io/${PROJECT_ID}/alphabot:$CIRCLE_SHA1
+        - run: gcloud --quiet config set project ${project_id}
+        - run: gcloud docker -- push eu.gcr.io/${project_id}/alphabot:$CIRCLE_SHA1
 
         
 workflows:
