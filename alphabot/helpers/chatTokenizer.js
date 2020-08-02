@@ -33,4 +33,6 @@ let createObject = async (array) => {
     };
 };
 
-module.exports = tokenizer();
+module.exports = {
+    tokenizer
+}
