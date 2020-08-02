@@ -30,9 +30,7 @@ let createObject = async (array) => {
       user,
       command,
       args
-    }
+    };
 };
 
-module.exports = {
-  tokenizer
-};
+module.exports = tokenizer();
