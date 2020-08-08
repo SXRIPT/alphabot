@@ -24,7 +24,7 @@ jobs:
           key: v1-dependencies-{{ checksum "alphabot/package.json" }}
           
       - run: cd alphabot && npm test
-
+      
   deploy-image:
     machine: true
     steps:
@@ -34,7 +34,7 @@ jobs:
       - run: 
           name: Deploy over SSH
           command: |
-           ssh filip_777@34.89.247.185 "./deploy.sh"        
+           ssh filip_777@34.89.247.185 "pwd"        
 workflows:
     build-and-test:
       jobs:
