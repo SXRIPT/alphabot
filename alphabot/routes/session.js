@@ -8,9 +8,9 @@ router.post('/join', async (req, res) => {
 
     client.join(username)
         .then((data) => {
-            res.status(200).send(data);
+             return res.status(200).send(data);
         }).catch((err) => {
-        res.status(400).send('Something went wrong: ' + err);
+             return res.status(400).send('Something went wrong: ' + err);
     });
 
     // add to database
@@ -22,9 +22,9 @@ router.post('/part', async (req, res) => {
 
     client.part(username)
         .then((data) => {
-            res.status(200).send(data);
+            return res.status(200).send(data);
         }).catch((err) => {
-        res.status(400).send('Something went wrong: ' + err);
+            return res.status(400).send('Something went wrong: ' + err);
     });
 
     // delete from database

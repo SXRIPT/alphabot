@@ -36,11 +36,11 @@ let createObject = async (array) => {
       user,
       command,
       args
-    }
+    };
 };
 
 let r = tokenizer(string);
 
 module.exports = {
-  tokenizer
-};
+    tokenizer
+}
