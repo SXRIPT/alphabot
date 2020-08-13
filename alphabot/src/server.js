@@ -24,7 +24,7 @@ app.use(volleyball);
 app.use(limiter); // all requests
 
 app.get('/', (req,res) => {
-    res.status(200).send('ALPHABOT UI NEEDED');
+    res.status(200).send(':)');
 });
 
 app.use('/session', session);
