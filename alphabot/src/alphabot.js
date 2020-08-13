@@ -1,6 +1,29 @@
 let tmi = require("tmi.js");
 
-let channel_names = ["#scriptx", "#botalpha"]; // get all from database
+//added by yigi
+require('dotenv').config(); //creds
+const{MongoClient} = require('mongodb');
+var allMethods = require('../mongodb/addGetDelete');
+const uri = process.env.DB_CONNECTION;
+const clientMongo = new MongoClient(uri,{useNewUrlParser:true,useUnifiedTopology:true});
+
+let channel_names;
+
+async function getChannelNames(){
+    try
+    {
+        await clientMongo.connect();
+        channel_names = await allMethods.findAllUser(clientMongo,"TwitchUsers"); //Todo collection name
+    }catch(e){
+        console.error(e);
+    }finally{
+        clientMongo.close();
+    }
+}
+
+getChannelNames();
+console.log(channel_names);
+
 let options = {
     options: {
         debug: true

@@ -3,7 +3,7 @@ async function addUser(client, username, nameOfCollection){
     console.log(result.insertedId);
 }
 
-async function findOneUserByUsername(client, nameOfCollection){
+async function findAllUser(client, nameOfCollection){
     const result = await client.db("alphabot").collection(nameOfCollection).find({}).toArray();
     console.log(result);
 }
@@ -13,4 +13,4 @@ async function deleteUserByUsername(client, usernameToDelete, nameOfCollection){
     console.log(result.deletedCount);
 }
 
-module.exports={findOneUserByUsername,addUser,deleteUserByUsername}
+module.exports={addUser,findAllUser,deleteUserByUsername}
