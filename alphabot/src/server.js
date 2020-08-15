@@ -24,7 +24,7 @@ app.use(volleyball);
 app.use(limiter); // all requests
 
 app.get('/', (req,res) => {
-    res.status(200).send(':)');
+    res.status(200).send('TEST :)');
 });
 
 app.use('/session', session);
