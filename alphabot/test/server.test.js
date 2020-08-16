@@ -1,4 +1,3 @@
-
 // requiring the dev-dependencies
 let server = require('../src/server');
 let request = require('supertest');
