@@ -1,44 +1,47 @@
 let tmi = require("tmi.js");
 
-//added by yigi
-require('dotenv').config(); //creds
+require('dotenv').config();
 const{MongoClient} = require('mongodb');
 var allMethods = require('../mongodb/addGetDelete');
 const uri = process.env.DB_CONNECTION;
 const clientMongo = new MongoClient(uri,{useNewUrlParser:true,useUnifiedTopology:true});
 
-let channel_names;
+let channel_names = [];
+let client;
 
 async function getChannelNames(){
     try
     {
         await clientMongo.connect();
-        channel_names = await allMethods.findAllUser(clientMongo,"TwitchUsers"); //Todo collection name
     }catch(e){
         console.error(e);
-    }finally{
-        clientMongo.close();
     }
 }
 
-getChannelNames();
-console.log(channel_names);
+getChannelNames().then(async function(){
+    try{channel_names = await allMethods.findAllUser(clientMongo,"TwitchUsers");
+    let options = {
+        options: {
+            debug: true
+        },
+        identity: {
+            username: "pizzachaboy",
+            password: "mrmdogmyamgswnympbliyak8we78qt"
+        },
+        channels: channel_names
+    };
 
-let options = {
-    options: {
-        debug: true
-    },
-    identity: {
-        username: "pizzachaboy",
-        password: "mrmdogmyamgswnympbliyak8we78qt"
-    },
-    channels: channel_names
-};
-
-let client = new tmi.client(options);
-
-// Connect the client to the server..
-client.connect();
+    console.log(options);
+    
+    client = new tmi.client(options);
+    
+    // Connect the client to the server..
+    client.connect();
+}
+catch(e){
+    console.error(e);
+}
+})
 
 
 let getClient = () => {

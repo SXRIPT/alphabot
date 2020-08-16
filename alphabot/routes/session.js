@@ -23,7 +23,7 @@ router.post('/join', async (req, res) => {
     // add to database
     try{
         await clientMongo.connect();
-        await allMethods.addUser(clientMongo,{username:req.body.username},"TwitchUsers")//Todo name of collection
+        await allMethods.addUser(clientMongo,{login_name:req.body.username},"TwitchUsers")//Todo name of collection
     }catch(e){
         console.error(e);
     }
