@@ -2,13 +2,12 @@ const express = require('express');
 const router = express.Router();
 let client = require('../src/alphabot');
 
-//added by yigi
 require('dotenv').config(); //creds
 const{MongoClient} = require('mongodb');
 var allMethods = require('../mongodb/addGetDelete');
 const uri = process.env.DB_CONNECTION;
 const clientMongo = new MongoClient(uri,{useNewUrlParser:true,useUnifiedTopology:true});
-//
+
 
 router.post('/join', async (req, res) => {
     let username = req.body.username;
@@ -24,7 +23,7 @@ router.post('/join', async (req, res) => {
     // add to database
     try{
         await clientMongo.connect();
-        await allMethods.addUser(clientMongo,{username:req.body.username},"TwitchUsers")
+        await allMethods.addUser(clientMongo,{username:req.body.username},"TwitchUsers")//Todo name of collection
     }catch(e){
         console.error(e);
     }
@@ -44,7 +43,7 @@ router.post('/part', async (req, res) => {
     // delete from database
     try{
         await clientMongo.connect();
-        await allMethods.deleteUserByUsername(clientMongo,req.body.username,"TwitchUsers") //name of collection?
+        await allMethods.deleteUserByUsername(clientMongo,req.body.username,"TwitchUsers") //Todo name of collection
     }catch(e){
         console.error(e);
     }
