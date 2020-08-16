@@ -27,10 +27,9 @@ jobs:
       
   deploy-image:
     machine: true
-    filters:
-      branches:
-        only:
-          - master
+  #    branches:
+ #       only:
+  #        - master
     steps:
       - add_ssh_keys:
           fingerprints:
