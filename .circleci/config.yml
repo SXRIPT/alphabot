@@ -40,9 +40,9 @@ workflows:
       jobs:
         - build-and-test
         - deploy-image:
+          requires:
+            - build-and-test
           filters:
             branches:
               only:
                 - master
-            requires:
-              - build-and-test
