@@ -15,7 +15,7 @@ let options = {
 let client = new tmi.client(options);
 
 // Connect the client to the server..
-client.connect();
+client.connect().catch(console.error);
 
 
 let getClient = () => {

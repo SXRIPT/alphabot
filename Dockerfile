@@ -12,5 +12,4 @@ RUN npm install
 # Bundle app source
 COPY ./alphabot .
 
-EXPOSE 8080
-CMD ["npm", "start"]
+CMD ["node", "src/server.js"]

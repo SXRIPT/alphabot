@@ -26,7 +26,7 @@ describe('/GET root path to check headers', () => {
           .expect('X-Frame-Options', 'SAMEORIGIN')
           .expect('X-Download-Options', 'noopen')
           .expect('X-Content-Type-Options', 'nosniff')
-          .expect('X-XSS-Protection', '1; mode=block')
+          .expect('X-XSS-Protection', '0'/*'1; mode=block'*/)
           .expect(200, done);
           });
 });
