@@ -1,25 +1,22 @@
-let tmi = require("tmi.js");
+const tmi = require('tmi.js');
 
-let channel_names = ["#scriptx", "#botalpha"]; // get all from database
-let options = {
-    options: {
-        debug: true
-    },
-    identity: {
-        username: "pizzachaboy",
-        password: "mrmdogmyamgswnympbliyak8we78qt"
-    },
-    channels: channel_names
+const channelNames = ['#scriptx', '#botalpha']; // get all from database
+const options = {
+  options: {
+    debug: true,
+  },
+  identity: {
+    username: 'pizzachaboy',
+    password: 'mrmdogmyamgswnympbliyak8we78qt',
+  },
+  channels: channelNames,
 };
 
-let client = new tmi.client(options);
+const client = new tmi.client(options);
 
 // Connect the client to the server..
 client.connect().catch(console.error);
 
-
-let getClient = () => {
-  return client;
-};
+const getClient = () => client;
 
 module.exports = getClient();

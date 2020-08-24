@@ -6,7 +6,7 @@ describe('/GET root path', () => {
     it('it should GET the root path', (done) => {
         request(server)
            .get('/')
-            .expect(200, done);
+           .expect(200, done);
     });
 });
 
