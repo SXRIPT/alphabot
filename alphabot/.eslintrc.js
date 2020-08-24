@@ -4,8 +4,8 @@ module.exports = {
     commonjs: true,
     es2020: true,
   },
-  extends: ['airbnb-base', 'prettier'],
-  plugins: ['prettier'],
+  extends: ['airbnb-base', 'prettier', 'plugin:security/recommended'],
+  plugins: ['prettier', 'security'],
   parserOptions: {
     ecmaVersion: 12,
   },

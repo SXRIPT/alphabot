@@ -7,7 +7,7 @@ WORKDIR /app
 COPY alphabot/package*.json ./
 
 # Install app dependencies
-RUN npm install
+RUN npm ci --production && npm clean cache --force
 
 # Bundle app source
 COPY ./alphabot .
