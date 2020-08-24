@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const logger = require('../config/logger')
 let client = require('../src/alphabot');
 
 // Runs a Commercial for a channel with on of the following durations3 0, 60, 90, 120, 150, 180.
@@ -10,7 +11,8 @@ router.post('/commercial', async (req, res) => {
             .then((data) => {
                 return res.status(200).send(data);
             }).catch((err) => {
-                return res.status(400).send('Something went wrong: ' + err);
+                logger.error(err);
+                return res.status(400).send('Something went wrong');
         });
     } else {
         return res.status(400).send('Bad duration time. Available lengths (seconds) are 30, 60, 90, 120, 150, 180.');
@@ -23,7 +25,8 @@ router.post('/deletemessage', async (req, res) => {
         .then((data) => {
             return res.status(200).send(data);
         }).catch((err) => {
-            return res.status(400).send('Something went wrong: ' + err);
+            logger.error(err); 
+            return res.status(400).send('Something went wrong');
         });
 });
 
@@ -33,7 +36,8 @@ router.post('/emoteonly', async (req, res) => {
         .then((data) => {
             return res.status(200).send(data);
         }).catch((err) => {
-            return res.status(400).send('Something went wrong: ' + err);
+            logger.error(err);
+            return res.status(400).send('Something went wrong');
     });
 });
 
@@ -43,7 +47,8 @@ router.post('/emoteonlyoff', async (req, res) => {
         .then((data) => {
             return res.status(200).send(data);
         }).catch((err) => {
-            return res.status(400).send('Something went wrong: ' + err);
+            logger.error(err);
+            return res.status(400).send('Something went wrong');
     });
 });
 
@@ -55,7 +60,8 @@ router.post('/followersonly', async (req, res) => {
         .then((data) => {
             return res.status(200).send(data);
         }).catch((err) => {
-            return res.status(400).send('Something went wrong: ' + err);
+            logger.error(err);
+            return res.status(400).send('Something went wrong');
     });
 });
 
@@ -65,7 +71,8 @@ router.post('/followersonlyoff', async (req, res) => {
         .then((data) => {
             return res.status(200).send(data);
         }).catch((err) => {
-        return res.status(400).send('Something went wrong: ' + err);
+            logger.error(err);
+            return res.status(400).send('Something went wrong');
     });
 });
 
@@ -75,7 +82,8 @@ router.post('/r9kbeta', async (req, res) => {
         .then((data) => {
             return res.status(200).send(data);
         }).catch((err) => {
-        return res.status(400).send('Something went wrong: ' + err);
+            logger.error(err);
+            return res.status(400).send('Something went wrong');
     });
 });
 
@@ -97,7 +105,8 @@ router.post('/slow', async (req, res) => {
         .then((data) => {
             return res.status(200).send(data);
         }).catch((err) => {
-        return res.status(400).send('Something went wrong: ' + err);
+            logger.error(err);
+            return res.status(400).send('Something went wrong');
     });
 });
 
@@ -107,7 +116,8 @@ router.post('/slowoff', async (req, res) => {
         .then((data) => {
             return res.status(200).send(data);
         }).catch((err) => {
-        return res.status(400).send('Something went wrong: ' + err);
+            logger.error(err); 
+            return res.status(400).send('Something went wrong');
     });
 });
 
@@ -117,7 +127,8 @@ router.post('/subscribers', async (req, res) => {
         .then((data) => {
             return res.status(200).send(data);
         }).catch((err) => {
-        return res.status(400).send('Something went wrong: ' + err);
+            logger.error(err); 
+            return res.status(400).send('Something went wrong');
     });
 });
 
@@ -127,7 +138,8 @@ router.post('/subscribersoff', async (req, res) => {
         .then((data) => {
             return res.status(200).send(data);
         }).catch((err) => {
-        return res.status(400).send('Something went wrong: ' + err);
+            logger.error(err); 
+            return res.status(400).send('Something went wrong');
     });
 });
 
@@ -137,7 +149,8 @@ router.post('/mods', async (req, res) => {
         .then((data) => {
             return res.status(200).send(data);
         }).catch((err) => {
-        return res.status(400).send('Something went wrong: ' + err);
+            logger.error(err); 
+            return res.status(400).send('Something went wrong');
     });
 });
 
@@ -147,7 +160,8 @@ router.post('/vips', async (req, res) => {
         .then((data) => {
             return res.status(200).send(data);
         }).catch((err) => {
-        return res.status(400).send('Something went wrong: ' + err);
+        logger.error(err); 
+        return res.status(400).send('Something went wrong');
     });
 });
 
@@ -157,7 +171,8 @@ router.post('/whisper', async (req, res) => {
         .then((data) => {
             return res.status(200).send(data);
         }).catch((err) => {
-        return res.status(400).send('Something went wrong: ' + err);
+            logger.error(err); 
+            return res.status(400).send('Something went wrong');
     });
 });
 

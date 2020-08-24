@@ -1,8 +1,8 @@
 const express = require('express');
 const app = express();
-const volleyball = require('volleyball');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
+const morgan = require('morgan');
 const port = process.env.PORT || 8080;
 require('./alphabot');
 
@@ -20,11 +20,11 @@ const chat = require('../routes/chat');
 // middleware
 app.use(express.json());
 app.use(helmet());
-app.use(volleyball);
+app.use(morgan('dev'));
 app.use(limiter); // all requests
 
 app.get('/', (req,res) => {
-    res.status(200).json({status: 200, message: 'maybe now?'});
+    res.status(200).json({status: 200, message: 'alphabot'});
 });
 
 app.use('/session', session);

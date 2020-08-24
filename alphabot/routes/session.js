@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const logger = require('../config/logger')
 let client = require('../src/alphabot');
 
 router.post('/join', async (req, res) => {
@@ -10,7 +11,8 @@ router.post('/join', async (req, res) => {
         .then((data) => {
              return res.status(200).send(data);
         }).catch((err) => {
-             return res.status(400).send('Something went wrong: ' + err);
+             logger.error(err);
+             return res.status(400).send('Something went wrong');
     });
 
     // add to database
@@ -24,7 +26,8 @@ router.post('/part', async (req, res) => {
         .then((data) => {
             return res.status(200).send(data);
         }).catch((err) => {
-            return res.status(400).send('Something went wrong: ' + err);
+            logger.error(err);
+            return res.status(400).send('Something went wrong');
     });
 
     // delete from database
