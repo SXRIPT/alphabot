@@ -12,7 +12,10 @@ require('./alphabot');
 const app = express();
 
 const URI = process.env.DB_CONNECTION;
-mongoose.connect(URI,{useUnifiedTopology:true,useNewUrlParser:true});
+mongoose.connect(URI, {
+  useUnifiedTopology: true,
+  useNewUrlParser: true
+});
 
 const db = mongoose.connection
 
@@ -36,9 +39,11 @@ const commands = require('../routes/dashboardCommands');
 const chat = require('../routes/chat');
 
 // middleware
+if (process.env.NODE_ENV !== 'test') {
+  app.use(morgan('dev'));
+}
 app.use(express.json());
 app.use(helmet());
-app.use(morgan('dev'));
 app.use(limiter); // all requests
 
 app.get('/', (req, res) => {

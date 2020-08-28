@@ -1,9 +1,8 @@
-// requiring the dev-dependencies
 let server = require('../src/server');
 let request = require('supertest');
 
 describe('/GET root path', () => {
-    it('it should GET the root path', (done) => {
+    it('it should GET the root path',  async (done) => {
         request(server)
            .get('/')
            .expect(200, done);
@@ -11,7 +10,7 @@ describe('/GET root path', () => {
 });
 
 describe('/GET not existing path', () => {
-   it('it should try GET non existing path', (done) => {
+   it('it should try GET non existing path', async ( done) => {
        request(server)
           .get('/thisDoesntExists')
           .expect(404, done)
@@ -19,7 +18,7 @@ describe('/GET not existing path', () => {
 });
 
 describe('/GET root path to check headers', () => {
-   it('it should GET to the root path and have the helmet default headers set', (done) => {
+   it('it should GET to the root path and have the helmet default headers set', async ( done) => {
       request(server)
           .get('/')
           .expect('X-DNS-Prefetch-Control', 'off')
@@ -30,4 +29,5 @@ describe('/GET root path to check headers', () => {
           .expect(200, done);
           });
 });
+
 server.close();
