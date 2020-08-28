@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const logger = require('../config/logger');
 const client = require('../src/alphabot');
+const { addUser, deleteUser } = require('../db/sessionFunctions');
 
 router.post('/join', async (req, res) => {
   const { username } = req.body;
@@ -16,7 +17,7 @@ router.post('/join', async (req, res) => {
       return res.status(400).send('Something went wrong');
     });
 
-  // add to database
+  await addUser(username);
 });
 
 router.post('/part', async (req, res) => {
@@ -31,7 +32,7 @@ router.post('/part', async (req, res) => {
       return res.status(400).send('Something went wrong');
     });
 
-  // delete from database
+  await deleteUser(username);
 });
 
 module.exports = router;

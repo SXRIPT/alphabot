@@ -1,6 +1,8 @@
 const tmi = require('tmi.js');
+const logger = require('../config/logger');
+const { findAllUsers } = require('../db/sessionFunctions');
 
-const channelNames = ['#scriptx', '#botalpha']; // get all from database
+const channelNames = findAllUsers();
 const options = {
   options: {
     debug: true,
@@ -15,7 +17,7 @@ const options = {
 const client = new tmi.client(options);
 
 // Connect the client to the server..
-client.connect().catch(console.error);
+client.connect().catch(logger.error);
 
 const getClient = () => client;
 

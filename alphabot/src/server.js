@@ -1,13 +1,27 @@
+require('dotenv').config();
 const express = require('express');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const morgan = require('morgan');
+const mongoose = require("mongoose");
+const logger = require('../config/logger');
 
 const port = process.env.PORT || 8080;
 require('./alphabot');
 
 const app = express();
 
+const URI = process.env.DB_CONNECTION;
+mongoose.connect(URI,{useUnifiedTopology:true,useNewUrlParser:true});
+
+const db = mongoose.connection
+
+// Bind connection to error event (to get notification of connection errors)
+db.on('error', logger.error.bind(console, 'MongoDB connection error:'));
+
+db.once('open', () => {
+    logger.info("Connected to Database.")
+});
 
 
 // rate limiter
@@ -31,17 +45,6 @@ app.get('/', (req, res) => {
   res.status(200).json({ status: 200, message: 'alphabot' });
 });
 
-app.get('/wait', function (req, res) {
-  // increase the timeout
-  const timeout = 15;
-  console.log(`received request, waiting ${timeout} seconds`);
-  const delayedResponse = () => {
-    console.log("sending response!");
-    res.send('Hello belated world\n');
-  };
-  setTimeout(delayedResponse, timeout * 1000);
-});
-
 app.use('/session', session);
 app.use('/commands', commands);
 app.use('/chat', chat);
@@ -51,7 +54,7 @@ app.use((req, res) => {
 });
 
 const server = app.listen(port, () =>
-  console.log(`Server started on port: ${port}`)
+  logger.info(`Server started on port: ${port}`)
 );
 
 module.exports = server;
