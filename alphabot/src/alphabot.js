@@ -7,11 +7,15 @@ const options = {
   options: {
     debug: true,
   },
+  connection: {
+    reconnect: true,
+  },
   identity: {
     username: 'pizzachaboy',
     password: 'mrmdogmyamgswnympbliyak8we78qt',
   },
   channels: channelNames,
+  logger
 };
 
 const client = new tmi.client(options);

@@ -3,7 +3,6 @@ const checkCommand = require('./checkCommand');
 const tokenizer = async (message) => {
   let token = message.split(' ');
   token = token.slice(2);
-
   /*
     Checks if user message start with the ! prefix
     TODO: for custom prefix would need to get streamers settings from db
