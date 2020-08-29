@@ -4,6 +4,8 @@ const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const morgan = require('morgan');
 const mongoose = require("mongoose");
+const favicon = require('serve-favicon');
+const path = require('path');
 const logger = require('../config/logger');
 
 const port = process.env.PORT || 8080;
@@ -39,9 +41,8 @@ const commands = require('../routes/dashboardCommands');
 const chat = require('../routes/chat');
 
 // middleware
-if (process.env.NODE_ENV !== 'test') {
-  app.use(morgan('dev'));
-}
+app.use(favicon(path.join(__dirname,'../public/images/favicon.ico')));
+app.use(morgan('dev'));
 app.use(express.json());
 app.use(helmet());
 app.use(limiter); // all requests
@@ -55,7 +56,7 @@ app.use('/commands', commands);
 app.use('/chat', chat);
 
 app.use((req, res) => {
-  res.status(404).send(`Unknown Request: ${req.originalUrl}`);
+  res.status(404).json({status: 404, message: `Unknown Request: ${req.originalUrl}`});
 });
 
 const server = app.listen(port, () =>
