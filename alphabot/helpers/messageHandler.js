@@ -1,8 +1,11 @@
 const client = require('../src/alphabot');
 const chatTokenizer = require('./chatTokenizer');
 const logger = require('../config/logger');
+const { addCommand } = require('../db/commandFunctions');
+const { findAllCommands } = require('../db/commandFunctions');
+const { findAllUsers } = require('../db/sessionFunctions');
 
-client.on('message', (channel, tag, message, self) => {
+client.on('message', (async (channel, tag, message, self) => {
   // Don't listen to my own messages..
   if (self) return;
 
@@ -13,6 +16,14 @@ client.on('message', (channel, tag, message, self) => {
       break;
     case 'chat':
       // This is a chat message..
+      const commands = await findAllCommands();
+      console.log(commands);
+      console.log(findAllUsers());
+
+       if(message.toLowerCase() === 'addomegalul') {
+        await addCommand("scriptx", "");
+      }
+
       // const chatToken = chatTokenizer.tokenizer();
       /*client.say(channel, `@${tag.username}, HEYYY!`)
         .then((data) => {
@@ -29,4 +40,4 @@ client.on('message', (channel, tag, message, self) => {
       // Something else ?
       break;
   }
-});
+}));

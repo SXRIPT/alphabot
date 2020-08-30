@@ -1,6 +1,6 @@
 const { createLogger, format, transports } = require('winston');
 
-const { combine, timestamp, printf } = format;
+const { combine, timestamp, printf, colorize} = format;
 require('winston-daily-rotate-file');
 
 const transport = new transports.DailyRotateFile({
@@ -17,8 +17,8 @@ const customFormat = printf(
 );
 
 const customFormatConsole = printf(
-  ({ level, message, label, timestamp }) =>
-    `${timestamp} ${level}: ${message}`
+  ({ level, message, timestamp }) =>
+    `${level}: ${timestamp} ${message}`
 );
 
 
@@ -35,7 +35,7 @@ const logger = createLogger({
 if (process.env.NODE_ENV !== 'production') {
   logger.add(
     new transports.Console({
-      format: combine(timestamp(), customFormatConsole),
+      format: combine(colorize(), timestamp(), customFormatConsole) ,
       json: true,
       colorize: true,
       silent: (process.env.NODE_ENV === 'test')
