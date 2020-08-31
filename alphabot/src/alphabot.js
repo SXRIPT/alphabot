@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 let tmi = require("tmi.js");
 require('dotenv').config();
 
@@ -28,12 +29,41 @@ let options = {
 
 
 let client = new tmi.client(options);
+=======
+const tmi = require('tmi.js');
+const logger = require('../config/logger');
+const { findAllUsers } = require('../db/sessionFunctions');
+
+const channelNames = findAllUsers();
+const options = {
+  options: {
+    debug: true,
+  },
+  connection: {
+    reconnect: true,
+  },
+  identity: {
+    username: 'pizzachaboy',
+    password: 'mrmdogmyamgswnympbliyak8we78qt',
+  },
+  channels: channelNames,
+  logger
+};
+
+const client = new tmi.client(options);
+>>>>>>> Stashed changes
 
 // Connect the client to the server..
-client.connect();
+client.connect().catch(logger.error);
 
+<<<<<<< Updated upstream
 let getClient = () => {
   return client;
 };
 
 module.exports = getClient();
+=======
+const getClient = () => client;
+
+module.exports = getClient();
+>>>>>>> Stashed changes

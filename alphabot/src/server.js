@@ -1,10 +1,9 @@
-const express = require('express');
-const app = express();
-const volleyball = require('volleyball');
-const helmet = require('helmet');
-const rateLimit = require('express-rate-limit');
+const app = require('./app');
+const logger = require('../config/logger');
+
 const port = process.env.PORT || 8080;
 require('./alphabot');
+<<<<<<< Updated upstream
 
 // rate limiter
 const limiter = rateLimit({
@@ -35,8 +34,14 @@ app.use((req, res) => {
     res.status(404).send('Unknown Request: ' + req.originalUrl);
 });
 
+=======
+require('../helpers/messageHandler');
+require('../config/db');
+>>>>>>> Stashed changes
 
 
-const server = app.listen(port, () => console.log('Server started on port: ' + port));
+const server = app.listen(port, () =>
+  logger.info(`Server started on port: ${port}`)
+);
 
 module.exports = server;

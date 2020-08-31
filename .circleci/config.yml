@@ -15,7 +15,7 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
           
-      - run: cd alphabot && npm install
+      - run: cd alphabot && npm ci
       
       
       - save_cache:
@@ -42,3 +42,10 @@ workflows:
         - deploy-image:
             requires:
               - build-and-test
+<<<<<<< Updated upstream
+=======
+            filters:
+              branches:
+                only: 
+                 - master
+>>>>>>> Stashed changes
