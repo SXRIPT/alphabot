@@ -16,14 +16,13 @@ client.on('message', (async (channel, tag, message, self) => {
       break;
     case 'chat':
       // This is a chat message..
-      const commands = await findAllCommands();
+      const commands = await findAllCommands('scriptx');
       console.log(commands);
       console.log(findAllUsers());
 
        if(message.toLowerCase() === 'addomegalul') {
-        await addCommand("scriptx", "");
+        await addCommand('scriptx','');
       }
-
       // const chatToken = chatTokenizer.tokenizer();
       /* client.say(channel, `@${tag.username}, HEYYY!`)
         .then((data) => {
