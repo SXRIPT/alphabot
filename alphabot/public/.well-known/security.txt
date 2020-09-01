@@ -1,0 +1,3 @@
+Contact: mailto:security@alphabot.wtf
+Preferred-Languages: en, de
+Canonical: https://api.alphabot.wtf/.well-known/security.txt

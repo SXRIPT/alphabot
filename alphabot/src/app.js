@@ -5,7 +5,6 @@ const morgan = require('morgan');
 const favicon = require('serve-favicon');
 const path = require('path');
 const compression = require('compression');
-require('./alphabot');
 
 const app = express();
 
@@ -21,6 +20,7 @@ const commands = require('../routes/dashboardCommands');
 const chat = require('../routes/chat');
 
 // middleware
+app.use(express.static(path.join(__dirname, '../public')));
 app.use(helmet());
 app.use(compression());
 app.use(morgan('dev'));

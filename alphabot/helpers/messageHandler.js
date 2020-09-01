@@ -25,13 +25,13 @@ client.on('message', (async (channel, tag, message, self) => {
       }
 
       // const chatToken = chatTokenizer.tokenizer();
-      /*client.say(channel, `@${tag.username}, HEYYY!`)
+      /* client.say(channel, `@${tag.username}, HEYYY!`)
         .then((data) => {
            logger.info(data);
         })
         .catch((err) => {
           logger.error(err);
-        });*/
+        }); */
       break;
     case 'whisper':
       // This is a whisper..
