@@ -5,7 +5,7 @@ const logger = require('../config/logger');
 const addCommand = async (usernameX, commandJSON) => {
   let query = {username:usernameX};
   let updateQuery;
-  var goOn = true;
+  let goOn = true;
   const allCommands = [];
 
   const newCommand = new Command({
@@ -54,7 +54,7 @@ const addCommand = async (usernameX, commandJSON) => {
 };
 
 const deleteCommand = async (usernameX, command) => {
-  var isFound = false;
+  let isFound = false;
   const allCommands = [];
   await User.findOne({ username:usernameX })
     .then(result => {
@@ -99,7 +99,6 @@ const findAllCommands = async (usernameX) => {
     else
     {
       logger.info("Found commands");
-      console.log(commands);
     }
     return commands;
   });
@@ -109,7 +108,7 @@ const updateCommand = async (usernameX, commandJSON) => {
   const updatedCommands = [];
   const query = {  username:usernameX };
   let updatedQuery;
-  var isFound = false;
+  let isFound = false;
   const newCommand = new Command({
     prefix: commandJSON.prefix,
     command: commandJSON.command,
