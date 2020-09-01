@@ -15,7 +15,7 @@ const options = {
     password: 'mrmdogmyamgswnympbliyak8we78qt',
   },
   channels: channelNames,
-  logger
+  logger,
 };
 
 const client = new tmi.client(options);

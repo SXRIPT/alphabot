@@ -6,7 +6,6 @@ require('./alphabot');
 require('../helpers/messageHandler');
 require('../config/db');
 
-
 const server = app.listen(port, () =>
   logger.info(`Server started on port: ${port}`)
 );

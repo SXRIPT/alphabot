@@ -13,7 +13,7 @@ const commandSchema = mongoose.Schema({
     type: Array,
   },
   message: {
-    type: String
+    type: String,
   },
   enabled: {
     type: Boolean,
