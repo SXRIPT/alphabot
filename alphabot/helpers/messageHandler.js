@@ -5,7 +5,7 @@ const { addCommand } = require('../db/commandFunctions');
 const { findAllCommands } = require('../db/commandFunctions');
 const { findAllUsers } = require('../db/sessionFunctions');
 
-client.on('message', (async (channel, tag, message, self) => {
+client.on('message', async (channel, tag, message, self) => {
   // Don't listen to my own messages..
   if (self) return;
 
@@ -17,11 +17,11 @@ client.on('message', (async (channel, tag, message, self) => {
     case 'chat':
       // This is a chat message..
       const commands = await findAllCommands('scriptx');
-      console.log(commands);
-      console.log(findAllUsers());
+      logger.info(`command: ${commands}`);
+      // logger.info(findAllUsers());
 
-       if(message.toLowerCase() === 'addomegalul') {
-        await addCommand('scriptx','');
+      if (message.toLowerCase() === 'addomegalul') {
+        await addCommand('scriptx', '');
       }
       // const chatToken = chatTokenizer.tokenizer();
       /* client.say(channel, `@${tag.username}, HEYYY!`)
@@ -39,4 +39,4 @@ client.on('message', (async (channel, tag, message, self) => {
       // Something else ?
       break;
   }
-}));
+});
