@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Command = require("./Command")
 
 const userSchema = mongoose.Schema({
   username: {
@@ -7,10 +8,7 @@ const userSchema = mongoose.Schema({
     min:4,
     max:25
   },
-  commands: [{
-    type: mongoose.Schema.ObjectId,
-    ref: 'Command'
-  }]
+  commands : [Command.schema]
 });
 
 module.exports = mongoose.model('User', userSchema, 'TwitchUsers'); // Todo: Collection name????
