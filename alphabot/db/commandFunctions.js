@@ -2,9 +2,10 @@ const User = require('../models/User');
 const Command = require('../models/Command');
 const logger = require('../config/logger');
 
-const addCommand = async (username, commandJSON) => {
-  let query;
+const addCommand = async (usernameX, commandJSON) => {
+  let query = {username:usernameX};
   let updateQuery;
+  var goOn = true;
   const allCommands = [];
 
   const newCommand = new Command({
@@ -17,10 +18,11 @@ const addCommand = async (username, commandJSON) => {
     cooldown: commandJSON.cooldown,
   });
 
-  logger.info(newCommand);
-  await User.findOne({ username })
+  //logger.info(newCommand); => undefined
+  await User.findOne({ username:usernameX})
     .then(result => {
-      if (result.commands === []) {
+      if (result.commands.length===0) {
+        console.log("es ist echt so")
         updateQuery = {
           username: result.username,
           commands: newCommand,
@@ -28,7 +30,7 @@ const addCommand = async (username, commandJSON) => {
       } else {
         result.commands.forEach(v => {
           if (v.command === newCommand.command) {
-            return logger.error('Command already exists!');
+            goOn=false;
           }
           allCommands.push(v);
         });
@@ -39,48 +41,75 @@ const addCommand = async (username, commandJSON) => {
         };
       }
     });
-  await User.updateOne(query, updateQuery, (err) => {
-    if (err) return logger.error(err);
-    logger.info('Document inserted successfully');
-  });
+    if(goOn){
+      await User.updateOne(query, updateQuery, (err) => {
+        if (err) return logger.error(err);
+        logger.info('Document inserted successfully');
+      });
+    }
+    else{
+      return logger.error('Command already exists!');
+    }
+
 };
 
-const deleteCommand = async (username, command) => {
+const deleteCommand = async (usernameX, command) => {
+  var isFound = false;
   const allCommands = [];
-  await User.findOne({ username })
+  await User.findOne({ username:usernameX })
     .then(result => {
       result.commands.forEach(v => {
         if (v.command !== command) {
           allCommands.push(v);
         }
+        else{
+          isFound=true;
+        }
       });
     });
-  const query = { username };
+  const query = {  username:usernameX };
   const updateQuery = {
-    username,
+    username:usernameX,
     commands: allCommands,
   };
-  await User.updateOne(query, updateQuery, (err) => {
-    if (err) return logger.error(err);
-    logger.info('Command deleted successfully');
-  });
+  if(isFound)
+  {
+    await User.updateOne(query, updateQuery, (err) => {
+      if (err) return logger.error(err);
+      logger.info('Command deleted successfully');
+    });
+  }
+  else
+  {
+    return logger.error('Command was not found');
+  }
 };
 
-const findAllCommands = async (username) => {
+const findAllCommands = async (usernameX) => {
   const commands = [];
-  await User.findOne({ username }, (err, res) => {
+  await User.findOne({  username:usernameX }, (err, res) => {
     if (err) return logger.error(err);
     res.commands.forEach(v => {
       commands.push(v);
     });
+    if(commands.length===0)
+    {
+      logger.info("User has no commands");
+    }
+    else
+    {
+      logger.info("Found commands");
+      console.log(commands);
+    }
+    return commands;
   });
-  return commands;
 };
 
-const updateCommand = async (username, commandJSON) => {
+const updateCommand = async (usernameX, commandJSON) => {
   const updatedCommands = [];
-  const query = { username };
+  const query = {  username:usernameX };
   let updatedQuery;
+  var isFound = false;
   const newCommand = new Command({
     prefix: commandJSON.prefix,
     command: commandJSON.command,
@@ -90,24 +119,31 @@ const updateCommand = async (username, commandJSON) => {
     permission: commandJSON.permission,
     cooldown: commandJSON.cooldown,
   });
-  await User.findOne({ username })
+  await User.findOne({  username:usernameX })
     .then(result => {
       result.commands.forEach(v => {
         if (v.command === commandJSON.command) {
           updatedCommands.push(newCommand);
+          isFound = true;
         } else {
           updatedCommands.push(v);
         }
       });
       updatedQuery = {
-        username,
+        username:usernameX,
         commands: updatedCommands,
       };
     });
-  await User.updateOne(query, updatedQuery, (err) => {
-    if (err) logger.error(err);
-    logger.info('Successfully updated command');
-  });
+    if(isFound){
+      await User.updateOne(query, updatedQuery, (err) => {
+        if (err) logger.error(err);
+        logger.info('Successfully updated command');
+      });
+    }
+    else
+    {
+      return logger.error('Command was not found');
+    }
 };
 module.exports = {
   addCommand,
