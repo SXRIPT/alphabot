@@ -7,7 +7,6 @@ const addCommand = async (username, commandJSON) => {
   let updateQuery;
   const allCommands = [];
 
-  // TODO commandJSON params
   const newCommand = new Command({
     prefix: commandJSON.prefix,
     command: commandJSON.command,
@@ -75,7 +74,6 @@ const findAllCommands = async (username) => {
       commands.push(v);
     });
   });
-  console.log("in commands: " + commands)
   return commands;
 };
 
