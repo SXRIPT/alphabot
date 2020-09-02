@@ -1,29 +1,18 @@
 const checkCommand = require('./checkCommand');
 
-const tokenizer = async (message) => {
-  let token = message.split(' ');
-  token = token.slice(2);
-  /*
-    Checks if user message start with the ! prefix
-    TODO: for custom prefix would need to get streamers settings from db
-    then use streamers prefix and check if starts with it
-    */
-  if (!token[2].startsWith('!')) {
-    return;
-  }
+const tokenizer = async (channel, user, message) => {
+  const token = [];
+  channel = channel.replace('#', '');
+  token.push(channel, user, message);
 
-  token[0] = token[0].replace(/[^#\w\s]/g, '');
-  token[1] = token[1].replace(/[^\w\s]/g, '');
-  // TODO: build in check if token[2] is a command (need db help)
-  if (!(await checkCommand.isCommand(token[0], token[2]))) {
-    return;
-  }
+  const command = await checkCommand.isCommand(token[0], token[2]);
+  if (!command) return;
 
-  return createObject(token).then((obj) => obj);
+  return command;
 };
 
 // creates a object from the message array
-let createObject = async (array) => {
+const createObject = async (array) => {
   const channel = array[0];
   const user = array[1];
   const command = array[2];

@@ -21,7 +21,7 @@ const commandSchema = mongoose.Schema({
   },
   permission: {
     type: String,
-    enum: ['everyone', 'subscriber', 'vip', 'moderator', 'owner'],
+    enum: ['everyone', 'subscriber', 'vip', 'moderator', 'broadcaster'],
     required: true,
   },
   cooldown: {
