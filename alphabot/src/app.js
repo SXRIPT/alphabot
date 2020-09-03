@@ -5,6 +5,8 @@ const morgan = require('morgan');
 const favicon = require('serve-favicon');
 const path = require('path');
 const compression = require('compression');
+const passport = require('passport');
+require('../middleware/passport');
 
 const app = express();
 
@@ -18,6 +20,7 @@ const limiter = rateLimit({
 const session = require('../routes/session');
 const commands = require('../routes/dashboardCommands');
 const chat = require('../routes/chat');
+const auth = require('../routes/auth');
 
 // middleware
 app.use(express.static(path.join(__dirname, '../public')));
@@ -33,9 +36,11 @@ app.get('/', (req, res) => {
   res.status(200).json({ status: 200, message: 'alphabot' });
 });
 
+// passport.authenticate('jwt', { session : false }) --> middleware to only allow people with a token
 app.use('/session', session);
 app.use('/commands', commands);
 app.use('/chat', chat);
+app.use('/user', auth);
 
 app.use((req, res) => {
   res.status(404).json({status: 404, message: `Unknown Request: ${req.method} ${req.originalUrl}`});

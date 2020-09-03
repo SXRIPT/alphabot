@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const logger = require('./logger');
 
 const URI = process.env.DB_CONNECTION;
+mongoose.set('useCreateIndex', true);
 mongoose.connect(URI, {
   useUnifiedTopology: true,
   useNewUrlParser: true,
