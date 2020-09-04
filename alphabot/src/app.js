@@ -26,7 +26,7 @@ const auth = require('../routes/auth');
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(helmet());
 app.use(compression());
-app.use(morgan('dev'));
+app.use(morgan(':method :url :status  :response-time ms - :res[content-length] | :remote-addr'));
 app.use(favicon(path.join(__dirname, '../public/images/favicon.ico')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
