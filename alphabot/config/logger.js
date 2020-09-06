@@ -13,11 +13,11 @@ const transport = new transports.DailyRotateFile({
 
 const customFormat = printf(
   ({ level, message, label, timestamp }) =>
-    `${timestamp} [${label}] ${level}: ${message}`
+    `${timestamp} [${label}] ${level}: ${message}`,
 );
 
 const customFormatConsole = printf(
-  ({ level, message, timestamp }) => `${level}: ${timestamp} ${message}`
+  ({ level, message, timestamp }) => `${level}: ${timestamp} ${message}`,
 );
 
 const logger = createLogger({
@@ -25,21 +25,21 @@ const logger = createLogger({
   format: combine(timestamp(), customFormat),
   defaultMeta: { service: 'user-service' },
   transports: [
-    new transports.File({ filename: '../logs/error.log', level: 'error' }),
+    new transports.File({
+      filename: '../logs/error.log',
+      level: 'error',
+    }),
     transport,
   ],
 });
 
-if (process.env.NODE_ENV !== 'production') {
-  logger.add(
-    new transports.Console({
-      format: combine(colorize(), timestamp(), customFormatConsole),
-      json: true,
-      colorize: true,
-      silent: process.env.NODE_ENV === 'test',
-    })
-  );
-}
+logger.add(
+  new transports.Console({
+    format: combine(colorize(), timestamp(), customFormatConsole),
+    json: true,
+    colorize: true,
+  }),
+);
 
 if (process.env.NODE_ENV === 'test') console.log = () => {};
 

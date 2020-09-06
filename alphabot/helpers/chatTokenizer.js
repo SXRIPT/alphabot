@@ -16,7 +16,6 @@ const tokenizer = async (channel, user, message) => {
   const command = await checkCommand.isCommand(token[0], token[2]);
   if (!command) return;
 
-
   return command;
 };
 

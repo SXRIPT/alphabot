@@ -13,6 +13,7 @@ client.on("chat", async (channel, userstate, message, self) => {
 
   logger.info("PERMISSIONS: " + command.permission);
   logger.info("BADGES " + userstate.badges);
+  
   const hasPermission = await isAllowed(channel, userstate.badges, command.permission)
   if(!hasPermission) return;
   logger.info(userstate.username + " can execute command: " + command.command + " " + hasPermission);
