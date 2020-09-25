@@ -34,7 +34,7 @@ jobs:
       - run: 
           name: Deploy over SSH
           command: |
-           ssh alphabot@34.89.247.185 "~/scripts/deploy.sh"        
+           ssh alphabot@35.246.182.177 "~/scripts/deploy.sh"        
 workflows:
     build-and-test:
       jobs:

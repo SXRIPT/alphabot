@@ -5,7 +5,6 @@ const morgan = require('morgan');
 const favicon = require('serve-favicon');
 const path = require('path');
 const compression = require('compression');
-const passport = require('passport');
 require('../middleware/passport');
 
 const app = express();

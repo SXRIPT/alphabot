@@ -4,7 +4,7 @@ const logger = require('../config/logger');
 const port = process.env.PORT || 8080;
 
 require('./alphabot');
-require('../chat/events');
+require('../chat/events/chat');
 require('../config/db');
 
 const server = app.listen(port, () =>

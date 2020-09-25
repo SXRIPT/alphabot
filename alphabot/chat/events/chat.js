@@ -1,20 +1,19 @@
-const client = require('../src/alphabot');
-const chatTokenizer = require('../helpers/chatTokenizer');
-const moderation = require('./moderation');
-const logger = require('../config/logger');
+const client = require('../../src/alphabot');
+const chatTokenizer = require('../../helpers/commandHandler');
+const moderation = require('../moderation');
+const logger = require('../../config/logger');
 
 client.on("chat", async (channel, userstate, message, self) => {
-  // Don't listen to my own messages..
+  // Don't listen to own messages
   if (self) return;
 
   const command = await chatTokenizer.tokenizer(channel, userstate.username, message);
   if(!command) return;
 
-
   logger.info("PERMISSIONS: " + command.permission);
   logger.info("BADGES " + userstate.badges);
-  
-  const hasPermission = await isAllowed(channel, userstate.badges, command.permission)
+
+  const hasPermission = await isAuthorized(channel, userstate.badges, command.permission)
   if(!hasPermission) return;
   logger.info(userstate.username + " can execute command: " + command.command + " " + hasPermission);
   const isModerationCommand = await isModeration(command);
@@ -97,7 +96,10 @@ client.on("chat", async (channel, userstate, message, self) => {
 
 });
 
-const isAllowed = async (channel, badges, permission) => {
+// Checks if a user is authorized to execute a command
+// this is being checked with the badges of the user which are
+// sent with on every message by twitch-tmi
+const isAuthorized = async (channel, badges, permission) => {
   if(permission === 'everyone') return true;
   if(permission !== 'everyone' && badges === null) return false;
   if(permission === 'subscriber' && (badges.subscriber !== undefined || badges.vip !== undefined || badges.moderator !== undefined || badges.broadcaster !== undefined)) return true;
