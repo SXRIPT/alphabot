@@ -1,5 +1,5 @@
 const client = require('../src/alphabot');
-const chatTokenizer = require('./commandHandler');
+const chatTokenizer = require('../chat/commandHandler');
 const logger = require('../config/logger');
 const { addCommand } = require('../db/commandFunctions');
 const { findAllCommands } = require('../db/commandFunctions');

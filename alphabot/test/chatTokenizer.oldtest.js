@@ -1,4 +1,4 @@
-let { tokenizer } = require('../helpers/commandHandler');
+let { tokenizer } = require('../chat/commandHandler');
 
 describe('sends a IRC chat output to the tokenizer', () => {
   it('it should return a comment object', (done) => {

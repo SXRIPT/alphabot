@@ -1,5 +1,5 @@
 const chatEvent = require('events/chat');
-//const moderation = require('alphabot/chat/events/moderation');
+//const moderation = require('/events/moderation');
 
 module.exports = {
   chatEvent,
