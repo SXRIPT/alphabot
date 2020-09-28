@@ -12,6 +12,7 @@ module.exports = {
   },
   rules: {
     'prefer-template': 'off',
+    'consistent-return': 'off',
     'no-plusplus': [2, { allowForLoopAfterthoughts: true }]
   },
 };
