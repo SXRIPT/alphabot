@@ -25,7 +25,8 @@ apiSchema.pre('save',  async function (next) {
 
 apiSchema.methods.isValidPassword = async function (password) {
   const user = this;
-  return await bcrypt.compare(password, user.password);
+  const isValid = await bcrypt.compare(password, user.password);
+  return isValid;
 };
 
 

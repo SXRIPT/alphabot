@@ -1,17 +1,12 @@
 const client = require('../src/alphabot');
 const logger = require('../config/logger');
+const {isNumber, isFinite} = require('../utils/numbers');
 
 const MIN_USERNAME_LENGTH = 4;
 const MAX_USERNAME_LENGTH = 25;
 
-const ban = async (channel, command) => {
-  if(command.length > 2 || command[0].length < MIN_USERNAME_LENGTH || command[0].length > MAX_USERNAME_LENGTH) return;
-
-  let username = command[0];
-  let reason =
-    command.length > 1
-      ? command[1]
-      : '';
+const ban = async (channel, [username, reason = '', filler]) => {
+  if(filler !== undefined || username.length < MIN_USERNAME_LENGTH || username.length > MAX_USERNAME_LENGTH) return;
 
   client.ban(channel, username, reason)
     .then((data) => {
@@ -22,9 +17,8 @@ const ban = async (channel, command) => {
   );
 };
 
-const unban = async (channel, command) => {
-  if(command.length > 1 || command[0].length < MIN_USERNAME_LENGTH || command[0].length > MAX_USERNAME_LENGTH) return;
-  let username = command[0];
+const unban = async (channel, [username, filler]) => {
+  if(filler !== undefined || username.length < MIN_USERNAME_LENGTH || username.length > MAX_USERNAME_LENGTH) return;
 
   client.ban(channel, username)
     .then((data) => {
@@ -35,23 +29,22 @@ const unban = async (channel, command) => {
   );
 };
 
-const timeout = async (channel, command,) => {
-  if(command.length > 3 || command[0].length < MIN_USERNAME_LENGTH || command[0].length > MAX_USERNAME_LENGTH) return;
-  let username = command[0];
+const timeout = async (channel, parameters) => {
+  const username = parameters[0];
+  if(parameters.length > 3 || username.length < MIN_USERNAME_LENGTH || username.length > MAX_USERNAME_LENGTH) return;
 
-  let duration =
-    command.length > 1 ?
-      !isNaN(command[1]) && isFinite(command[1]) ?
-        command[1] : 300
-      : 300;
+  let duration = 300;
+  let reason = '';
 
-  let reason =
-    command.length > 1 ?
-      isNaN(command[1]) ?
-        command[1]:
-        isNaN(command[2]) ?
-          command[2]: ''
-      : '';
+  if(parameters.length > 1) {
+    duration = isNumber(parameters[1]) && isFinite(parameters[1]) ? parameters[1] : 300;
+
+    if (!isNumber(parameters[1])) {
+      [, reason] = parameters; // eslint prefer-destructuring
+    } else if (!isNumber(parameters[2]) && parameters.length > 2) {
+      [,, reason] = parameters; // eslint prefer-destructuring
+    }
+  }
 
   client.timeout(channel, username, duration, reason)
     .then((data) => {
@@ -79,14 +72,9 @@ const emoteonlyoff = async (channel) => {
   });
 };
 
-const followersonly = async (channel, command) => {
-  if(command.length > 1) return;
-
-  let duration =
-    command.length > 0 ?
-      !isNaN(command[0]) && isFinite(command[0]) ?
-        command[0] : 30
-      : 30;
+const followersonly = async (channel, [duration = 30, filler]) => {
+  if(filler !== undefined) return;
+  if(!isNumber(duration) && !isFinite(duration)) return;
 
   client.followersonly(channel, duration)
     .then((data) => {
@@ -123,17 +111,9 @@ const r9kbetaoff = async (channel) => {
   });
 };
 
-const slow = async (channel, command) => {
-  if(command.length > 1) {
-    logger.info("Command got more parameters then it should. Parameters: " + command);
-    return;
-  }
-
-  let duration =
-    command.length > 0 ?
-      !isNaN(command[0]) && isFinite(command[0]) ?
-        command[0] : 30
-      : 30;
+const slow = async (channel, [duration = 30, filler]) => {
+  if(filler !== undefined) return;
+  if(!isNumber(duration) && !isFinite(duration)) return;
 
   client.slow(channel, duration)
     .then((data) => {
@@ -170,9 +150,8 @@ const subscribersoff = async (channel) => {
   });
 };
 
-const mod = async (channel, command) => {
-  if(command.length > 1 || command[0].length < MIN_USERNAME_LENGTH || command[0].length > MAX_USERNAME_LENGTH) return;
-  let username = command[0];
+const mod = async (channel, [username, filler]) => {
+  if(filler !== undefined || username.length < MIN_USERNAME_LENGTH || username.length > MAX_USERNAME_LENGTH) return;
 
   client.mod(channel, username)
     .then((data) => {
@@ -183,9 +162,8 @@ const mod = async (channel, command) => {
   );
 };
 
-const unmod = async (channel, command) => {
-  if(command.length > 1 || command[0].length < MIN_USERNAME_LENGTH || command[0].length > MAX_USERNAME_LENGTH) return;
-  let username = command[0];
+const unmod = async (channel, [username, filler]) => {
+  if(filler !== undefined || username.length < MIN_USERNAME_LENGTH || username.length > MAX_USERNAME_LENGTH) return;
 
   client.unmod(channel, username)
     .then((data) => {
@@ -196,9 +174,8 @@ const unmod = async (channel, command) => {
   );
 };
 
-const vip = async (channel, command) => {
-  if(command.length > 1 || command[0].length < MIN_USERNAME_LENGTH || command[0].length > MAX_USERNAME_LENGTH) return;
-  let username = command[0];
+const vip = async (channel, [username, filler]) => {
+  if(filler !== undefined || username.length < MIN_USERNAME_LENGTH || username.length > MAX_USERNAME_LENGTH) return;
 
   client.vip(channel, username)
     .then((data) => {
@@ -209,9 +186,8 @@ const vip = async (channel, command) => {
   );
 };
 
-const unvip = async (channel, command) => {
-  if(command.length > 1 || command[0].length < MIN_USERNAME_LENGTH || command[0].length > MAX_USERNAME_LENGTH) return;
-  let username = command[0];
+const unvip = async (channel, [username, filler]) => {
+  if(filler !== undefined || username.length < MIN_USERNAME_LENGTH || username.length > MAX_USERNAME_LENGTH) return;
 
   client.unvip(channel, username)
     .then((data) => {
@@ -232,9 +208,8 @@ const clear = async (channel) => {
   );
 };
 
-const host = async (channel, command) => {
-  if(command.length > 1 || command[0].length < MIN_USERNAME_LENGTH || command[0].length > MAX_USERNAME_LENGTH) return;
-  let target = command[0];
+const host = async (channel, [target, filler]) => {
+  if(filler !== undefined || target.length < MIN_USERNAME_LENGTH || target.length > MAX_USERNAME_LENGTH) return;
 
   client.host(channel, target)
     .then((data) => {
@@ -255,15 +230,9 @@ const unhost = async (channel) => {
   );
 };
 
-
-const commercial = async (channel, command) => {
-  if(command.length > 1) return;
-
-  let duration =
-    command.length > 0 ?
-      !isNaN(command[0]) && isFinite(command[0]) ?
-        command[0] : 30
-      : 30;
+const commercial = async (channel, [duration = 30, filler]) => {
+  if(filler !== undefined) return;
+  if(!isNumber(duration) && !isFinite(duration)) return;
 
   client.commercial(channel, duration)
     .then((data) => {
