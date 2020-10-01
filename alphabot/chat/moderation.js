@@ -20,7 +20,7 @@ const ban = async (channel, [username, reason = '', filler]) => {
 const unban = async (channel, [username, filler]) => {
   if(filler !== undefined || username.length < MIN_USERNAME_LENGTH || username.length > MAX_USERNAME_LENGTH) return;
 
-  client.ban(channel, username)
+  client.unban(channel, username)
     .then((data) => {
       logger.info(username + 'has been unbanned from ' + channel + ' | ' + data);
     }).catch((err) => {
@@ -73,8 +73,7 @@ const emoteonlyoff = async (channel) => {
 };
 
 const followersonly = async (channel, [duration = 30, filler]) => {
-  if(filler !== undefined) return;
-  if(!isNumber(duration) && !isFinite(duration)) return;
+  if(filler !== undefined || !isNumber(duration) && !isFinite(duration)) return;
 
   client.followersonly(channel, duration)
     .then((data) => {
@@ -112,8 +111,7 @@ const r9kbetaoff = async (channel) => {
 };
 
 const slow = async (channel, [duration = 30, filler]) => {
-  if(filler !== undefined) return;
-  if(!isNumber(duration) && !isFinite(duration)) return;
+  if(filler !== undefined || !isNumber(duration) && !isFinite(duration)) return;
 
   client.slow(channel, duration)
     .then((data) => {
@@ -231,8 +229,7 @@ const unhost = async (channel) => {
 };
 
 const commercial = async (channel, [duration = 30, filler]) => {
-  if(filler !== undefined) return;
-  if(!isNumber(duration) && !isFinite(duration)) return;
+  if(filler !== undefined || !isNumber(duration) && !isFinite(duration)) return;
 
   client.commercial(channel, duration)
     .then((data) => {
