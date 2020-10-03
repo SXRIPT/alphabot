@@ -44,6 +44,8 @@ const tokenizer = async (channel, user, message) => {
   if(!regex.test(message.charAt(0))) return;
 
   const token = [];
+  // tmi sends the channel with a # at the start
+  // e.g. #channel_name but we only need channel_name
   channel = channel.replace('#', '');
   token.push(channel, user, message);
 
