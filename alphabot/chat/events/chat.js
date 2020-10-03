@@ -1,6 +1,6 @@
 const client = require('../../src/alphabot');
 const commandHandler = require('../commandHandler');
-const moderation = require('../moderation');
+const moderation = require('../commands/moderation');
 const logger = require('../../config/logger');
 
 /*
