@@ -1,8 +1,8 @@
 const {isFinite, isNumber} = require('../../utils/numbers');
 
-const re = /\$\{(\w+)(?:(?:\.(\w+))|(?: (\d+(?: \d+)*|\"[^"]+\"(?: \"[^"]+\")*)))?\}/g;
-const argRe = /\$\{(\d+)\}/g;
-const subArgRe = /(\d+|\"[^"]*\")/g
+const re = /\${(\w+)(?:(?:\.(\w+))|(?: (\d+(?: \d+)*|"[^"]+"(?: "[^"]+")*)))?}/g;
+const argRe = /\${(\d+)}/g;
+const subArgRe = /(\d+|"[^"]*")/g;
 
 const commands = {
   greater: (args) => args[0] > args[1] ? args[0] : args[1],
