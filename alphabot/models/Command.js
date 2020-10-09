@@ -20,7 +20,7 @@ const commandSchema = mongoose.Schema({
   },
   response: {
     type: String,
-    enum: ['chat', 'whisper'],
+    enum: ['chat', 'whisper', 'reply'],
     default: 'chat'
   },
   commandMedium: {

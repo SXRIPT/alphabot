@@ -63,10 +63,11 @@ const tokenizer = async (channel, user, message) => {
   }
 
   // Checks if the channel has the command
-  const command = await checkCommand.isCommand(token[0], token[2]);
+  const commandNoArgs = token[2].split(' ');
+  const command = await checkCommand.isCommand(token[0], commandNoArgs[0]);
   if (!command) return;
 
-  return command;
+  return {command, args: commandNoArgs.splice(1)};
 };
 
 module.exports = {
