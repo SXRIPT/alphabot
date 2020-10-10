@@ -11,6 +11,7 @@ module.exports = {
     ecmaVersion: 12,
   },
   rules: {
+    'no-cond-assign': ['error', 'except-parens'],
     'prefer-template': 'off',
     'consistent-return': 'off',
     'no-plusplus': [2, { allowForLoopAfterthoughts: true }]
