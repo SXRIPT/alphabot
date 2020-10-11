@@ -25,10 +25,10 @@ const commandSchema = mongoose.Schema({
     required: true,
   },
   cooldown: {
-    // time in seconds
-    type: Number,
-    default: 30,
-  },
+    globalCooldown:{type:Boolean, default:false},
+    globalDuration:{type:Number, default:0},
+    userDuration:{type:Number,default:0}
+  }
 });
 
-module.exports = mongoose.model('Commands', commandSchema, 'TwitchUsers'); // Todo: Collection name????
+module.exports = mongoose.model('Commands', commandSchema, 'TwitchUsers');

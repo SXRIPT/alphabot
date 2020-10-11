@@ -11,4 +11,4 @@ const userSchema = mongoose.Schema({
   commands: [Command.schema],
 });
 
-module.exports = mongoose.model('User', userSchema, 'TwitchUsers'); // Todo: Collection name????
+module.exports = mongoose.model('User', userSchema, 'TwitchUsers'); 
