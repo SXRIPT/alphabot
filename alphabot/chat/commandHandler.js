@@ -40,7 +40,7 @@ const tokenizer = async (channel, user, message) => {
   *  characters for a command later it will be checked if it
   *  is the right character for the command.
   */
-  const regex = /^[`!@#$%^&_+\-=;:.<>?~]/;
+  const regex = /^[`!%^&_+\-=;:.<>?~]/;
   if(!regex.test(message.charAt(0))) return;
 
   const token = [];

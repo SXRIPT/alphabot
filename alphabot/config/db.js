@@ -7,7 +7,13 @@ mongoose.set('useCreateIndex', true);
 mongoose.connect(URI, {
   useUnifiedTopology: true,
   useNewUrlParser: true,
-});
+})
+  .then((data) => {
+    logger.info('Successfully connected to DB ' + data);
+  })
+  .catch((err) => {
+    logger.error(err);
+  });
 
 const db = mongoose.connection.once('open', () => {
   logger.info('Connected to Database.');
