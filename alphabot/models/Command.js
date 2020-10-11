@@ -9,11 +9,24 @@ const commandSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  aliases: {
+    type: Array
+  },
   parameters: {
     type: Array,
   },
   message: {
     type: String,
+  },
+  response: {
+    type: String,
+    enum: ['chat', 'whisper', 'reply'],
+    default: 'chat'
+  },
+  commandMedium: {
+    type: String,
+    enum: ['offline', 'online', 'both'],
+    default: ['both']
   },
   enabled: {
     type: Boolean,

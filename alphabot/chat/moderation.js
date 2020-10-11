@@ -12,20 +12,20 @@ const ban = async (channel, [username, reason = '', filler]) => {
     .then((data) => {
       logger.info(username + 'has been banned from ' + channel + ' | ' + data);
     }).catch((err) => {
-      logger.error(err)
-    }
+		    logger.error(err);
+	    }
   );
 };
 
 const unban = async (channel, [username, filler]) => {
   if(filler !== undefined || username.length < MIN_USERNAME_LENGTH || username.length > MAX_USERNAME_LENGTH) return;
 
-  client.ban(channel, username)
+  client.unban(channel, username)
     .then((data) => {
       logger.info(username + 'has been unbanned from ' + channel + ' | ' + data);
     }).catch((err) => {
-      logger.error(err)
-    }
+		    logger.error(err);
+	    }
   );
 };
 
@@ -50,7 +50,7 @@ const timeout = async (channel, parameters) => {
     .then((data) => {
       logger.info('User ' + username + ' has been timed out for ' + duration + ' in ' + channel + ' | ' + data);
     }).catch((err) => {
-      logger.error(err)
+      logger.error(err);
   });
 };
 
@@ -73,8 +73,7 @@ const emoteonlyoff = async (channel) => {
 };
 
 const followersonly = async (channel, [duration = 30, filler]) => {
-  if(filler !== undefined) return;
-  if(!isNumber(duration) && !isFinite(duration)) return;
+  if(filler !== undefined || !isNumber(duration) && !isFinite(duration)) return;
 
   client.followersonly(channel, duration)
     .then((data) => {
@@ -112,8 +111,7 @@ const r9kbetaoff = async (channel) => {
 };
 
 const slow = async (channel, [duration = 30, filler]) => {
-  if(filler !== undefined) return;
-  if(!isNumber(duration) && !isFinite(duration)) return;
+  if(filler !== undefined || !isNumber(duration) && !isFinite(duration)) return;
 
   client.slow(channel, duration)
     .then((data) => {
@@ -157,7 +155,7 @@ const mod = async (channel, [username, filler]) => {
     .then((data) => {
       logger.info(username + ' has become a moderator in ' + channel + '! ' + data);
     }).catch((err) => {
-      logger.error(err)
+      logger.error(err);
     }
   );
 };
@@ -169,7 +167,7 @@ const unmod = async (channel, [username, filler]) => {
     .then((data) => {
       logger.info(username + ' is no more a moderator in ' + channel + '! ' + data);
     }).catch((err) => {
-      logger.error(err)
+      logger.error(err);
     }
   );
 };
@@ -181,7 +179,7 @@ const vip = async (channel, [username, filler]) => {
     .then((data) => {
       logger.info(username + ' has become a vip in ' + channel + '! ' + data);
     }).catch((err) => {
-      logger.error(err)
+      logger.error(err);
     }
   );
 };
@@ -193,7 +191,7 @@ const unvip = async (channel, [username, filler]) => {
     .then((data) => {
       logger.info(username + ' is no more a vip in ' + channel + '! ' + data);
     }).catch((err) => {
-      logger.error(err)
+      logger.error(err);
     }
   );
 };
@@ -203,7 +201,7 @@ const clear = async (channel) => {
     .then((data) => {
       logger.info('Chat from ' + channel + ' has been cleared! ' + data);
     }).catch((err) => {
-      logger.error(err)
+      logger.error(err);
     }
   );
 };
@@ -215,7 +213,7 @@ const host = async (channel, [target, filler]) => {
     .then((data) => {
       logger.info(channel + ' is now hosting ' + target + ' | ' + data);
     }).catch((err) => {
-      logger.error(err)
+      logger.error(err);
     }
   );
 };
@@ -225,20 +223,19 @@ const unhost = async (channel) => {
     .then((data) => {
       logger.info(channel + ' is not hosting anymore | ' + data);
     }).catch((err) => {
-      logger.error(err)
+      logger.error(err);
     }
   );
 };
 
 const commercial = async (channel, [duration = 30, filler]) => {
-  if(filler !== undefined) return;
-  if(!isNumber(duration) && !isFinite(duration)) return;
+  if(filler !== undefined || !isNumber(duration) && !isFinite(duration)) return;
 
   client.commercial(channel, duration)
     .then((data) => {
       logger.info(channel + ' is now running an commercial for  ' + duration + ' seconds! | ' + data);
     }).catch((err) => {
-      logger.error(err)
+      logger.error(err);
     }
   );
 };
