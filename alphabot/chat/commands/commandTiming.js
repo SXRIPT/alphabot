@@ -8,6 +8,8 @@ const checkIfExistsUser = async (command,username,cooldown) => {
         if(v.command===command && v.username===username)
             cooldownLeft=v.cooldown;
             exists = true;
+            if(cooldownLeft===0)
+                v.cooldown = cooldown;
     })
     if(!exists){
         userDurations.push({command:command,user:username,cooldown:cooldown});
@@ -26,6 +28,8 @@ const checkIfExistsGlobal = async (command, channel, cooldown) =>{
         if(v.command===command && v.channel===channel)
             cooldownLeft = v.cooldown;
             exists = true;
+            if(cooldownLeft===0)
+                v.cooldown = cooldown;
     })
     if(!exists){
         globalDurations.push({command:command,channel:channel,cooldown:cooldown});
