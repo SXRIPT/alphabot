@@ -63,13 +63,11 @@ const xxx = setInterval(function(){
     userDurations.forEach((v)=>{
         if(v.cooldown!==0)
             v.cooldown = v.cooldown-1;
-            console.log(v.cooldown);
     })
 
     globalDurations.forEach((v)=>{
         if(v.cooldown!==0)
             v.cooldown = v.cooldown-1;
-            console.log(v.cooldown);
     })
 },1000);
 
