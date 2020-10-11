@@ -13,7 +13,7 @@ const checkIfExistsUser = async (command,username,cooldown) => {
         userDurations.push({command:command,user:username,cooldown:cooldown});
         return false;
     }
-    else if (v.cooldown===0)
+    else if (cooldownLeft===0)
         return true;
     else
         return false;
@@ -31,7 +31,7 @@ const checkIfExistsGlobal = async (command, channel, cooldown) =>{
         globalDurations.push({command:command,channel:channel,cooldown:cooldown});
         return false;
     }
-    else if (v.cooldown===0)
+    else if (cooldownLeft===0)
         return true;
     else
         return false;
@@ -44,12 +44,11 @@ const checkCommandDuration = async (command, channel, user) => {
     const userDuration = command.cooldown.userDuration;
     const globalDuration = command.cooldown.globalDuration;
     const globalCooldown = command.cooldown.globalCooldown;
-    let result;
     
     if(userDuration === 0 && !globalCooldown)
         return true;
 
-    else if(!globalCooldown && userDuration!=0){
+    else if(!globalCooldown && userDuration!==0){
         const result = await checkIfExistsUser(command.command,user.username,userDuration);
         return result;
     }   
@@ -62,13 +61,15 @@ const checkCommandDuration = async (command, channel, user) => {
 
 const xxx = setInterval(function(){
     userDurations.forEach((v)=>{
-        if(v.cooldown!=0)
+        if(v.cooldown!==0)
             v.cooldown = v.cooldown-1;
+            console.log(v.cooldown);
     })
 
     globalDurations.forEach((v)=>{
-        if(v.cooldown!=0)
+        if(v.cooldown!==0)
             v.cooldown = v.cooldown-1;
+            console.log(v.cooldown);
     })
 },1000);
 
