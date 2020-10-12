@@ -48,7 +48,7 @@ const checkIfExistsGlobal = async (command, channel, globalDuration) =>{
 }
 
 const checkCommandDuration = async (command, channel, user) => {
-    if(user.username===channel.username)
+    if(user===channel)
         return true;
     
     const userDuration = command.cooldown.userDuration;
@@ -59,12 +59,12 @@ const checkCommandDuration = async (command, channel, user) => {
         return true;
         
     else if(globalCooldown && userDuration===0 || userDuration <= globalDuration){
-        const result = await checkIfExistsGlobal(command.command,channel.username,globalDuration);
+        const result = await checkIfExistsGlobal(command.command,channel,globalDuration);
         return result;
     }
     else 
     {
-        const result = await checkIfExistsUser(command.command,user.username,userDuration);
+        const result = await checkIfExistsUser(command.command,user,userDuration);
         return result;
     }
 }
