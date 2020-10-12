@@ -1,41 +1,47 @@
 const userDurations = [];
 const globalDurations = [];
 
-const checkIfExistsUser = async (command,username,cooldown) => {
+const checkIfExistsUser = async (command,username,userDuration) => {
     let exists = false;
-    let cooldownLeft;
+    let cooldownOver = false;
+
     userDurations.forEach((v)=>{
         if(v.command===command && v.username===username){
-            cooldownLeft=v.cooldown;
             exists = true;
-            if(cooldownLeft===0)
-                v.cooldown = cooldown;
+            if(v.time+(userDuration*1000)<=Date.now())
+            {
+                v.time=Date.now();
+                cooldownOver=true;
+            }
     }})
     if(!exists){
-        userDurations.push({command:command,user:username,cooldown:cooldown});
-        return false;
+        userDurations.push({command:command,username:username,time:Date.now()});
+        return true;
     }
-    else if (cooldownLeft===0)
+    else if (cooldownOver)
         return true;
     else
         return false;
 }
 
-const checkIfExistsGlobal = async (command, channel, cooldown) =>{
+const checkIfExistsGlobal = async (command, channel, globalDuration) =>{
     let exists = false;
-    let cooldownLeft;
+    let cooldownOver = false;
+
     globalDurations.forEach((v)=>{
         if(v.command===command && v.channel===channel){
-            cooldownLeft = v.cooldown;
             exists = true;
-            if(cooldownLeft===0)
-                v.cooldown = cooldown;
+            if(v.time+(globalDuration*1000)<=Date.now())
+            {
+                v.time=Date.now();
+                cooldownOver=true;
+            }
     }})
     if(!exists){
-        globalDurations.push({command:command,channel:channel,cooldown:cooldown});
-        return false;
+        globalDurations.push({command:command,channel:channel,time:Date.now()});
+        return true;
     }
-    else if (cooldownLeft===0)
+    else if (cooldownOver)
         return true;
     else
         return false;
@@ -62,17 +68,5 @@ const checkCommandDuration = async (command, channel, user) => {
         return result;
     }
 }
-
-const xxx = setInterval(function(){
-    userDurations.forEach((v)=>{
-        if(v.cooldown!==0)
-            v.cooldown = v.cooldown-1;
-    })
-
-    globalDurations.forEach((v)=>{
-        if(v.cooldown!==0)
-            v.cooldown = v.cooldown-1;
-    })
-},1000);
 
 module.exports = checkCommandDuration;

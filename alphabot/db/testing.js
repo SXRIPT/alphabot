@@ -2,7 +2,8 @@
 // const User = require("../models/User");
 // const Command = require("../models/Command");
 // const functions = require("../db/commandFunctions");
-// const commandFunctions = require("../chat/commands/commandTiming")
+// const commandFunctions = require("../chat/commands/commandTiming");
+// const { child } = require("../config/logger");
 // const URI = "mongodb+srv://admin:1adminAlphabot1@alphabotcluster0.u4ewc.mongodb.net/alphabot?retryWrites=true&w=majority";
 // mongoose.connect(URI, {
 //   useUnifiedTopology: true,
@@ -15,7 +16,7 @@
 //     cooldown:{
 //       globalCooldown:false,
 //       globalDuration:0,
-//       userDuration:10
+//       userDuration:2
 //     },
 //     message: "hellu"
 // }
@@ -24,7 +25,7 @@
 //     command:"nana",
 //     cooldown:{
 //       globalCooldown:true,
-//       globalDuration:20,
+//       globalDuration:5,
 //       userDuration:0
 //     }
 // }
@@ -46,9 +47,14 @@
 //   let x = await commandFunctions(commandJSON,channel,user);
 //   console.log("result1:" + x);
 // }
-// result();
+// //result();
 // const result2 = async () => {
 //   let y = await commandFunctions(commandWith,channel2,user);
 //   console.log("result2:" + y);
 // }
-// result2();
+// //result2();
+
+// setInterval(()=>{
+//   result();
+//   result2();
+// },1000)
