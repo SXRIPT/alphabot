@@ -1,4 +1,4 @@
-const { isFinite, isNumber } = require('../../utils/numbers');
+const { isFinite, isNumber } = require('../utils/numbers');
 
 const re = /\${(\w+)(?:(?:\.(\w+))|(?: (\d+(?: \d+)*|"[^"]+"(?: "[^"]+")*)))?}/g;
 const argRe = /\${(\d+)}/g;

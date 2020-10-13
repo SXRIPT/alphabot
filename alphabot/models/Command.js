@@ -40,7 +40,7 @@ const commandSchema = mongoose.Schema({
   cooldown: {
     globalCooldown:{type:Boolean, default:false},
     globalDuration:{type:Number, default:0},
-    userDuration:{type:Number,default:0}
+    userDuration:{type:Number, default:0}
   }
 });
 
