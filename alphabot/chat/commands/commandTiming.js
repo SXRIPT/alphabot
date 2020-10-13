@@ -8,65 +8,52 @@ const checkIfExistsUser = async (command,username,userDuration) => {
     userDurations.forEach((v)=>{
         if(v.command===command && v.username===username){
             exists = true;
-            if(v.time+(userDuration*1000)<=Date.now())
-            {
+            if(v.time+(userDuration*1000)<=Date.now()) {
                 v.time=Date.now();
                 cooldownOver=true;
             }
-    }})
+        }});
     if(!exists){
-        userDurations.push({command:command,username:username,time:Date.now()});
+        userDurations.push({command,username,time:Date.now()});
         return true;
     }
-    else if (cooldownOver)
-        return true;
-    else
-        return false;
-}
+    return cooldownOver;
+};
 
-const checkIfExistsGlobal = async (command, channel, globalDuration) =>{
+const checkIfExistsGlobal = async (command, channel, globalDuration) => {
     let exists = false;
     let cooldownOver = false;
 
-    globalDurations.forEach((v)=>{
-        if(v.command===command && v.channel===channel){
+    globalDurations.forEach((v) => {
+        if(v.command===command && v.channel===channel) {
             exists = true;
-            if(v.time+(globalDuration*1000)<=Date.now())
-            {
+            if(v.time+(globalDuration*1000)<=Date.now()) {
                 v.time=Date.now();
                 cooldownOver=true;
             }
-    }})
+        }});
     if(!exists){
-        globalDurations.push({command:command,channel:channel,time:Date.now()});
+        globalDurations.push({command,channel,time:Date.now()});
         return true;
     }
-    else if (cooldownOver)
-        return true;
-    else
-        return false;
-}
+    return cooldownOver;
+};
 
-const checkCommandDuration = async (command, channel, user) => {
+const checkCommandDuration = async ({command, cooldown}, channel, user) => {
     if(user===channel)
         return true;
     
-    const userDuration = command.cooldown.userDuration;
-    const globalDuration = command.cooldown.globalDuration;
-    const globalCooldown = command.cooldown.globalCooldown;
+    const {userDuration, globalDuration, globalCooldown} = cooldown;
+
+    if(userDuration === 0 && !globalCooldown) return true;
     
-    if(userDuration === 0 && !globalCooldown)
-        return true;
-        
-    else if(globalCooldown && userDuration===0 || userDuration <= globalDuration){
-        const result = await checkIfExistsGlobal(command.command,channel,globalDuration);
+    if(globalCooldown && userDuration===0 || userDuration <= globalDuration){
+        const result = await checkIfExistsGlobal(command,channel,globalDuration);
         return result;
     }
-    else 
-    {
-        const result = await checkIfExistsUser(command.command,user,userDuration);
-        return result;
-    }
-}
+
+    const result = await checkIfExistsUser(command,user,userDuration);
+    return result;
+};
 
 module.exports = checkCommandDuration;
