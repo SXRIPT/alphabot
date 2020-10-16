@@ -99,9 +99,9 @@ const findAllCommands = async (user) => {
       logger.info('Found commands');
     }
   })
-  
+
   await addToCache(user, JSON.stringify(commands));
-  return await commands;
+  return commands;
 };
 
 const updateCommand = async (user, commandJSON) => {
