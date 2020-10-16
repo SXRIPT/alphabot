@@ -3,12 +3,20 @@
 // const Command = require("../models/Command");
 // const functions = require("../db/commandFunctions");
 // const commandFunctions = require("../chat/commands/commandTiming");
+// const sessionFunctions = require("../db/sessionFunctions");
 // const { child } = require("../config/logger");
 // const URI = "mongodb+srv://admin:1adminAlphabot1@alphabotcluster0.u4ewc.mongodb.net/alphabot?retryWrites=true&w=majority";
-// mongoose.connect(URI, {
+// const URI2 = "mongodb://alpha:alphabot!420.marioGay@193.170.109.1:27017/alphabot?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=false"
+// mongoose.connect(URI2, {
 //   useUnifiedTopology: true,
 //   useNewUrlParser: true
 // });
+
+
+// const result = User.findOne({username:"bob"});
+// console.log(result);
+// const output = sessionFunctions.findAllUsers();
+// console.log(output);
 
 // const commandJSON = {
 //     command:"test2",

@@ -101,7 +101,6 @@ const findAllCommands = async (user) => {
   });
   await addToCache(user, JSON.stringify(commands));
   return commands;
-
 };
 
 const updateCommand = async (user, commandJSON) => {
