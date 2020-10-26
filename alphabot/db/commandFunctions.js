@@ -98,7 +98,7 @@ const findAllCommands = async (user) => {
     } else {
       logger.info('Found commands');
     }
-  })
+  });
 
   await addToCache(user, JSON.stringify(commands));
   return commands;
