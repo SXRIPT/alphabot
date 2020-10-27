@@ -1,8 +1,8 @@
 const express = require('express');
 
 const router = express.Router();
-const logger = require('../config/logger');
-const client = require('../src/alphabot');
+const logger = require('../../config/logger');
+const client = require('../../src/alphabot');
 
 // Runs a Commercial for a channel with on of the following durations3 0, 60, 90, 120, 150, 180.
 router.post('/commercial', async (req, res) => {
@@ -181,5 +181,6 @@ router.post('/whisper', async (req, res) => {
       return res.status(400).send('Something went wrong');
     });
 });
+
 
 module.exports = router;

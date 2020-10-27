@@ -17,7 +17,8 @@ const limiter = rateLimit({
 
 // routes
 const session = require('../routes/session');
-const commands = require('../routes/dashboardCommands');
+const moderation = require('../routes/dashboard/moderation');
+const commands = require('../routes/dashboard/commands');
 const auth = require('../routes/auth');
 
 // middleware
@@ -36,7 +37,8 @@ app.get('/', (req, res) => {
 
 // passport.authenticate('jwt', { session : false }) --> middleware to only allow people with a token
 app.use('/session', session);
-app.use('/commands', commands);
+app.use('/commands/moderation', moderation);
+app.use('/commands/custom', commands);
 app.use('/user', auth);
 
 app.use((req, res) => {

@@ -12,8 +12,8 @@ const ban = async (channel, [username, reason = '', filler]) => {
     .then((data) => {
       logger.info(username + 'has been banned from ' + channel + ' | ' + data);
     }).catch((err) => {
-		    logger.error(err);
-	    }
+      logger.error(err);
+    }
   );
 };
 
@@ -24,8 +24,8 @@ const unban = async (channel, [username, filler]) => {
     .then((data) => {
       logger.info(username + 'has been unbanned from ' + channel + ' | ' + data);
     }).catch((err) => {
-		    logger.error(err);
-	    }
+      logger.error(err);
+    }
   );
 };
 
