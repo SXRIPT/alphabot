@@ -8,7 +8,7 @@ const MIN_USERNAME_LENGTH = 4;
 const MAX_USERNAME_LENGTH = 25;
 
 router.post('/add', async (req, res) => {
-  const channel = req.query.channel
+  const {channel} = req.query
   if(!req.body || !channel || channel.length < MIN_USERNAME_LENGTH ||channel.length > MAX_USERNAME_LENGTH) {
     return res.status(400).json({status: 400, message: 'Something is wrong with the provided data!'});
   }
@@ -22,7 +22,7 @@ router.post('/add', async (req, res) => {
 });
 
 router.put('/edit', async (req, res) => {
-  const channel = req.query.channel
+  const {channel} = req.query
   if(!req.body || !channel || channel.length < MIN_USERNAME_LENGTH ||channel.length > MAX_USERNAME_LENGTH) {
     return res.status(400).json({status: 400, message: 'Something is wrong with the provided data!'});
   }
@@ -36,7 +36,7 @@ router.put('/edit', async (req, res) => {
 });
 
 router.delete('/delete', async (req, res) => {
-  const channel = req.query.channel
+  const {channel} = req.query
   if(!req.body || !channel || channel.length < MIN_USERNAME_LENGTH ||channel.length > MAX_USERNAME_LENGTH) {
     return res.status(400).json({status: 400, message: 'Something is wrong with the provided data!'});
   }

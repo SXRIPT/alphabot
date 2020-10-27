@@ -49,7 +49,6 @@ const tokenizer = async (channel, user, message) => {
   channel = channel.replace('#', '');
   token.push(channel, user, message);
 
-
   const moderationMessage =
     message.indexOf(' ') === -1
       ? message.substring(1)

@@ -1,8 +1,11 @@
 const client = require('../../src/alphabot');
 const commandHandler = require('../commandHandler');
 const moderation = require('../commands/moderation');
+const responseHandler = require('../commands/responseHandler');
 const logger = require('../../config/logger');
-const {responseParse} = require('../commands/responseHandler');
+const {responseParse} = require('../commands/responseParser');
+
+const DEFAULT_MODERATION_LEVEL = 'moderator';
 
 /*
    Checks if a user is authorized to execute a command
@@ -22,6 +25,10 @@ const executeModeration = async ({ command, parameters }, channel) => {
   await moderation[command].apply(null, [channel, parameters]);
 };
 
+const executeResponse = async (channel, medium, message, user) => {
+  await responseHandler[medium].apply(null, [channel, message, user]);
+};
+
 client.on("chat", async (channel, userstate, message, self) => {
   // Don't listen to own messages
   if (self) return;
@@ -29,9 +36,9 @@ client.on("chat", async (channel, userstate, message, self) => {
   if(!temp) return;
   const {command, args} = temp;
 
-  if(command[0] === 'mod') {
-    const canExecuteModCommands = await isAuthorized(channel, userstate.badges, 'moderator');
-    if(canExecuteModCommands) await executeModeration(command[1], channel);
+  if(temp[0] === 'mod') {
+    const canExecuteModCommands = await isAuthorized(channel, userstate.badges, DEFAULT_MODERATION_LEVEL);
+    if(canExecuteModCommands) await executeModeration(temp[1], channel);
     return;
   }
   logger.info("PERMISSIONS: " + command.permission);
@@ -44,4 +51,5 @@ client.on("chat", async (channel, userstate, message, self) => {
   const mappedArgs = {channel: {name: channel}, display: userstate['display-name'], username: userstate.username}
   const parsedMessage = await responseParse(command.message, args, mappedArgs);
   logger.info(parsedMessage);
+  await executeResponse(channel, command.response, parsedMessage, userstate.username);
 });
