@@ -49,7 +49,6 @@ const tokenizer = async (channel, user, message) => {
   channel = channel.replace('#', '');
   token.push(channel, user, message);
 
-
   const moderationMessage =
     message.indexOf(' ') === -1
       ? message.substring(1)
@@ -57,7 +56,7 @@ const tokenizer = async (channel, user, message) => {
 
   const isModerationCommand = await isModeration(moderationMessage);
   if(isModerationCommand) {
-    const msgArr = message.split(' ');
+    const msgArr = message.split(' ')
     const modCommand = await createObject([channel, msgArr[0].substring(1), msgArr.slice(1)]);
     return ['mod', modCommand];
   }
