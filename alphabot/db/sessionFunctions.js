@@ -6,11 +6,18 @@ const addUser = async (username) => {
     username,
   });
 
-  await user.save((err) => {
-    if (err) return logger.error(err);
-    logger.info('Document inserted successfully');
-  });
-};
+  const result = User.findOne({username:username});
+
+  if(result===undefined){
+    await user.save((err) => {
+      if (err) return logger.error(err);
+      logger.info('Document inserted successfully');
+    });
+  }
+  else {
+      logger.error('Document already exists');
+    }
+  };
 
 const deleteUser = async (username) => {
   const query = { username };
