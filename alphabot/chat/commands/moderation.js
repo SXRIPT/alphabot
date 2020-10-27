@@ -236,6 +236,7 @@ const commercial = async (channel, [duration = 30, filler]) => {
       logger.info(channel + ' is now running an commercial for  ' + duration + ' seconds! | ' + data);
     }).catch((err) => {
       logger.error(err)
+
     }
   );
 };
