@@ -85,7 +85,7 @@ const command = async ({channel, args}, userstate) => {
 };
 
 const vanish = async ({channel}, {username}) => {
-  const canExecute = isAuthorized(channel, username, USER_MODULES);
+  const canExecute = await isAuthorized(channel, username, USER_MODULES);
   if(canExecute) {
     client.timeout(channel, username, 1, "VANISH")
       .catch((err) => {
