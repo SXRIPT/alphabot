@@ -34,6 +34,21 @@ const isModeration = async (command) => [
   'unhost',
   'commercial'].includes(command);
 
+const isBuiltIn = async (command) => [
+  'accountage',
+  'settitle',
+  'setgame',
+  'followage',
+  'command',
+  'vanish',
+  'commands'].includes(command);
+
+const parseMessage = async (message) => {
+  return message.indexOf(' ') === -1
+      ? message.substring(1)
+      : message.substring(1, message.indexOf(' '));
+}
+
 const tokenizer = async (channel, user, message) => {
   /*
   *  checks if the chat message start with one of the allowed
@@ -49,16 +64,20 @@ const tokenizer = async (channel, user, message) => {
   channel = channel.replace('#', '');
   token.push(channel, user, message);
 
-  const moderationMessage =
-    message.indexOf(' ') === -1
-      ? message.substring(1)
-      : message.substring(1, message.indexOf(' '));
+  const parsedMessage = await parseMessage(message);
 
-  const isModerationCommand = await isModeration(moderationMessage);
+  const isModerationCommand = await isModeration(parsedMessage);
   if(isModerationCommand) {
     const msgArr = message.split(' ');
     const modCommand = await createObject([channel, msgArr[0].substring(1), msgArr.slice(1)]);
     return ['mod', modCommand];
+  }
+
+  const isBuiltin = await isBuiltIn(parsedMessage);
+  if(isBuiltin) {
+    const args = message.split(' ');
+    args[0] = args[0].substring(1);
+    return ['builtin', {channel, args}]
   }
 
   // Checks if the channel has the command

@@ -8,7 +8,6 @@ const addCommand = async (user, commandJSON) => {
   let updateQuery;
   let goOn = true;
   const allCommands = [];
-
   const newCommand = new Command({
     prefix: commandJSON.prefix,
     command: commandJSON.command,

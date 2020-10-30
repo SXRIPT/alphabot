@@ -1,6 +1,6 @@
-const client = require('../../src/alphabot');
-const logger = require('../../config/logger');
-const {isNumber, isFinite} = require('../../utils/numbers');
+const client = require('../../../src/alphabot');
+const logger = require('../../../config/logger');
+const {isNumber, isFinite} = require('../../../utils/numbers');
 
 const MIN_USERNAME_LENGTH = 4;
 const MAX_USERNAME_LENGTH = 25;

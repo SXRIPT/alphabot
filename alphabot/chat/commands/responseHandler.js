@@ -8,13 +8,6 @@ const chat = async (channel, message) => {
   });
 }
 
-const reply = async (channel, message, username) => {
-  client.say(channel, `@${username}, ${message}`)
-    .catch((err) => {
-      logger.error(err);
-    });
-}
-
 const whisper = async (channel, message, username) => {
   client.whisper(username, message)
     .catch((err) => {
@@ -24,6 +17,5 @@ const whisper = async (channel, message, username) => {
 
 module.exports = {
  chat,
- reply,
  whisper,
 }
