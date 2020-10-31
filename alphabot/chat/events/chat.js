@@ -47,8 +47,6 @@ client.on("chat", async (channel, userstate, message, self) => {
   logger.info(userstate.username + " can execute command: " + command.command + " " + hasPermission);
 
   const mappedArgs = {channel: {name: channel}, display: userstate['display-name'], username: userstate.username}
-  console.log("ARGS: ", args);
-  console.log("MAPPED: ", mappedArgs);
   const parsedMessage = await responseParse(command.message, args, mappedArgs);
   logger.info(parsedMessage);
   await executeResponse(channel, command.response, parsedMessage, userstate.username);
