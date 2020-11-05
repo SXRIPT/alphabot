@@ -8,7 +8,6 @@ const addCommand = async (user, commandJSON) => {
   let updateQuery;
   let goOn = true;
   const allCommands = [];
-
   const newCommand = new Command({
     prefix: commandJSON.prefix,
     command: commandJSON.command,
@@ -94,9 +93,9 @@ const findAllCommands = async (user) => {
       commands.push(v);
     });
     if (commands.length === 0) {
-      logger.info('User has no commands');
+      logger.info('User has no response');
     } else {
-      logger.info('Found commands');
+      logger.info('Found response');
     }
   });
 

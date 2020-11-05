@@ -20,7 +20,7 @@ const commandSchema = mongoose.Schema({
   },
   response: {
     type: String,
-    enum: ['chat', 'whisper', 'reply'],
+    enum: ['chat', 'whisper'],
     default: 'chat'
   },
   commandMedium: {
@@ -30,12 +30,12 @@ const commandSchema = mongoose.Schema({
   },
   enabled: {
     type: Boolean,
-    default: false,
+    default: true,
   },
   permission: {
     type: String,
     enum: ['everyone', 'subscriber', 'vip', 'moderator', 'broadcaster'],
-    required: true,
+    default: 'everyone',
   },
   cooldown: {
     globalCooldown:{type:Boolean, default:false},

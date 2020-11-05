@@ -8,6 +8,8 @@ const commands = {
   greater: (args) => args[0] > args[1] ? args[0] : args[1],
   random: (args) => args[1] ? Math.floor(Math.random() * (parseInt(args[1], 10) + 1 - parseInt(args[0], 10)) + parseInt(args[0], 10)) : Math.floor(Math.random() * (parseInt(args[0], 10) + 1)),
   url: (args, mappedArgs) => `https://twitch.tv/${mappedArgs.channel.name.substring(1)}`,
+  username: (args, mappedArgs) => mappedArgs.username,
+  display: (args, mappedArgs) => mappedArgs.display,
 };
 
 const replaceArgs = async (input, args) => {

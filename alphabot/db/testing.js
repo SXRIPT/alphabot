@@ -2,7 +2,7 @@
 // const User = require("../models/User");
 // const Command = require("../models/Command");
 // const functions = require("../db/commandFunctions");
-// const commandFunctions = require("../chat/commands/commandTiming");
+// const commandFunctions = require("../chat/response/commandTiming");
 // const sessionFunctions = require("../db/sessionFunctions");
 // const { child } = require("../config/logger");
 // const URI = "mongodb+srv://admin:1adminAlphabot1@alphabotcluster0.u4ewc.mongodb.net/alphabot?retryWrites=true&w=majority";
