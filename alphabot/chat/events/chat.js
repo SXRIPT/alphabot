@@ -1,11 +1,11 @@
 const client = require('../../src/alphabot');
 const commandHandler = require('../commandHandler');
-const moderation = require('../commands/modules/moderation');
-const builtin = require('../commands/modules/builtin');
-const responseHandler = require('../commands/responseHandler');
-const isAuthorized = require('../commands/isAuthorized');
+const moderation = require('../../builtins/commands/moderation');
+const commands = require('../../builtins/commands/basic');
+const responseHandler = require('../response/responseHandler');
+const isAuthorized = require('../../helpers/isAuthorized');
 const logger = require('../../config/logger');
-const {responseParse} = require('../commands/responseParser');
+const {responseParse} = require('../response/responseParser');
 
 const DEFAULT_MODERATION_LEVEL = 'moderator';
 
@@ -17,8 +17,8 @@ const executeResponse = async (channel, medium, message, user) => {
   await responseHandler[medium].apply(null, [channel, message, user]);
 };
 
-const executeBuiltIn = async ({channel, args}, userstate) => {
-  await builtin[args[0]].apply(null, [{channel, args}, userstate]);
+const executeBuiltInCommands = async ({channel, args}, userstate) => {
+  await commands[args[0]].apply(null, [{channel, args}, userstate]);
 };
 
 client.on("chat", async (channel, userstate, message, self) => {
@@ -36,7 +36,7 @@ client.on("chat", async (channel, userstate, message, self) => {
   }
 
   if(temp[0] === 'builtin') {
-    await executeBuiltIn(temp[1], userstate);
+    await executeBuiltInCommands(temp[1], userstate);
     return;
   }
   logger.info("PERMISSIONS: " + command.permission);

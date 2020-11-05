@@ -1,6 +1,6 @@
 const client = require('../../../src/alphabot');
 const logger = require('../../../config/logger');
-const isAuthorized = require('../isAuthorized');
+const isAuthorized = require('../../../helpers/isAuthorized');
 
 const USER_MODULES = 'everyone';
 

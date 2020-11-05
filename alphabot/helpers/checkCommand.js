@@ -1,7 +1,7 @@
 const {findAllCommands} = require('../db/commandFunctions');
 
 const isCommand = async (channelOwner, message) => {
-  // gets all commands from a channel
+  // gets all response from a channel
   const commands = await findAllCommands(channelOwner);
   if(!commands) return;
   // runs through the Array and checks if the prefix + command equal the message

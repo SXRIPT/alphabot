@@ -37,8 +37,8 @@ app.get('/', (req, res) => {
 
 // passport.authenticate('jwt', { session : false }) --> middleware to only allow people with a token
 app.use('/session', session);
-app.use('/commands/moderation', moderation);
-app.use('/commands/custom', commands);
+app.use('/response/moderation', moderation);
+app.use('/response/custom', commands);
 app.use('/user', auth);
 
 app.use((req, res) => {
