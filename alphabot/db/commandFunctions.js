@@ -3,12 +3,8 @@ const Command = require('../models/Command');
 const logger = require('../config/logger');
 const { addToCache, checkCache, setExpire } = require('../middleware/cacheCommands');
 
-const addCommand = async (user, commandJSON) => {
-  const query = { username: user };
-  let updateQuery;
-  let goOn = true;
-  const allCommands = [];
-  const newCommand = new Command({
+const buildCommand = async (commandJSON) => {
+  return new Command({
     prefix: commandJSON.prefix,
     command: commandJSON.command,
     parameters: commandJSON.parameters,
@@ -17,7 +13,14 @@ const addCommand = async (user, commandJSON) => {
     permission: commandJSON.permission,
     cooldown: commandJSON.cooldown,
   });
+};
 
+const addCommand = async (user, commandJSON) => {
+  const query = { username: user };
+  let updateQuery;
+  let goOn = true;
+  const allCommands = [];
+  const newCommand = await buildCommand(commandJSON);
   // logger.info(newCommand); => undefined
   await User.findOne({ username: user })
     .then((result) => {
@@ -108,15 +111,7 @@ const updateCommand = async (user, commandJSON) => {
   const query = { username: user };
   let updatedQuery;
   let isFound = false;
-  const newCommand = new Command({
-    prefix: commandJSON.prefix,
-    command: commandJSON.command,
-    parameters: commandJSON.parameters,
-    message: commandJSON.message,
-    enabled: commandJSON.enabled,
-    permission: commandJSON.permission,
-    cooldown: commandJSON.cooldown,
-  });
+  const newCommand = await buildCommand(commandJSON);
   await User.findOne({ username: user })
     .then((result) => {
       result.commands.forEach((v) => {
