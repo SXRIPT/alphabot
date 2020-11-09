@@ -10,7 +10,7 @@ const commandSchema = mongoose.Schema({
     required: true,
   },
   aliases: {
-    type: Array
+    type: Array,
   },
   parameters: {
     type: Array,
@@ -21,12 +21,12 @@ const commandSchema = mongoose.Schema({
   response: {
     type: String,
     enum: ['chat', 'whisper'],
-    default: 'chat'
+    default: 'chat',
   },
   commandMedium: {
     type: String,
     enum: ['offline', 'online', 'both'],
-    default: ['both']
+    default: 'both',
   },
   enabled: {
     type: Boolean,
@@ -40,7 +40,7 @@ const commandSchema = mongoose.Schema({
   cooldown: {
     globalCooldown:{type:Boolean, default:false},
     globalDuration:{type:Number, default:0},
-    userDuration:{type:Number,default:0}
+    userDuration:{type:Number,default:0},
   }
 });
 

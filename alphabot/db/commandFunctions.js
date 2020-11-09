@@ -1,3 +1,4 @@
+const { Error } = require('mongoose');
 const User = require('../models/User');
 const Command = require('../models/Command');
 const logger = require('../config/logger');
@@ -7,8 +8,11 @@ const buildCommand = async (commandJSON) => {
   return new Command({
     prefix: commandJSON.prefix,
     command: commandJSON.command,
+    aliases: commandJSON.aliases,
     parameters: commandJSON.parameters,
     message: commandJSON.message,
+    response: commandJSON.response,
+    commandMedium: commandJSON.commandMedium,
     enabled: commandJSON.enabled,
     permission: commandJSON.permission,
     cooldown: commandJSON.cooldown,
@@ -50,7 +54,8 @@ const addCommand = async (user, commandJSON) => {
       logger.info('Document inserted successfully');
     });
   } else {
-    return logger.error('Command already exists!');
+    logger.error('Command already exists!');
+    throw new Error('Command already exists!');
   }
 };
 
@@ -74,12 +79,17 @@ const deleteCommand = async (user, command) => {
   };
   if (isFound) {
     await User.updateOne(query, updateQuery, (err) => {
-      if (err) return logger.error(err);
+
+      if (err) {
+        logger.error(err);
+        throw new Error(err);
+      }
       setExpire(user, 5);
       logger.info('Command deleted successfully');
     });
   } else {
-    return logger.error('Command was not found');
+    logger.error('Command was not found');
+    throw new Error('Command was not found');
   }
 };
 
@@ -91,7 +101,10 @@ const findAllCommands = async (user) => {
     return cache;
   }
   await User.findOne({ username: user }, (err, res) => {
-    if (err) return logger.error('ERROR: ' + err);
+    if (err) {
+      logger.error('ERROR: ' + err);
+      throw new Error(err);
+    }
     res.commands.forEach((v) => {
       commands.push(v);
     });
@@ -129,12 +142,16 @@ const updateCommand = async (user, commandJSON) => {
     });
   if (isFound) {
     await User.updateOne(query, updatedQuery, (err) => {
-      if (err) logger.error(err);
+      if (err) {
+        logger.error(err);
+        throw new Error(err);
+      }
       logger.info('Successfully updated command');
       setExpire(user, 5);
     });
   } else {
-    return logger.error('Command was not found');
+    logger.error('Command was not found');
+    throw new Error('Command was not found');
   }
 };
 module.exports = {

@@ -18,7 +18,7 @@ const add = async ({channel, args}, userstate) => {
     await addCommand(channel, commandObj).then(() => {
       client.say(channel, `@${userstate.username}, successfully added command ${args[2].substring(1)}`);
     }).catch((err) => {
-      logger.error(err);
+      logger.error(err.message);
     });
     await setExpire(channel, 0);
   }
@@ -30,17 +30,17 @@ const edit = async ({channel, args}, userstate) => {
     await updateCommand(channel, commandObj).then(() => {
       client.say(channel, `@${userstate.username}, successfully updated command ${args[2].substring(1)}`);
     }).catch((err) => {
-      logger.error(err);
+      logger.error(err.message);
     });
     await setExpire(channel, 0);
   }
 };
 
 const remove = async ({channel, args}, userstate) => {
-  await deleteCommand(channel, args[3].substring(1)).then(() => {
+  await deleteCommand(channel, args[2].substring(1)).then(() => {
     client.say(channel, `@${userstate.username}, successfully deleted command ${args[2].substring(1)}`);
   }).catch((err) => {
-    logger.error(err);
+    logger.error(err.message);
   });
   await setExpire(channel,0);
 };
