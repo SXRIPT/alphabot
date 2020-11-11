@@ -94,7 +94,7 @@ const deleteCommand = async (user, command) => {
 };
 
 const findAllCommands = async (user) => {
-  const commands = [];
+  let commands = [];
   const cache = await checkCache(user);
   if (cache) {
     logger.info('Existing CACHE found!');
@@ -105,8 +105,7 @@ const findAllCommands = async (user) => {
       logger.error('ERROR: ' + err);
       throw new Error(err);
     }
-    res.commands.forEach((v) => {
-      commands.push(v);})
+    commands = res.commands;
   });
 
   await addToCache(user, JSON.stringify(commands));
