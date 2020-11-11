@@ -106,13 +106,7 @@ const findAllCommands = async (user) => {
       throw new Error(err);
     }
     res.commands.forEach((v) => {
-      commands.push(v);
-    });
-    if (commands.length === 0) {
-      logger.info('User has no response');
-    } else {
-      logger.info('Found response');
-    }
+      commands.push(v);})
   });
 
   await addToCache(user, JSON.stringify(commands));
