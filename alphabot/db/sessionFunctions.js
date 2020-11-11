@@ -6,8 +6,7 @@ const addUser = async (username) => {
     username,
   });
 
-  const result = User.findOne({username:username});
-
+  const result = User.findOne({username});
   if(result.username!==username){
     await user.save((err) => {
       if (err) return logger.error(err);
