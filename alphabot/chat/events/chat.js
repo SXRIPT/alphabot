@@ -21,32 +21,35 @@ const executeBuiltInCommands = async ({channel, args}, userstate) => {
   await commands[args[0]].apply(null, [{channel, args}, userstate]);
 };
 
-client.on("chat", async (channel, userstate, message, self) => {
+client.on('chat', async (channel, userstate, message, self) => {
   // Don't listen to own messages
   if (self) return;
-  const temp = await commandHandler.tokenizer(channel, userstate.username, message);
+  const temp = await commandHandler.tokenizer(channel, userstate.username, message);;
 
-  if(!temp) return;
+  if (!temp) return;
   const {command, args} = temp;
 
-  if(temp[0] === 'mod') {
+  if (temp[0] === 'mod') {
     const canExecuteModCommands = await isAuthorized(channel, userstate.badges, DEFAULT_MODERATION_LEVEL);
-    if(canExecuteModCommands) await executeModeration(temp[1], channel);
+    if (canExecuteModCommands) {
+      await executeModeration(temp[1], channel);
+    }
     return;
   }
 
-  if(temp[0] === 'builtin') {
+  if (temp[0] === 'builtin') {
     await executeBuiltInCommands(temp[1], userstate);
     return;
   }
-  logger.info("PERMISSIONS: " + command.permission);
-  logger.info("BADGES " + userstate.badges);
+
+  logger.info('PERMISSIONS: ' + command.permission);
+  logger.info('BADGES ' + userstate.badges);
 
   const hasPermission = await isAuthorized(channel, userstate.badges, command.permission);
-  if(!hasPermission) return;
-  logger.info(userstate.username + " can execute command: " + command.command + " " + hasPermission);
+  if (!hasPermission) return;
+  logger.info(userstate.username + ' can execute command: ' + command.command + ' ' + hasPermission);
 
-  const mappedArgs = {channel: {name: channel}, display: userstate['display-name'], username: userstate.username}
+  const mappedArgs = {channel: {name: channel}, display: userstate['display-name'], username: userstate.username};
   const parsedMessage = await responseParse(command.message, args, mappedArgs);
   logger.info(parsedMessage);
   await executeResponse(channel, command.response, parsedMessage, userstate.username);

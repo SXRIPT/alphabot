@@ -5,28 +5,30 @@ const MIN_USERNAME_LENGTH = 4;
 const MAX_USERNAME_LENGTH = 25;
 
 const host = async (channel, [target, filler]) => {
-  if(filler !== undefined || target.length < MIN_USERNAME_LENGTH || target.length > MAX_USERNAME_LENGTH) return;
+  if (filler !== undefined || target.length < MIN_USERNAME_LENGTH || target.length > MAX_USERNAME_LENGTH) {
+    return;
+  }
 
   client.host(channel, target)
-    .then((data) => {
+    .then(data => {
       logger.info(channel + ' is now hosting ' + target + ' | ' + data);
-    }).catch((err) => {
-      logger.error(err);
+    }).catch(error => {
+      logger.error(error);
     }
-  );
+    );
 };
 
-const unhost = async (channel) => {
+const unhost = async channel => {
   client.unhost(channel)
-    .then((data) => {
+    .then(data => {
       logger.info(channel + ' is not hosting anymore | ' + data);
-    }).catch((err) => {
-      logger.error(err);
+    }).catch(error => {
+      logger.error(error);
     }
-  );
+    );
 };
 
 module.exports = {
   host,
-  unhost,
+  unhost
 };

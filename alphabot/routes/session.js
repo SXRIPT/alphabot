@@ -1,5 +1,4 @@
 const express = require('express');
-
 const router = express.Router();
 const logger = require('../config/logger');
 const client = require('../src/alphabot');
@@ -31,7 +30,7 @@ router.post('/part', async (req, res) => {
       logger.error(err);
       return res.status(400).send('Something went wrong');
     });
-
+  
   // await deleteUser(username);
 });
 

@@ -1,4 +1,4 @@
-// const mongoose = require("mongoose");
+// Const mongoose = require("mongoose");
 // const User = require("../models/User");
 // const Command = require("../models/Command");
 // const functions = require("../db/commandFunctions");
@@ -11,7 +11,6 @@
 //   useUnifiedTopology: true,
 //   useNewUrlParser: true
 // });
-
 
 // const result = User.findOne({username:"bob"});
 // console.log(result);

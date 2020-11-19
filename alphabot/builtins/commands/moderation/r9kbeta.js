@@ -1,25 +1,25 @@
 const client = require('../../../src/alphabot');
 const logger = require('../../../config/logger');
 
-const r9kbeta = async (channel) => {
+const r9kbeta = async channel => {
   client.r9kbeta(channel)
-    .then((data) => {
+    .then(data => {
       logger.info(channel + ' r9kbeta-mode enabled ' + data);
-    }).catch((err) => {
-    logger.error(err);
-  });
+    }).catch(error => {
+      logger.error(error);
+    });
 };
 
-const r9kbetaoff = async (channel) => {
+const r9kbetaoff = async channel => {
   client.r9kbeta(channel)
-    .then((data) => {
+    .then(data => {
       logger.info(channel + ' r9kbeta-mode disabled ' + data);
-    }).catch((err) => {
-    logger.error(err);
-  });
+    }).catch(error => {
+      logger.error(error);
+    });
 };
 
 module.exports = {
   r9kbeta,
-  r9kbetaoff,
+  r9kbetaoff
 };

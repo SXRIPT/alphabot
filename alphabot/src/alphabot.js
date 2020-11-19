@@ -1,21 +1,21 @@
 const tmi = require('tmi.js');
 const logger = require('../config/logger');
-const { findAllUsers } = require('../db/sessionFunctions');
+const {findAllUsers} = require('../db/sessionFunctions');
 
 const channelNames = findAllUsers();
 const options = {
   options: {
-    debug: true,
+    debug: true
   },
   connection: {
-    reconnect: true,
+    reconnect: true
   },
   identity: {
     username: 'pizzachaboy',
-    password: 'mrmdogmyamgswnympbliyak8we78qt',
+    password: 'mrmdogmyamgswnympbliyak8we78qt'
   },
   channels: channelNames,
-  logger,
+  logger
 };
 
 const client = new tmi.client(options);

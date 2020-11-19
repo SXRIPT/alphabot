@@ -1,8 +1,8 @@
 const axios = require('axios');
 const logger = require('../../config/logger');
 
-const validate = async (token) => {
-  const BASE_URL = "https://id.twitch.tv/oauth2/validate";
+const validate = async token => {
+  const BASE_URL = 'https://id.twitch.tv/oauth2/validate';
   const accessToken = 'Bearer ' + token;
 
   try {
@@ -11,11 +11,15 @@ const validate = async (token) => {
         Authorization: accessToken
       }
     });
-    if(Object.entries(response).length > 0) { return response.expires_in > 100; }
+    if (Object.entries(response).length > 0) {
+      return response.expires_in > 100;
+    }
+
     return false;
-  } catch (e) {
-    logger.error("status: " + e.response.status + " message: " + e.response.statusText);
+  } catch (error) {
+    logger.error('status: ' + error.response.status + ' message: ' + error.response.statusText);
     return false;
   }
 };
+
 module.exports = validate;

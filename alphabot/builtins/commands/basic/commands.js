@@ -6,12 +6,11 @@ const USER_MODULES = 'everyone';
 
 const commands = async ({channel}, {username}) => {
   const canExecute = await isAuthorized(channel, username, USER_MODULES);
-  if(canExecute) {
+  if (canExecute) {
     client.say(channel, `@${username} | http://alphabot.wtf/${channel}/commands`)
-      .catch((err) => {
-        logger.error(err);
+      .catch(error => {
+        logger.error(error);
       });
-
   }
 };
 

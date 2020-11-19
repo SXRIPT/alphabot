@@ -1,10 +1,10 @@
-const isObject = (str) => {
+const isObject = string => {
   try {
-    const obj = JSON.parse(str);
-    return (typeof obj === 'object');
-  } catch (e) {
+    const object = JSON.parse(string);
+    return (typeof object === 'object');
+  } catch {
     return false;
   }
-}
+};
 
 module.exports = isObject;

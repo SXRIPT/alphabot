@@ -6,9 +6,9 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true,
     min: 4,
-    max: 25,
+    max: 25
   },
-  commands: [Command.schema],
+  commands: [Command.schema]
 });
 
-module.exports = mongoose.model('User', userSchema, 'TwitchUsers'); 
+module.exports = mongoose.model('User', userSchema, 'TwitchUsers');

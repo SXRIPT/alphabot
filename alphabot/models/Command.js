@@ -3,44 +3,44 @@ const mongoose = require('mongoose');
 const commandSchema = mongoose.Schema({
   prefix: {
     type: String,
-    default: '!',
+    default: '!'
   },
   command: {
     type: String,
-    required: true,
+    required: true
   },
   aliases: {
-    type: Array,
+    type: Array
   },
   parameters: {
-    type: Array,
+    type: Array
   },
   message: {
-    type: String,
+    type: String
   },
   response: {
     type: String,
     enum: ['chat', 'whisper'],
-    default: 'chat',
+    default: 'chat'
   },
   commandMedium: {
     type: String,
     enum: ['offline', 'online', 'both'],
-    default: 'both',
+    default: 'both'
   },
   enabled: {
     type: Boolean,
-    default: true,
+    default: true
   },
   permission: {
     type: String,
     enum: ['everyone', 'subscriber', 'vip', 'moderator', 'broadcaster'],
-    default: 'everyone',
+    default: 'everyone'
   },
   cooldown: {
-    globalCooldown:{type:Boolean, default:false},
-    globalDuration:{type:Number, default:0},
-    userDuration:{type:Number,default:0},
+    globalCooldown: {type: Boolean, default: false},
+    globalDuration: {type: Number, default: 0},
+    userDuration: {type: Number, default: 0}
   }
 });
 

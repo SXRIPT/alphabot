@@ -6,13 +6,13 @@ const URI = process.env.DB_CONNECTION;
 mongoose.set('useCreateIndex', true);
 mongoose.connect(URI, {
   useUnifiedTopology: true,
-  useNewUrlParser: true,
+  useNewUrlParser: true
 })
-  .then((data) => {
+  .then(data => {
     logger.info('Successfully connected to DB ' + data);
   })
-  .catch((err) => {
-    logger.error(err);
+  .catch(error => {
+    logger.error(error);
   });
 
 const db = mongoose.connection.once('open', () => {
@@ -20,6 +20,6 @@ const db = mongoose.connection.once('open', () => {
 });
 
 // Bind connection to error event (to get notification of connection errors)
-db.on('error', (err) => logger.error('MongoDB connection error: ', err));
+db.on('error', err => logger.error('MongoDB connection error: ', err));
 
 module.exports = db;
