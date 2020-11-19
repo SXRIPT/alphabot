@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const logger = require('../config/logger');
 const client = require('../src/alphabot');
-const { addUser, deleteUser } = require('../db/sessionFunctions');
+const { addUser } = require('../db/sessionFunctions');
 
 router.post('/join', async (req, res) => {
   const { username } = req.body;
