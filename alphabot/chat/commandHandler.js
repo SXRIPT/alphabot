@@ -40,6 +40,7 @@ const isBuiltIn = async (command) => [
   'setgame',
   'followage',
   'command',
+  'commands',
   'vanish',
   'commands'].includes(command);
 
