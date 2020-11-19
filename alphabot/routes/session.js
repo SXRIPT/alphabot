@@ -30,7 +30,7 @@ router.post('/part', async (req, res) => {
       logger.error(err);
       return res.status(400).send('Something went wrong');
     });
-
+  
   // await deleteUser(username);
 });
 
