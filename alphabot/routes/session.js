@@ -32,7 +32,7 @@ router.post('/part', async (req, res) => {
       return res.status(400).send('Something went wrong');
     });
 
-  await deleteUser(username);
+  // await deleteUser(username);
 });
 
 module.exports = router;
