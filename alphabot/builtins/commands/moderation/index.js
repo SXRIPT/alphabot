@@ -32,5 +32,5 @@ module.exports = {
   subscribers,
   subscribersoff,
   followersonly,
-  followersonlyoff,
+  followersonlyoff
 };

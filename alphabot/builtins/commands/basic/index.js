@@ -5,5 +5,5 @@ const commands = require('./commands');
 module.exports = {
   command,
   vanish,
-  commands,
-}
+  commands
+};

@@ -3,7 +3,7 @@ const logger = require('../config/logger');
 const signals = {
   SIGHUP: 1,
   SIGINT: 2,
-  SIGTERM: 15,
+  SIGTERM: 15
 };
 
 const shutdown = (signal, value) => {
@@ -12,7 +12,7 @@ const shutdown = (signal, value) => {
 };
 
 const signalListener = () => {
-  signals.forEach((signal) => {
+  signals.forEach(signal => {
     process.on(signal, () => {
       logger.info(`process received a ${signal} signal`);
       shutdown(signal, signals[signal]);

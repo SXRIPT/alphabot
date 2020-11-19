@@ -5,14 +5,14 @@ const logger = require('../../config/logger');
 const client = require('../../src/alphabot');
 
 // Runs a Commercial for a channel with on of the following durations3 0, 60, 90, 120, 150, 180.
-router.post('/commercial', async (req, res) => {
+router.post('/commercial', async (request, res) => {
   const duration = [30, 60, 90, 120, 150, 180];
-  if (duration.includes(req.body.duration)) {
+  if (duration.includes(request.body.duration)) {
     client
-      .commercial(req.body.channel, req.body.duration)
-      .then((data) => res.status(200).send(data))
-      .catch((err) => {
-        logger.error(err);
+      .commercial(request.body.channel, request.body.duration)
+      .then(data => res.status(200).send(data))
+      .catch(error => {
+        logger.error(error);
         return res.status(400).send('Something went wrong');
       });
   } else {
@@ -22,165 +22,161 @@ router.post('/commercial', async (req, res) => {
         'Bad duration time. Available lengths (seconds) are 30, 60, 90, 120, 150, 180.'
       );
   }
+
   return logger.error('Something went wrong');
 });
 
 // Deletes a Message in a channel for a specified message id
-router.post('/deletemessage', async (req, res) => {
+router.post('/deletemessage', async (request, res) => {
   client
-    .deletemessage(req.body.channel, req.body.messageid)
-    .then((data) => res.status(200).send(data))
-    .catch((err) => {
-      logger.error(err);
+    .deletemessage(request.body.channel, request.body.messageid)
+    .then(data => res.status(200).send(data))
+    .catch(error => {
+      logger.error(error);
       return res.status(400).send('Something went wrong');
     });
 });
 
 // Puts the Chat in emoteonly mode
-router.post('/emoteonly', async (req, res) => {
+router.post('/emoteonly', async (request, res) => {
   client
-    .emoteonly(req.body.channel)
-    .then((data) => res.status(200).send(data))
-    .catch((err) => {
-      logger.error(err);
+    .emoteonly(request.body.channel)
+    .then(data => res.status(200).send(data))
+    .catch(error => {
+      logger.error(error);
       return res.status(400).send('Something went wrong');
     });
 });
 
 // Disables emoteonly mode
-router.post('/emoteonlyoff', async (req, res) => {
+router.post('/emoteonlyoff', async (request, res) => {
   client
-    .emoteonlyoff(req.body.channel)
-    .then((data) => res.status(200).send(data))
-    .catch((err) => {
-      logger.error(err);
+    .emoteonlyoff(request.body.channel)
+    .then(data => res.status(200).send(data))
+    .catch(error => {
+      logger.error(error);
       return res.status(400).send('Something went wrong');
     });
 });
 
 // Puts the Chat in followesonly mode
-router.post('/followersonly', async (req, res) => {
-  let duration;
-  if (!req.body.duration) duration = 30;
-  else duration = req.body.duration;
+router.post('/followersonly', async (request, res) => {
+  const duration = !request.body.duration ? 30 : request.body.duration;
   client
-    .followersonly(req.body.channel, duration)
-    .then((data) => res.status(200).send(data))
-    .catch((err) => {
-      logger.error(err);
+    .followersonly(request.body.channel, duration)
+    .then(data => res.status(200).send(data))
+    .catch(error => {
+      logger.error(error);
       return res.status(400).send('Something went wrong');
     });
 });
 
 // Disables followersonly mode
-router.post('/followersonlyoff', async (req, res) => {
+router.post('/followersonlyoff', async (request, res) => {
   client
-    .followersonlyoff(req.body.channel)
-    .then((data) => res.status(200).send(data))
-    .catch((err) => {
-      logger.error(err);
+    .followersonlyoff(request.body.channel)
+    .then(data => res.status(200).send(data))
+    .catch(error => {
+      logger.error(error);
       return res.status(400).send('Something went wrong');
     });
 });
 
 // Puts the Chat in r9kbeta mode
-router.post('/r9kbeta', async (req, res) => {
+router.post('/r9kbeta', async (request, res) => {
   client
-    .r9kbeta(req.body.channel)
-    .then((data) => res.status(200).send(data))
-    .catch((err) => {
-      logger.error(err);
+    .r9kbeta(request.body.channel)
+    .then(data => res.status(200).send(data))
+    .catch(error => {
+      logger.error(error);
       return res.status(400).send('Something went wrong');
     });
 });
 
 // Disables r9kbeta mode
-router.post('/r9kbetaoff', async (req, res) => {
+router.post('/r9kbetaoff', async (request, res) => {
   client
-    .r9kbetaoff(req.body.channel)
-    .then((data) => res.status(200).send(data))
-    .catch((err) => res.status(400).send(`Something went wrong: ${err}`));
+    .r9kbetaoff(request.body.channel)
+    .then(data => res.status(200).send(data))
+    .catch(error => res.status(400).send(`Something went wrong: ${error}`));
 });
 
 // Puts the Chat in slow mode
-router.post('/slow', async (req, res) => {
-  let duration;
-  if (!req.body.duration) duration = 30;
-  else duration = req.body.duration;
+router.post('/slow', async (request, res) => {
+  const duration = !request.body.duration ? 30 : request.body.duration;
   client
-    .slow(req.body.channel, duration)
-    .then((data) => res.status(200).send(data))
-    .catch((err) => {
-      logger.error(err);
+    .slow(request.body.channel, duration)
+    .then(data => res.status(200).send(data))
+    .catch(error => {
+      logger.error(error);
       return res.status(400).send('Something went wrong');
     });
 });
 
 // Disables slow mode
-router.post('/slowoff', async (req, res) => {
+router.post('/slowoff', async (request, res) => {
   client
-    .slowoff(req.body.channel)
-    .then((data) => res.status(200).send(data))
-    .catch((err) => {
-      logger.error(err);
+    .slowoff(request.body.channel)
+    .then(data => res.status(200).send(data))
+    .catch(error => {
+      logger.error(error);
       return res.status(400).send('Something went wrong');
     });
 });
 
 // Puts the Chat in subscriber only mode
-router.post('/subscribers', async (req, res) => {
+router.post('/subscribers', async (request, res) => {
   client
-    .subscribers(req.body.channel)
-    .then((data) => res.status(200).send(data))
-    .catch((err) => {
-      logger.error(err);
+    .subscribers(request.body.channel)
+    .then(data => res.status(200).send(data))
+    .catch(error => {
+      logger.error(error);
       return res.status(400).send('Something went wrong');
     });
 });
 
 // Disables subscriber only mode
-router.post('/subscribersoff', async (req, res) => {
+router.post('/subscribersoff', async (request, res) => {
   client
-    .subscribersoff(req.body.channel)
-    .then((data) => res.status(200).send(data))
-    .catch((err) => {
-      logger.error(err);
+    .subscribersoff(request.body.channel)
+    .then(data => res.status(200).send(data))
+    .catch(error => {
+      logger.error(error);
       return res.status(400).send('Something went wrong');
     });
 });
 
 // Lists all moderators for a specific channel
-router.post('/mods', async (req, res) => {
+router.post('/mods', async (request, res) => {
   client
-    .ban(req.body.channel, req.body.username)
-    .then((data) => res.status(200).send(data))
-    .catch((err) => {
-      logger.error(err);
+    .ban(request.body.channel, request.body.username)
+    .then(data => res.status(200).send(data))
+    .catch(error => {
+      logger.error(error);
       return res.status(400).send('Something went wrong');
     });
 });
 
 // Lists all vips for a specific channel
-router.post('/vips', async (req, res) => {
+router.post('/vips', async (request, res) => {
   client
-    .vips(req.body.channel)
-    .then((data) => res.status(200).send(data))
-    .catch((err) => {
-      logger.error(err);
+    .vips(request.body.channel)
+    .then(data => res.status(200).send(data))
+    .catch(error => {
+      logger.error(error);
       return res.status(400).send('Something went wrong');
     });
 });
 
 // Whispers a user with an given message
-router.post('/whisper', async (req, res) => {
+router.post('/whisper', async (request, res) => {
   client
-    .whisper(req.body.username, req.body.message)
-    .then((data) => res.status(200).send(data))
-    .catch((err) => {
-      logger.error(err);
+    .whisper(request.body.username, request.body.message)
+    .then(data => res.status(200).send(data))
+    .catch(error => {
+      logger.error(error);
       return res.status(400).send('Something went wrong');
     });
 });
-
 
 module.exports = router;

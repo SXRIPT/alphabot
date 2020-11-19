@@ -1,25 +1,25 @@
 const client = require('../../../src/alphabot');
 const logger = require('../../../config/logger');
 
-const subscribers = async (channel) => {
+const subscribers = async channel => {
   client.subscribers(channel)
-    .then((data) => {
+    .then(data => {
       logger.info(channel + ' subscribers-mode enabled ' + data);
-    }).catch((err) => {
-    logger.error(err);
-  });
+    }).catch(error => {
+      logger.error(error);
+    });
 };
 
-const subscribersoff = async (channel) => {
+const subscribersoff = async channel => {
   client.subscribers(channel)
-    .then((data) => {
+    .then(data => {
       logger.info(channel + ' subscribers-mode disabled ' + data);
-    }).catch((err) => {
-    logger.error(err);
-  });
+    }).catch(error => {
+      logger.error(error);
+    });
 };
 
 module.exports = {
   subscribers,
-  subscribersoff,
+  subscribersoff
 };

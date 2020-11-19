@@ -5,30 +5,34 @@ const MIN_USERNAME_LENGTH = 4;
 const MAX_USERNAME_LENGTH = 25;
 
 const vip = async (channel, [username, filler]) => {
-  if(filler !== undefined || username.length < MIN_USERNAME_LENGTH || username.length > MAX_USERNAME_LENGTH) return;
+  if (filler !== undefined || username.length < MIN_USERNAME_LENGTH || username.length > MAX_USERNAME_LENGTH) {
+    return;
+  }
 
   client.vip(channel, username)
-    .then((data) => {
+    .then(data => {
       logger.info(username + ' has become a vip in ' + channel + '! ' + data);
-    }).catch((err) => {
-      logger.error(err);
+    }).catch(error => {
+      logger.error(error);
     }
-  );
+    );
 };
 
 const unvip = async (channel, [username, filler]) => {
-  if(filler !== undefined || username.length < MIN_USERNAME_LENGTH || username.length > MAX_USERNAME_LENGTH) return;
+  if (filler !== undefined || username.length < MIN_USERNAME_LENGTH || username.length > MAX_USERNAME_LENGTH) {
+    return;
+  }
 
   client.unvip(channel, username)
-    .then((data) => {
+    .then(data => {
       logger.info(username + ' is no more a vip in ' + channel + '! ' + data);
-    }).catch((err) => {
-      logger.error(err);
+    }).catch(error => {
+      logger.error(error);
     }
-  );
+    );
 };
 
 module.exports = {
   vip,
-  unvip,
+  unvip
 };

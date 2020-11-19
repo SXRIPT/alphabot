@@ -14,11 +14,11 @@ const apiSchema = mongoose.Schema({
     required: true,
     max: 1024,
     min: 8
-  },
+  }
 });
 
-apiSchema.pre('save',  async function (next) {
-  // this --> current document too be saved
+apiSchema.pre('save', async function (next) {
+  // This --> current document too be saved
   this.password = await bcrypt.hash(this.password, 10);
   next();
 });
@@ -28,6 +28,5 @@ apiSchema.methods.isValidPassword = async function (password) {
   const isValid = await bcrypt.compare(password, user.password);
   return isValid;
 };
-
 
 module.exports = mongoose.model('APIUser', apiSchema);

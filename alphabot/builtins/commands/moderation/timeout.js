@@ -7,12 +7,14 @@ const MAX_USERNAME_LENGTH = 25;
 
 const timeout = async (channel, parameters) => {
   const username = parameters[0];
-  if(parameters.length > 3 || username.length < MIN_USERNAME_LENGTH || username.length > MAX_USERNAME_LENGTH) return;
+  if (parameters.length > 3 || username.length < MIN_USERNAME_LENGTH || username.length > MAX_USERNAME_LENGTH) {
+    return;
+  }
 
   let duration = 300;
   let reason = '';
 
-  if(parameters.length > 1) {
+  if (parameters.length > 1) {
     duration = isNumber(parameters[1]) && isFinite(parameters[1]) ? parameters[1] : 300;
 
     if (!isNumber(parameters[1])) {
@@ -23,11 +25,11 @@ const timeout = async (channel, parameters) => {
   }
 
   client.timeout(channel, username, duration, reason)
-    .then((data) => {
+    .then(data => {
       logger.info('User ' + username + ' has been timed out for ' + duration + ' in ' + channel + ' | ' + data);
-    }).catch((err) => {
-    logger.error(err);
-  });
+    }).catch(error => {
+      logger.error(error);
+    });
 };
 
 module.exports = timeout;
