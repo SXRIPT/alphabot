@@ -1,4 +1,5 @@
 const { isFinite, isNumber } = require('../../utils/numbers');
+const  {getViewers } = require('../../twitch/api/index');
 
 const re = /\${(\w+)(?:(?:\.(\w+))|(?: (\d+(?: \d+)*|"[^"]+"(?: "[^"]+")*)))?}/g;
 const argRe = /\${(\d+)}/g;
@@ -10,6 +11,7 @@ const commands = {
   url: (args, mappedArgs) => `https://twitch.tv/${mappedArgs.channel.name.substring(1)}`,
   username: (args, mappedArgs) => mappedArgs.username,
   display: (args, mappedArgs) => mappedArgs.display,
+  viewers: async (args, mappedArgs) => await getViewers(mappedArgs.channel.name.substring(1)),
 };
 
 const replaceArgs = async (input, args) => {
@@ -29,7 +31,7 @@ const replaceSubArgs = async (match, dupeInput, command, mappedArgs) => {
   while ((subMatch = subArgRe.exec(match[3])) !== null) {
     args.push(!isFinite(subMatch[1]) && !isNumber(subMatch[1]) ? subMatch[1] : parseInt(subMatch[1], 10));
   }
-  return dupeInput.replace(match[0], command(args, mappedArgs));
+  return dupeInput.replace(match[0], await command(args, mappedArgs));
 };
 
 const responseParse = async (input, args, mappedArgs) => {
