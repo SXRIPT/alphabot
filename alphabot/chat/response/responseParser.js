@@ -1,5 +1,5 @@
 const { isFinite, isNumber } = require('../../utils/numbers');
-const  {getViewers } = require('../../twitch/api/index');
+const  {getViewers, getGame, getTitle, getLanguage} = require('../../twitch');
 
 const re = /\${(\w+)(?:(?:\.(\w+))|(?: (\d+(?: \d+)*|"[^"]+"(?: "[^"]+")*)))?}/g;
 const argRe = /\${(\d+)}/g;
@@ -7,11 +7,16 @@ const subArgRe = /(\d+|"[^"]*")/g;
 
 const commands = {
   greater: (args) => args[0] > args[1] ? args[0] : args[1],
+  smaller: (args) => args[0] < args[1] ? args[0] : args[1],
+  equal: (args) => args[0] === args[1],
   random: (args) => args[1] ? Math.floor(Math.random() * (parseInt(args[1], 10) + 1 - parseInt(args[0], 10)) + parseInt(args[0], 10)) : Math.floor(Math.random() * (parseInt(args[0], 10) + 1)),
   url: (args, mappedArgs) => `https://twitch.tv/${mappedArgs.channel.name.substring(1)}`,
   username: (args, mappedArgs) => mappedArgs.username,
   display: (args, mappedArgs) => mappedArgs.display,
   viewers: async (args, mappedArgs) => await getViewers(mappedArgs.channel.name.substring(1)),
+  game: async (args, mappedArgs) => await getGame(mappedArgs.channel.name.substring(1)),
+  title: async (args, mappedArgs) => await getTitle(mappedArgs.channel.name.substring(1)),
+  language: async (args, mappedArgs) => await getLanguage(mappedArgs.channel.name.substring(1)),
 };
 
 const replaceArgs = async (input, args) => {

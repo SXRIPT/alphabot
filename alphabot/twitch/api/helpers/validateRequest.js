@@ -1,5 +1,5 @@
 const axios = require('axios');
-const logger = require('../../config/logger');
+const logger = require('../../../config/logger');
 
 const validate = async (token) => {
   const BASE_URL = "https://id.twitch.tv/oauth2/validate";

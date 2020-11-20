@@ -1,6 +1,6 @@
 const axios = require('axios');
-const logger = require('../../config/logger');
-const cache = require('../../middleware/cacheCommands');
+const logger = require('../../../config/logger');
+const cache = require('../../../middleware/cacheCommands');
 require('dotenv').config();
 
 const refreshAccessToken = async () => {
