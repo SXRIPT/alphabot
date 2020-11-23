@@ -59,7 +59,6 @@ const findModule = async (user,name) => {
 };
 
 const updateModule = async (user, moduleJSON) => {
-  const cacheKey = `${user}-modules`;
   const updatedModules = [];
   const query = { username: user };
   let updatedQuery;
