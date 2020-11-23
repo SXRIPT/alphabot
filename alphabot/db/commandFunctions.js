@@ -14,6 +14,7 @@ const buildCommand = async (commandJSON) => {
     response: commandJSON.response,
     commandMedium: commandJSON.commandMedium,
     enabled: commandJSON.enabled,
+    isDefault: commandJSON.isDefault,
     permission: commandJSON.permission,
     cooldown: commandJSON.cooldown,
   });
@@ -108,7 +109,8 @@ const findAllCommands = async (user) => {
     commands = res.commands;
   });
 
-  await addToCache(user, JSON.stringify(commands));
+  if(commands.length>0)
+    await addToCache(user, JSON.stringify(commands));
   return commands;
 };
 

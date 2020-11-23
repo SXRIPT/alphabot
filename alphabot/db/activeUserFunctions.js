@@ -1,32 +1,12 @@
-const User = require('../models/User');
+const AUser = require('../models/AUser');
 const logger = require('../config/logger');
-const Module = require('../models/Module');
-
-const modules = [
-  new Module({
-    name: "ascii",
-  }),
-  new Module({
-    name: "banphrase",
-  }),
-  new Module({
-    name: "link",
-  }),
-  new Module({
-    name: "message",
-  }),
-  new Module({
-    name: "case",
-  }),
-];
 
 const addUser = async (username) => {
-  const user = new User({
+  const user = new AUser({
     username,
-    modules
   });
 
-  const result = await User.findOne({username});
+  const result = await AUser.findOne({username});
   if(result.username!==username){
     await user.save((err) => {
       if (err) return logger.error(err);
@@ -36,12 +16,12 @@ const addUser = async (username) => {
   else {
       logger.error('Document already exists');
     }
-  };
+};
 
 const deleteUser = async (username) => {
   const query = { username };
 
-  await User.deleteOne(query, (err) => {
+  await AUser.deleteOne(query, (err) => {
     if (err) return logger.error(err);
     logger.info('Deleted successfully');
   });
@@ -50,7 +30,7 @@ const deleteUser = async (username) => {
 const findAllUsers = /* async */ () => {
   const channelNames = [];
 
-  /* await */ User.find({}, (err, res) => {
+  /* await */ AUser.find({}, (err, res) => {
     res.forEach((user) => {
       channelNames.push(user.username);
     });

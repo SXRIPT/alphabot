@@ -1,6 +1,6 @@
 const tmi = require('tmi.js');
 const logger = require('../config/logger');
-const { findAllUsers } = require('../db/sessionFunctions');
+const { findAllUsers } = require('../db/activeUserFunctions');
 
 const channelNames = findAllUsers();
 const options = {
