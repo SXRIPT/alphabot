@@ -1,12 +1,32 @@
 const User = require('../models/User');
 const logger = require('../config/logger');
+const Module = require('../models/Module');
+
+const modules = [
+  new Module({
+    name: "ascii",
+  }),
+  new Module({
+    name: "banphrase",
+  }),
+  new Module({
+    name: "link",
+  }),
+  new Module({
+    name: "message",
+  }),
+  new Module({
+    name: "case",
+  }),
+];
 
 const addUser = async (username) => {
   const user = new User({
     username,
+    modules
   });
 
-  const result = User.findOne({username});
+  const result = await User.findOne({username});
   if(result.username!==username){
     await user.save((err) => {
       if (err) return logger.error(err);
@@ -27,7 +47,6 @@ const deleteUser = async (username) => {
   });
 };
 
-// TODO: make async
 const findAllUsers = /* async */ () => {
   const channelNames = [];
 

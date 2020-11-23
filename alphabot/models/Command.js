@@ -32,6 +32,10 @@ const commandSchema = mongoose.Schema({
     type: Boolean,
     default: true,
   },
+  isDefault: {
+    type: Boolean,
+    default: false,
+  },
   permission: {
     type: String,
     enum: ['everyone', 'subscriber', 'vip', 'moderator', 'broadcaster'],

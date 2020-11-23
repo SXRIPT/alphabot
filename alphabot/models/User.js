@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Command = require('./Command');
+const Module = require('./Module');
 
 const userSchema = mongoose.Schema({
   username: {
@@ -9,6 +10,7 @@ const userSchema = mongoose.Schema({
     max: 25,
   },
   commands: [Command.schema],
+  modules: [Module.schema],
 });
 
 module.exports = mongoose.model('User', userSchema, 'TwitchUsers'); 
