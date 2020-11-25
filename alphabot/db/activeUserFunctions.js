@@ -7,15 +7,14 @@ const addUser = async (username) => {
   });
 
   const result = await AUser.findOne({username});
-  if(result.username!==username){
+  if(!result){
     await user.save((err) => {
       if (err) return logger.error(err);
       logger.info('Document inserted successfully');
     });
+  } else {
+    logger.error('Document already exists');
   }
-  else {
-      logger.error('Document already exists');
-    }
 };
 
 const deleteUser = async (username) => {
