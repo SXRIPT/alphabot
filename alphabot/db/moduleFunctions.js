@@ -50,8 +50,8 @@ const findModule = async (user,name) => {
   });
 
   if(module!==undefined) {
-  await addToCache(cacheKey, JSON.stringify(modules));
-  return module;
+    await addToCache(cacheKey, JSON.stringify(modules));
+    return module;
   } else {
     logger.error('Module was not found');
     throw new Error('Module was not found');
@@ -79,6 +79,9 @@ const updateModule = async (user, moduleJSON) => {
           if(moduleJSON.timeoutDuration===undefined)
             newModule.timeoutDuration=v.timeoutDuration;
           else newModule.timeoutDuration=moduleJSON.timeoutDuration;
+          if(moduleJSON.parameters===undefined)
+            newModule.parameters=v.parameters;
+          else newModule.parameters=moduleJSON.parameters;
           updatedModules.push(newModule);
           isFound = true;
         } else {
