@@ -1,5 +1,5 @@
 const { isFinite, isNumber } = require('../../utils/numbers');
-const  {getViewers, getGame, getTitle, getLanguage} = require('../../twitch');
+const  {getViewers, getGame, getTitle, getLanguage, getUptime} = require('../../twitch');
 
 const re = /\${(\w+)(?:(?:\.(\w+))|(?: (\d+(?: \d+)*|"[^"]+"(?: "[^"]+")*)))?}/g;
 const argRe = /\${(\d+)}/g;
@@ -17,6 +17,7 @@ const commands = {
   game: async (args, mappedArgs) => await getGame(mappedArgs.channel.name.substring(1)),
   title: async (args, mappedArgs) => await getTitle(mappedArgs.channel.name.substring(1)),
   language: async (args, mappedArgs) => await getLanguage(mappedArgs.channel.name.substring(1)),
+  uptime: async (args, mappedArgs) => await getUptime(mappedArgs.channel.name.substring(1)),
 };
 
 const replaceArgs = async (input, args) => {
