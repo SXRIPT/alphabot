@@ -32,7 +32,8 @@ const isModeration = async (command) => [
   'clear',
   'host',
   'unhost',
-  'commercial'].includes(command);
+  'commercial',
+].includes(command);
 
 const isBuiltIn = async (command) => [
   'accountage',
@@ -42,7 +43,8 @@ const isBuiltIn = async (command) => [
   'command',
   'commands',
   'vanish',
-  'commands'].includes(command);
+  'commands',
+  'banphrase'].includes(command);
 
 const parseMessage = async (message) => {
   return message.indexOf(' ') === -1
