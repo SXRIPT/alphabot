@@ -6,7 +6,7 @@ const checkMessage = async (channel, userstate, message) => {
 
     for (let i = 0; i < modules.length; i++) {
         if(modules[i].enabled) {
-            let result = await moduleHandler[modules[i].name].apply(null, [channel, message, modules, userstate.username]);
+            const result = await moduleHandler[modules[i].name].apply(null, [channel, message, modules, userstate.username]);
             if(result) return;
         }
     }

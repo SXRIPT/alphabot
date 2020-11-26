@@ -51,10 +51,10 @@ const findModule = async (user,name) => {
   if(module!==undefined) {
     await addToCache(cacheKey, JSON.stringify(modules));
     return module;
-  } else {
+  } 
     logger.error('Module was not found');
     throw new Error('Module was not found');
-  }
+  
 };
 
 const updateModule = async (user, moduleJSON) => {

@@ -6,7 +6,7 @@ const strRegex = "([a-zA-Z0-9]+://)?([a-zA-Z0-9_]+:[a-zA-Z0-9_]+@)?([a-zA-Z0-9.-
 const re=new RegExp(strRegex);
 
 const link = async (channel, message, modules, username) => {
-  let filteredModule = await filterModules(modules, MODULE);
+  const filteredModule = await filterModules(modules, MODULE);
   if(re.test(message)) {
     await executePenalty(channel, username, filteredModule.penalty, filteredModule.timeoutDuration, MODULE);
     return true;

@@ -31,7 +31,7 @@ const commands = [
   })
 ]
 
-//Space for default commands
+// Space for default commands
 
 const addUser = async (username) => {
   const user = new User({

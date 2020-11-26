@@ -6,15 +6,15 @@ const MODULE = 'caseCheck';
 const DEFAULT_MAX_PERCENT = 70;
 
 const caseCheck = async (channel, message, modules, username) => {
-  let filteredModule = await filterModules(modules, MODULE);
+  const filteredModule = await filterModules(modules, MODULE);
   let upperCaseCount = 0;
   [...message].forEach(c => {
     if (c.charCodeAt(0) >= 65 && c.charCodeAt(0) <= 90) {
-      upperCaseCount++;
+      upperCaseCount += 1;
     }
   });
 
-  let percent = (upperCaseCount / message.length) * 100;
+  const percent = (upperCaseCount / message.length) * 100;
   let maxPercent;
   if(filteredModule.parameters.length > 0) {
     maxPercent = isNumber(filteredModule.parameters[0]) && isFinite(filteredModule.parameters[0]) ? Number(filteredModule.parameters[0]) : DEFAULT_MAX_PERCENT

@@ -1,6 +1,6 @@
 const filterModules = async (modules, moduleName) => {
-  for (const m of modules) {
-    if(m.name === moduleName) return m;
+  for (let i = 0; i < modules.length; i++) {
+    if(modules[i].name === moduleName) return modules[i];
   }
 };
 

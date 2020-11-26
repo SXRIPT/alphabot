@@ -1,5 +1,6 @@
 const express = require('express');
 const activeUserFunctions = require('../db/activeUserFunctions');
+
 const router = express.Router();
 const logger = require('../config/logger');
 const client = require('../src/alphabot');
