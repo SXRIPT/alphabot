@@ -20,14 +20,25 @@ const modules = [
   }),
 ];
 
+const commands = [
+  new Command({
+    command: 'followage',
+    aliases: ['howlong'],
+    message: '${username} has been following --streamer-- for 1 year 5 months 27 days 1 hour',
+    isDefault: true,
+    cooldown: {globalCooldown: true, globalDuration: 5, userDuration: 15},
+  })
+]
+
 const addUser = async (username) => {
   const user = new User({
     username,
-    modules
+    modules,
+    commands
   });
 
   const result = await User.findOne({username});
-  if(result.username!==username){
+  if(!result){
     await user.save((err) => {
       if (err) return logger.error(err);
       logger.info('Document inserted successfully');
