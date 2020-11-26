@@ -1,28 +1,13 @@
-const cache = require('../../middleware/cacheCommands');
-const { findModule, updateModule } = require('../../db/moduleFunctions');
+const { updateModule } = require('../../db/moduleFunctions');
+const getModule = require('../helpers/getModule');
 
 const MODULE = 'banphrase';
 
-const getModule = async (channel) => {
-  const cacheKey = `${channel}-modules`;
-
-  const modules = await cache.checkCache(cacheKey);
-  let banphrase;
-  if (modules === null) {
-    banphrase = await findModule(channel, MODULE);
-  } else {
-    modules.forEach(m => {
-      if (m.name === MODULE) banphrase = m;
-    });
-  }
-  return banphrase;
-};
-
-const add = async ({ channel, args }, userstate) => {
+const add = async ({ channel, args }) => {
   const message = args.slice(2).join(' ');
 
   if (message !== '') {
-    let banphrases = await getModule(channel);
+    let banphrases = await getModule(channel, MODULE);
     if (!banphrases.parameters.includes(message)) {
       banphrases.parameters.push(message);
       await updateModule(channel, banphrases);
@@ -30,17 +15,15 @@ const add = async ({ channel, args }, userstate) => {
   }
 };
 
-const remove = async ({ channel, args }, userstate) => {
+const remove = async ({ channel, args }) => {
   const message = args.slice(2).join(' ');
 
   if (message !== '') {
-    let banphrases = await getModule(channel);
-    console.log(banphrases);
+    let banphrases = await getModule(channel, MODULE);
     const index = banphrases.parameters.indexOf(message);
     if (index !== -1) {
       banphrases.parameters.splice(index, 1);
       await updateModule(channel, banphrases);
-      console.log(banphrases)
     }
   }
 };

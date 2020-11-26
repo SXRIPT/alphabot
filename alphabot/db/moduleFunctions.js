@@ -30,7 +30,7 @@ const findModule = async (user,name) => {
   let module;
   let modules;
   const cache = await checkCache(cacheKey);
-  if (cache) {
+  if (cache && cache.length > 0) {
     logger.info('Existing CACHE found!');
     cache.forEach(v=>{
       if(name===v.name)

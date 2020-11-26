@@ -17,7 +17,7 @@ const modules = [
     name: "message",
   }),
   new Module({
-    name: "case",
+    name: "caseCheck",
   }),
 ];
 

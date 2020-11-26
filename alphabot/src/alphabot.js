@@ -14,7 +14,7 @@ const options = {
     username: 'pizzachaboy',
     password: 'mrmdogmyamgswnympbliyak8we78qt',
   },
-  channels: channelNames,
+  channels: ["itsm4rio"],
   logger,
 };
 
