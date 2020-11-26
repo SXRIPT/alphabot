@@ -36,8 +36,8 @@ const commands = [
 const addUser = async (username) => {
   const user = new User({
     username,
-    modules,
-    commands
+    commands,
+    modules
   });
 
   const result = await User.findOne({username});
