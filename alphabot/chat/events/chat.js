@@ -5,6 +5,7 @@ const commands = require('../../builtins/commands/basic');
 const responseHandler = require('../response/responseHandler');
 const isAuthorized = require('../../helpers/isAuthorized');
 const logger = require('../../config/logger');
+const checkMessage = require('../checkMessage');
 const {responseParse} = require('../response/responseParser');
 
 const DEFAULT_MODERATION_LEVEL = 'moderator';
@@ -24,8 +25,8 @@ const executeBuiltInCommands = async ({channel, args}, userstate) => {
 client.on("chat", async (channel, userstate, message, self) => {
   // Don't listen to own messages
   if (self) return;
+  await checkMessage(channel, userstate, message);
   const temp = await commandHandler.tokenizer(channel, userstate.username, message);
-
   if(!temp) return;
   const {command, args} = temp;
 

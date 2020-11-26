@@ -2,16 +2,6 @@ const axios = require('axios');
 const client = require('../../../src/alphabot');
 const logger = require('../../../config/logger');
 
-const eightball = async ({channel, args}, userstate) => {
-  if(isEnabled) {
-    const message = await fetchEightballAPI(args.slice(2).join(' '));
-    await client.say(channel, message)
-      .catch((err) => {
-      logger.error(err);
-    });
-  }
-}
-
 const fetchEightballAPI = async (message) => {
   const BASE_URL = 'https://8ball.delegator.com/magic/JSON/';
   try {
@@ -20,5 +10,14 @@ const fetchEightballAPI = async (message) => {
   } catch (e) {
     logger.error(e);
   }
-}
+};
+
+const eightball = async ({ channel, args }) => {
+  const message = await fetchEightballAPI(args.slice(2).join(' '));
+  await client.say(channel, message)
+    .catch((err) => {
+      logger.error(err);
+    });
+};
+
 module.exports = eightball;

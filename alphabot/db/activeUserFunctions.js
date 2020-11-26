@@ -34,7 +34,6 @@ const findAllUsers = /* async */ () => {
       channelNames.push(user.username);
     });
   });
-
   return channelNames;
 };
 

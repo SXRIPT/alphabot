@@ -1,5 +1,5 @@
-const validate = require('../helpers/validateRequest');
-const refreshToken = require('../helpers/refreshToken');
+const validate = require("./validateRequest");
+const refreshToken = require("./refreshToken");
 const cache = require('../../../middleware/cacheCommands');
 
 const getAccessToken = async () => {

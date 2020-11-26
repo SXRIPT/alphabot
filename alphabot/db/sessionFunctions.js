@@ -1,7 +1,7 @@
 const User = require('../models/User');
 const logger = require('../config/logger');
 const Module = require('../models/Module');
-const Command = require('../models/Command')
+const Command = require('../models/Command');
 
 const modules = [
   new Module({
@@ -17,17 +17,21 @@ const modules = [
     name: "message",
   }),
   new Module({
-    name: "case",
+    name: "caseCheck",
   }),
 ];
 
-const commands = [new Command({
-  command: 'followage',
-  aliases: ['howlong'],
-  message: '${username} has been following --streamer-- for 1 year 5 months 27 days 1 hour',
-  isDefault: true,
-  cooldown: {globalCooldown: true, globalDuration: 5, userDuration: 15}
-})]
+const commands = [
+  new Command({
+    command: 'followage',
+    aliases: ['howlong'],
+    message: '${username} has been following --streamer-- for 1 year 5 months 27 days 1 hour',
+    isDefault: true,
+    cooldown: {globalCooldown: true, globalDuration: 5, userDuration: 15},
+  })
+]
+
+// Space for default commands
 
 const addUser = async (username) => {
   const user = new User({

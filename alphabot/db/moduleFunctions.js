@@ -30,7 +30,7 @@ const findModule = async (user,name) => {
   let module;
   let modules;
   const cache = await checkCache(cacheKey);
-  if (cache) {
+  if (cache && cache.length > 0) {
     logger.info('Existing CACHE found!');
     cache.forEach(v=>{
       if(name===v.name)
@@ -48,18 +48,18 @@ const findModule = async (user,name) => {
     })
     modules = res.modules;
   });
-
   if(module!==undefined) {
     await addToCache(cacheKey, JSON.stringify(modules));
     return module;
-  } else {
+  } 
     logger.error('Module was not found');
     throw new Error('Module was not found');
-  }
+  
 };
 
 const updateModule = async (user, moduleJSON) => {
   const updatedModules = [];
+  const cacheKey = `${user}-modules`;
   const query = { username: user };
   let updatedQuery;
   let isFound = false;
@@ -101,7 +101,7 @@ const updateModule = async (user, moduleJSON) => {
         throw new Error(err);
       }
       logger.info('Successfully updated module');
-      setExpire(user, 5);
+      setExpire(cacheKey, 0);
     });
   } else {
     logger.error('Module was not found');

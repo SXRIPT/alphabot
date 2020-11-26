@@ -17,6 +17,10 @@ const moduleSchema = mongoose.Schema({
   timeoutDuration:{
       type: Number,
       default:600,
+  },
+  parameters:{
+    type: Array,
+    default: []
   }
 });
 
