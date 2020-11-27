@@ -4,28 +4,12 @@ const Command = require('../models/Command');
 const logger = require('../config/logger');
 const { addToCache, checkCache, setExpire } = require('../middleware/cacheCommands');
 
-const buildCommand = async (commandJSON) => {
-  return new Command({
-    prefix: commandJSON.prefix,
-    command: commandJSON.command,
-    aliases: commandJSON.aliases,
-    parameters: commandJSON.parameters,
-    message: commandJSON.message,
-    response: commandJSON.response,
-    commandMedium: commandJSON.commandMedium,
-    enabled: commandJSON.enabled,
-    isDefault: commandJSON.isDefault,
-    permission: commandJSON.permission,
-    cooldown: commandJSON.cooldown,
-  });
-};
-
 const addCommand = async (user, commandJSON) => {
   const query = { username: user };
   let updateQuery;
   let goOn = true;
   let allCommands = [];
-  const newCommand = await buildCommand(commandJSON);
+  const newCommand = new Command(commandJSON);
   // logger.info(newCommand); => undefined
   await User.findOne({ username: user })
     .then((result) => {
@@ -119,7 +103,7 @@ const updateCommand = async (user, commandJSON) => {
   const query = { username: user };
   let updatedQuery;
   let isFound = false;
-  const newCommand = await buildCommand(commandJSON);
+  const newCommand = new Command(commandJSON);
   await User.findOne({ username: user })
     .then((result) => {
       result.commands.forEach((v) => {
