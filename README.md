@@ -1,7 +1,7 @@
 
 <h1 align="center">
   <br>
-  <a href="https://alphabot.wtf/"><img src="./_media/logo.png " width="450" height="350" alt="alphabot"></a>
+  <a href="https://alphabot.wtf/"><img src="./docs/_media/logo.png" width="450" height="350" alt="alphabot"></a>
 </h1>
 
 <h4 align="center">A high-quality stream bot made for everyone.</h4>
