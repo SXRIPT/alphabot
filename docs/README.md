@@ -29,7 +29,7 @@ alphabot is a service that offers a Twitch bot and a variety of tools for managi
 Example of alphabot in action:<br/>
 <img src="./_media/example.png"  alt="example">
 
-## Arichtectural Overview
+## Architectural Overview
 <img src="./_media/architecture.png"  alt="architecural overview">
 
 
