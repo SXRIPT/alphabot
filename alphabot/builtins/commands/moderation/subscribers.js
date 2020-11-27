@@ -11,7 +11,7 @@ const subscribers = async (channel) => {
 };
 
 const subscribersoff = async (channel) => {
-  client.subscribers(channel)
+  client.subscribersoff(channel)
     .then((data) => {
       logger.info(channel + ' subscribers-mode disabled ' + data);
     }).catch((err) => {

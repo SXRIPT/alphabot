@@ -11,7 +11,7 @@ const r9kbeta = async (channel) => {
 };
 
 const r9kbetaoff = async (channel) => {
-  client.r9kbeta(channel)
+  client.r9kbetaoff(channel)
     .then((data) => {
       logger.info(channel + ' r9kbeta-mode disabled ' + data);
     }).catch((err) => {
