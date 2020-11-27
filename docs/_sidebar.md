@@ -5,3 +5,5 @@
 * Built-ins
   * [Commands](/builtins/commands.md)
   * [Modules](/builtins/modules.md)
+* [Variables](/variables.md)
+* [Custom Commands](/custom-commands.md)
