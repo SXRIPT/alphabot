@@ -24,7 +24,7 @@ const addCommand = async (user, commandJSON) => {
   const query = { username: user };
   let updateQuery;
   let goOn = true;
-  const allCommands = [];
+  let allCommands = [];
   const newCommand = await buildCommand(commandJSON);
   // logger.info(newCommand); => undefined
   await User.findOne({ username: user })
@@ -39,8 +39,8 @@ const addCommand = async (user, commandJSON) => {
           if (v.command === newCommand.command) {
             goOn = false;
           }
-          allCommands.push(v);
         });
+        allCommands = result.commands;
         allCommands.push(newCommand);
         updateQuery = {
           username: result.username,
