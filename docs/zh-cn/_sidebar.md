@@ -1,0 +1,9 @@
+* [介绍](/zh-cn/)
+* 快速开始
+  * [建立](/zh-cn/setup.md)
+* [常问问题](/zh-cn/faq.md)
+* 内建
+  * [指令](/zh-cn/builtins/commands.md)
+  * [模组](/zh-cn/builtins/modules.md)
+* [变数](/zh-cn/variables.md)
+* [自定义命令](/zh-cn/custom-commands.md)

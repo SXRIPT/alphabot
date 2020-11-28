@@ -17,13 +17,14 @@
     window.$docsify = {
       name: 'alphabot',
       coverpage: true,
+      coverpage: ['/', '/zh-cn/', '/es/'],
       loadNavbar: true,
       loadSidebar: true,
       auto2top: true,
       mergeNavbar: true,
       maxLevel: 5,
       subMaxLevel: 5,
-      
+
       // complete configuration parameters
       search: {
         maxAge: 86400000, // Expiration time, the default one day
@@ -32,14 +33,22 @@
 
         // Localization
         placeholder: {
-          '/': 'Type to search'
+          '/': 'Type to search',
+          '/zh-cn/': '输入搜索',
+          '/ru/'   : 'Введите для поиска',
+          '/de-de/': 'Tippe um zu suchen',
+          '/es/'   : 'Escribe para buscar',
         },
 
         noData: 'No Results!',
 
         // Localization
         noData: {
-          '/': 'No Results'
+          '/': 'No Results',
+          '/zh-cn/': '没结果',
+          '/ru/'   : 'Нет результатов',
+          '/de-de/': 'Keine Ergebnisse',
+          '/es/'   : 'No hay resultados',
         },
 
         // Headline depth, 1 - 6
@@ -69,7 +78,6 @@
       },
 
       share: {
-        
             reddit: {
               url: "https://alphabot.wtf/",
               title: "I started using ",
@@ -95,7 +103,7 @@
               title: "I started using ",
             },
         },
-      
+
       darklightTheme: {
         defaultTheme: 'light'
       },

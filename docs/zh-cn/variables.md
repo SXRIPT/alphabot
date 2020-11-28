@@ -1,15 +1,16 @@
-# Variables
+# 变量
 
-Variables can be used for custom commands.
+变量可用于自定义命令。
 
-## Arguments
+## 参数
 
 `${1}-${n}`
 
-When creating a command, arguments can be used. What they do is basically they take the n-th argument when a user calls the message.
 
-### Examples
-For example we create a command which returns the 3rd argument of arguments a user provided. Look at this chat scenario:
+创建命令时，可以使用参数。他们所做的基本上是在用户调用消息时采用第n个参数。
+
+## 例子
+例如，我们创建了一个命令，该命令返回用户提供的参数的第三个参数。看一下这个聊天场景：
 <blockquote>
   <strong>yourModerator:</strong> !command add !argsGuide ${3}<br>
   <strong>bot:</strong> @yourModerator, successfully added command argsGuide.<br>
@@ -17,14 +18,15 @@ For example we create a command which returns the 3rd argument of arguments a us
   <strong>bot:</strong> third
 </blockquote>
 
-## Random
+## 随机
 
 `${random}`
 
-Random will return a random number between the two provided.
 
-### Examples
-For example we create a command which imitates an dice.
+Random将在提供的两者之间返回一个随机数。
+
+### 例子
+例如，我们创建了一个模仿骰子的命令。
 <blockquote>
   <strong>yourModerator:</strong> !command add !dice ${random 1 6}<br>
   <strong>bot:</strong> @yourModerator, successfully added command dice.<br>
@@ -34,14 +36,15 @@ For example we create a command which imitates an dice.
   <strong>bot:</strong> 6
 </blockquote>
 
-## Url
+## 网址
 
 `${url}`
 
-Url will return the channel url.
 
-### Examples
-For example we create a command which will return the channel url.
+网址将返回频道网址。
+
+### 例子
+例如，我们创建了一个将返回频道网址的命令。
 <blockquote>
   <strong>streamer:</strong> !command add !url ${url}<br>
   <strong>bot:</strong> @streamer, successfully added command url.<br>
@@ -49,14 +52,14 @@ For example we create a command which will return the channel url.
   <strong>bot:</strong> https://twitch.tv/streamer
 </blockquote>
 
-## Username
+## 用户名
 
 `${username}`
 
-Username will return the users login name.
+用户名将返回用户的登录名。
 
-### Examples
-For example we create a command which will return the username.
+### 例子
+例如，我们创建一个将返回用户名的命令。
 <blockquote>
   <strong>streamer:</strong> !command add !user ${username}<br>
   <strong>bot:</strong> @streamer, successfully added command user.<br>
@@ -64,14 +67,14 @@ For example we create a command which will return the username.
   <strong>bot:</strong> makamakgaga
 </blockquote>
 
-## Display Name
+## 显示名称
 
 `${display}`
 
-Display will return the display name of the user.
+Display将返回用户的显示名称。
 
-### Examples
-For example we create a command which will return the display name.
+### 例子
+例如，我们创建一个将返回显示名称的命令
 <blockquote>
   <strong>streamer:</strong> !command add !user ${username}<br>
   <strong>bot:</strong> @streamer, successfully added command user.<br>
@@ -79,14 +82,15 @@ For example we create a command which will return the display name.
   <strong>bot:</strong> makamakgaga
 </blockquote>
 
-## Viewers
+## 观看者
 
 `${viewers}`
 
-Viewers will return the current viewer count if the streamer is live. If the streamer is offline it will return "Streamer not live".
 
-### Examples
-For example we create a command which will return the viewer count.
+如果直播直播，观看者将返回当前观看者人数。如果流媒体脱机，它将返回“流媒体不直播”。
+
+### 例子
+例如，我们创建了一个将返回查看器计数的命令。
 <blockquote>
   <strong>streamer:</strong> !command add !viewers ${viewers}<br>
   <strong>bot:</strong> @streamer, successfully added command viewers.<br>
@@ -94,14 +98,15 @@ For example we create a command which will return the viewer count.
   <strong>bot:</strong> 50
 </blockquote>
 
-## Game
+## 游戏
 
 `${game}`
 
-Game will return the current category of the stream if live. If the channel is offline it will return "Streamer not live".
 
-### Examples
-For example we create a command which will return the current category of the stream.
+如果直播，游戏将返回流的当前类别。如果频道离线，则会返回“ Streamer not live”。
+
+### 例子
+例如，我们创建一个命令，该命令将返回流的当前类别。
 <blockquote>
   <strong>streamer:</strong> !command add !cat ${game}<br>
   <strong>bot:</strong> @streamer, successfully added command cat.<br>
@@ -109,14 +114,15 @@ For example we create a command which will return the current category of the st
   <strong>bot:</strong> Just Chatting
 </blockquote>
 
-## Title
+## 标题
 
 `${title}`
 
-Title will return the current title of the stream if live. If the channel is offline it will return "Streamer not live".
 
-### Examples
-For example we create a command which will return the current title of the stream.
+如果直播，标题将返回流的当前标题。如果频道离线，则会返回“ Streamer not live”。
+
+### 例子
+例如，我们创建一个命令，该命令将返回流的当前标题。
 <blockquote>
   <strong>streamer:</strong> !command add !title ${title}<br>
   <strong>bot:</strong> @streamer, successfully added command title.<br>
@@ -124,14 +130,15 @@ For example we create a command which will return the current title of the strea
   <strong>bot:</strong> New Personal Best today PogChamp
 </blockquote>
 
-## Language
+## 语言
 
 `${language}`
 
-Language will return the current language the channel is set to, this only works if the channel is live. If the channel is offline it will return "Streamer not live".
 
-### Examples
-For example we create a command which will return the current language of the stream.
+语言将返回频道设置为的当前语言，这仅在频道直播时才有效。如果频道离线，则会返回“ Streamer not live”。
+
+### 例子
+例如，我们创建一个命令，该命令将返回流的当前语言。
 <blockquote>
   <strong>streamer:</strong> !command add !language ${language}<br>
   <strong>bot:</strong> @streamer, successfully added command language.<br>
@@ -139,14 +146,15 @@ For example we create a command which will return the current language of the st
   <strong>bot:</strong> EN  
 </blockquote>
 
-## Uptime
+## 正常运行时间
 
 `${uptime}`
 
-Uptime will return the current uptime of the channel if live. If the channel is offline it will return "Streamer not live".
 
-### Examples
-For example we create a command which will return the current uptime of the stream.
+正常运行时间将返回当前频道的正常运行时间。如果频道离线，则会返回“ Streamer not live”。
+
+### 例子
+例如，我们创建一个命令，该命令将返回流的当前正常运行时间。
 <blockquote>
   <strong>streamer:</strong> !command add !uptime ${uptime}<br>
   <strong>bot:</strong> @streamer, successfully added command language.<br>
@@ -155,14 +163,14 @@ For example we create a command which will return the current uptime of the stre
 </blockquote>
 
 
-## Greater
+## 更大的
 
 `${greater}`
 
-Greater will return the greater value of two provided values.
+较大将返回两个提供的值中的较大值。
 
-### Examples
-For example we create a command which takes two arguments. Look at this chat scenario:
+### 例子
+例如，我们创建一个带有两个参数的命令。看一下这个聊天场景：
 <blockquote>
   <strong>yourModerator:</strong> !command add !greater ${1} ${2}<br>
   <strong>bot:</strong> @yourModerator, successfully added command greater.<br>
@@ -170,14 +178,14 @@ For example we create a command which takes two arguments. Look at this chat sce
   <strong>bot:</strong> 5400
 </blockquote>
 
-## Smaller
+## 减
 
 `${smaller}`
 
-Smaller will return the smaller value of two provided values.
+少将返回两个提供的值中的较小值。
 
-### Examples
-For example we create a command which takes two arguments. Look at this chat scenario:
+### 例子
+例如，我们创建一个带有两个参数的命令。看一下这个聊天场景：
 <blockquote>
   <strong>yourModerator:</strong> !command add !smaller ${1} ${2}<br>
   <strong>bot:</strong> @yourModerator, successfully added command smaller.<br>
@@ -185,14 +193,14 @@ For example we create a command which takes two arguments. Look at this chat sce
   <strong>bot:</strong> 299
 </blockquote>
 
-## Equal
+## 等于
 
 `${equal}`
 
-Equal will return true or false depending if the two provided values match.
+等于将返回true或false，这取决于提供的两个值是否匹配。
 
-### Examples
-For example we create a command which takes two arguments. Look at this chat scenario:
+### 例子
+例如，我们创建一个带有两个参数的命令。看一下这个聊天场景：
 <blockquote>
   <strong>yourModerator:</strong> !command add !equal ${1} ${2}<br>
   <strong>bot:</strong> @yourModerator, successfully added command equal.<br>
