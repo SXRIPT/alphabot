@@ -51,7 +51,7 @@ When you are done delete the public and private key from the .ssh directory.
 
 ## Disable SSH login as root
 
-To disable ssh login as root uncomment the following line PermitRootLogin and set it to PermitRootLogin no. To search faster in vim you can use '/PermitRootLogin'. When you are done safe the changes and now you will have to reload ss
+To disable ssh login as root uncomment the following line PermitRootLogin and set it to PermitRootLogin no. To search faster in vim you can use '/PermitRootLogin'. When you are done safe the changes and now you will have to reload.
 
 ```
 vim /etc/ssh/sshd_config

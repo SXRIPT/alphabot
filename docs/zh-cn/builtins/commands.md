@@ -1,57 +1,59 @@
-## Fun Commands
-### Vanish
+## 有趣的命令
+### 消失
 
 `!vanish`
 
-!> Default permission is **EVERYONE**
+!> 默认权限为**所有人**
 
-#### Parameters
+#### 参数
 
-- No parameters required for this command
+- 此命令不需要任何参数
 
-#### Examples
+#### 例子
 
 <blockquote>
   <strong>funnyDude:</strong> !vanish<br>
-  <strong>twitch:</strong> bot timed out funnyDude for 1 second. Reason: VANISH.
+  <strong>twitch:</strong> bot timed out funnyDude for 1 second. 原因: VANISH.
 </blockquote>
 
-### Get Channel Commands
+### 获取频道命令
 
 `!commands`
 
-!> Default permission is **EVERYONE**
 
-#### Parameters
+!> 默认权限为**所有人**
 
-- No parameters required for this command
+#### 参数
 
-#### Examples
+- 此命令不需要任何参数
+
+#### 例子
 
 <blockquote>
   <strong>interestedViewer:</strong> !commands<br>
   <strong>bot:</strong> interestedViewer | http://alphabot.wtf/streamerName/commands.
 </blockquote>
 
-## Moderation Commands
-### Ban
+## 审核命令
+### 禁止
 
-`![un]ban @<username> (<reason>)`
+`![un]ban @<用户名> (<原因>)`
 
-!> Default permission is **MODERATOR**
 
-#### Parameters
+!> 默认权限为**MODERATOR**
 
-- `username`
-  - *required* - must be a valid twitch username
-- `reason`
-  - *optional string* - can be used to add a reason for the ban
-  - *default value:* empty string
+#### 参数
 
-#### Examples
+-`用户名`
+  -*必填* - 必须是有效的抽搐用户名
+-`原因`
+  -*可选字符串* - 可用于添加禁令的原因
+  -*默认值：* 空字符串
+
+#### 例子
 
 <blockquote>
-  <strong>baduser:</strong> F**k you<br>
+  <strong>baduser:</strong> F**k you <br>
   <strong>yourModerator:</strong> !ban @baduser cursing<br>
   <strong>bot:</strong> @baduser, has been banned.
 </blockquote>
@@ -64,21 +66,21 @@
   <strong>bot:</strong> @coolGuy, has been unbanned.
 </blockquote>
 
-### Timeout
+### 超时
 
-`!timeout @<username> (<duration>)`
+`!timeout @<用户名> (<duration>)`
 
-!> Default permission is **MODERATOR**
+!> 默认权限为**MODERATOR**
 
-#### Parameters
+#### 参数
 
-- `username`
-  - *required* - must be a valid twitch username
-- `duration`
-  - *optional number* - Seconds user should be timedout
-  - *default value:* 300
+-`用户名`
+  -*必填* - 必须是有效的抽搐用户名
+-`持续时间`
+  -*可选号码* - 秒用户应超时
+  -*默认值：* 300
 
-#### Examples
+#### 例子
 
 <blockquote>
   <strong>annoyinggUser:</strong> Can you play another game? This is so boring ResidentSleeper<br>
@@ -86,53 +88,53 @@
   <strong>twitch:</strong> bot timed out annoyinggUser for 400 seconds.
 </blockquote>
 
-### Clear
+### 清除
 
 `!clear`
 
-!> Default permission is **MODERATOR**
+!> 默认权限为**MODERATOR**
 
-#### Parameters
+#### 参数
 
-- No parameters required for this command
+- 此命令不需要任何参数
 
-#### Example
+#### 示例
 
 <blockquote>
   <strong>yourModerator: </strong>!clear<br>
   <strong>twitch: </strong> bot cleared chat for this room.
 </blockquote>
 
-### Commercial
+### 商业
 
 `!commercial (<duration>)`
 
-!> Default permission is **MODERATOR**
+!> 默认权限为**MODERATOR**
 
-#### Parameters
+#### 参数
 
-- `duration`
-  - *one of these numbers 30, 60, 90, 120, 150, 180* - to set the duration of the commercial break
-  - *default value:* 30
+-`持续时间`
+  -* 30、60、90、120、150、180中的一个数字* - 设置广告时段的持续时间
+  -*默认值：* 30
 
-#### Example
+#### 示例
 
 <blockquote>
   <strong>yourModerator:</strong> !commercial 180<br>
   <strong>twitch:</strong> bot running ad for x seconds.
 </blockquote>
 
-### Emoteonly
+### 仅表情
 
 `!emoteonly[off]`
 
-!> Default permission is **MODERATOR**
+!> 默认权限为**MODERATOR**
 
-#### Parameters
+####参数
 
-- No parameters required for this command
+- 此命令不需要任何参数
 
-#### Examples
+#### 例子
 
 <blockquote>
   <strong>yourModerator:</strong> !emoteonly<br>
@@ -144,21 +146,19 @@
   <strong>twitch:</strong> bot disabled emote-only for this room.
 </blockquote>
 
-### Followersonly
+### 仅关注者
 
 `!followersonly[off] (<duration>)`
 
-!> Default permission is **MODERATOR**
+!> 默认权限为**MODERATOR**
 
-#### Parameters
+#### 参数
 
-- `duration`
-  - *optional number* - Number of minutes a user has to be followed to write in Chat
-  - *default value:* 30
+-`持续时间`
+  -*可选号码* - 在聊天中书写时必须遵循的分钟数
+  -*默认值：* 30
 
-
-#### Examples
-
+#### 例子
 <blockquote>
   <strong>yourModerator:</strong> !followersonly 40<br>
   <strong>twitch:</strong> bot enabled 40 minutes followers-only mode for this room.
@@ -169,19 +169,19 @@
   <strong>twitch:</strong> bot disabled followers-only mode for this room.
 </blockquote>
 
-### Host
+### 主办
 
 `![un]host @<channel>`
 
-!> Default permission is **MODERATOR**
 
-#### Parameters
+!> 默认权限为**MODERATOR**
 
-- `channel`
-  - *required* - Valid twitch username name
+#### 参数
 
-#### Examples
+-`频道`
+  -*必填* - 有效的抽搐用户名名称
 
+#### 例子
 <blockquote>
   <strong>yourModerator:</strong> !host scriptx<br>
   <strong>twitch:</strong> streamer now hosting scriptx.
@@ -192,19 +192,18 @@
   <strong>twitch:</strong> streamer stopped hosting scriptx.
 </blockquote>
 
-### Mod
+### 模
 
-`![un]mod @<username>`
+`![un]mod @<用户名>`
 
-!> Default permission is **SUPERMODERATOR**
+!> 默认权限为**SUPERMODERATOR**
 
-#### Parameters
+#### 参数
 
-- `username`
-  - *required* - Valid twitch username name
+-`用户名`
+  -*必填* - 有效的抽搐用户名名称
 
-#### Examples
-
+#### 例子
 <blockquote>
   <strong>yourModerator:</strong> !mod scriptx<br>
   <strong>twitch:</strong> bot granted moderator privileges to scriptx.
@@ -215,19 +214,18 @@
   <strong>twitch:</strong> bot removed scriptx as a moderator of this channel.
 </blockquote>
 
-### Vip
+### 贵宾
 
-`![un]vip @<username>`
+`![un]vip @<用户名>`
 
-!> Default permission is **SUPERMODERATOR**
+!> 默认权限为**SUPERMODERATOR**
 
-#### Parameters
+#### 参数
 
-- `username`
-  - *required* - Valid twitch username name
+-`用户名`
+  -*必填* - 有效的抽搐用户名名称
 
-#### Examples
-
+#### 例子
 <blockquote>
   <strong>yourModerator:</strong> !vip scriptx<br>
   <strong>twitch:</strong> bot granted vip privileges to scriptx.
@@ -242,14 +240,13 @@
 
 `!r9kbeta[off]`
 
-!> Default permission is **MODERATOR**
+!> 默认权限为**MODERATOR**
 
-#### Parameters
+#### 参数
 
-- No parameters required for this command
+-此命令不需要任何参数
 
-#### Examples
-
+#### 例子
 <blockquote>
   <strong>yourModerator:</strong> !r9kbeta<br>
   <strong>twitch:</strong> bot enabled unique-chat mode for this room.
@@ -260,20 +257,19 @@
   <strong>twitch:</strong> bot disabled unique-chat mode for this room.
 </blockquote>
 
-### Slow
+### 慢速模式
 
 `!slow[off]`
 
-!> Default permission is **MODERATOR**
 
-#### Parameters
+!> 默认权限为**MODERATOR**
 
-- `duration`
-  - *optional number* - Number of seconds a user has to wait until sending a new message.
-  - *default value:* 30
+#### 参数
 
-#### Examples
-
+-`持续时间`
+  -*可选号码* - 用户必须等待发送新消息的秒数。
+  -*默认值：* 30
+#### 例子
 <blockquote>
   <strong>yourModerator:</strong> !slow 40<br>
   <strong>twitch:</strong> bot enabled 40-second slow mode for this room.
@@ -284,18 +280,17 @@
   <strong>twitch:</strong> bot disabled slow mode for this room.
 </blockquote>
 
-### Subscribers
+### 仅限订阅者模式
 
 `!subscribers[off]`
 
-!> Default permission is **MODERATOR**
+!> 默认权限为**MODERATOR**
 
-#### Parameters
+#### 参数
 
-- No parameters required for this command
+- 此命令不需要任何参数
 
-#### Examples
-
+#### 例子
 <blockquote>
   <strong>yourModerator:</strong> !subscribers<br>
   <strong>twitch:</strong> bot enabled subscribers-only mode for this room.
@@ -306,21 +301,21 @@
   <strong>twitch:</strong> bot disabled subscribers-only mode for this room.
 </blockquote>
 
-### Banphrase
+### 班夫短语
 
-`!banphrase [add|remove] <banphrase>`
+`!banphrase [添加|删除] <班夫短语>`
 
-!> Default permission is **MODERATOR**
 
-#### Parameters
+!> 默认权限为**MODERATOR**
 
-- `add or remove`
-  - *required* - Option to either add or remove a banphrase
-- `banphrase`
-  - *required* - The banphrase to be added or removed
+#### 参数
+
+-`添加或删除`
+  -*必填* - 选择添加或删除禁令
+-`班夫布雷`
+  -*必填* - 要添加或删除的禁止用语
 
 #### Examples
-
 <blockquote>
   <strong>yourModerator:</strong> !banphrase add you are not cool<br>
   <strong>goatViewer:</strong> Streamer you are not cool<br>
