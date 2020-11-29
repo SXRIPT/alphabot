@@ -107,7 +107,7 @@ const updateCommand = async (user, commandJSON) => {
   await User.findOne({ username: user })
     .then((result) => {
       result.commands.forEach((v) => {
-        if (v.command === commandJSON.command) {
+        if (v.id === commandJSON['_id']) {
           updatedCommands.push(newCommand);
           isFound = true;
         } else {

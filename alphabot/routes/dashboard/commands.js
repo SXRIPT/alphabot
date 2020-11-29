@@ -14,7 +14,9 @@ router.post('/add', async (req, res) => {
   }
 
   try {
-    await addCommand(req.params.channel, req.body)
+    logger.info(`Adding command: ${JSON.stringify(req.body)}`)
+    await addCommand(channel, req.body.command)
+    return res.status(200).json({status:200, message:'Command has been added'})
   } catch (e) {
     logger.error("Something went wrong! " + e);
     return res.status(500).json({status: 500, message: 'Something went wrong!'});
@@ -28,7 +30,9 @@ router.put('/edit', async (req, res) => {
   }
 
   try {
-    await updateCommand(req.params.channel, req.body)
+    logger.info(`Editing command: ${JSON.stringify(req.body)}`)
+    await updateCommand(channel, req.body.command)
+    return res.status(200).json({status:200, message:'Command has been edited'})
   } catch (e) {
     logger.error("Something went wrong! " + e);
     return res.status(500).json({status: 500, message: 'Something went wrong!'});
@@ -42,7 +46,9 @@ router.delete('/delete', async (req, res) => {
   }
 
   try {
-    await deleteCommand(req.params.channel, req.body)
+    logger.info(`Deleting command: ${JSON.stringify(req.body)}`)
+    await deleteCommand(channel, req.body.command)
+    return res.status(200).json({status:200, message:'Command has been deleted'})
   } catch (e) {
     logger.error("Something went wrong! " + e);
     return res.status(500).json({status: 500, message: 'Something went wrong!'});
