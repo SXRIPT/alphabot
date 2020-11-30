@@ -7,6 +7,7 @@ const isAuthorized = require('../../helpers/isAuthorized');
 const logger = require('../../config/logger');
 const checkMessage = require('../checkMessage');
 const {responseParse} = require('../response/responseParser');
+const {checkCommandDuration} = require('../../helpers/commandTiming');
 
 const DEFAULT_MODERATION_LEVEL = 'moderator';
 
@@ -43,8 +44,10 @@ client.on("chat", async (channel, userstate, message, self) => {
   logger.info("PERMISSIONS: " + command.permission);
   logger.info("BADGES " + userstate.badges);
 
+  if(!command.enabled) return;
   const hasPermission = await isAuthorized(channel, userstate.badges, command.permission);
-  if(!hasPermission) return;
+  const commandCanBeUsed = await checkCommandDuration(command, channel, userstate.username);
+  if(!hasPermission && !commandCanBeUsed) return;
   logger.info(userstate.username + " can execute command: " + command.command + " " + hasPermission);
 
   const mappedArgs = {channel: {name: channel}, display: userstate['display-name'], username: userstate.username}
