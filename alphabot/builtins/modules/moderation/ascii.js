@@ -5,7 +5,7 @@ const MODULE = 'ascii';
 
 const ascii = async (channel, message, modules, username) => {
   const filteredModule = await filterModules(modules, MODULE);
-  const hasNonAscii = [...message].some(char => char.charCodeAt(0) > 127)
+  const hasNonAscii = [...message].some(char => char.charCodeAt(0) > 255)
   if(hasNonAscii) {
     await executePenalty(channel, username, filteredModule.penalty, filteredModule.timeoutDuration, MODULE);
     return true;
