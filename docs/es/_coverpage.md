@@ -8,4 +8,4 @@
 - Simple y ligero
 
 [Sitio web](https://alphabot.wtf/)
-[Empezar](#team)
+[Empezar](#Equipo)
