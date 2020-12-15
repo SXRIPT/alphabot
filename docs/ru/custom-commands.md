@@ -1,22 +1,22 @@
-# Custom Commands
+# Пользовательские команды
 
-## Add a new Command
+## Добавить новую команду
 
 `!command add <prefix><command_name> <response>`
 
-!> Default permission is **MODERATOR**
+!> Разрешение по умолчанию - **МОДЕРАТОР**
 
-### Parameters
+### Параметры
 
-- `prefix`
-  - *required* - can be any special character
-- `command_name`
-  - *required* - the name for your command
-- `response`
-  - *required* - the response the bot should give when triggerd.
+- `префикс`
+   - *обязательно* - может быть любым специальным символом
+- `имя_команды`
+   - *обязательно* - имя вашей команды
+- `ответ`
+   - *обязательно* - ответ, который должен дать бот при срабатывании.
 
 
-### Examples
+### Примеры
 
 <blockquote>
   <strong>yourModerator:</strong> !command add !no yes<br>
@@ -33,21 +33,21 @@
   <strong>bot:</strong> @user150 rolled a 4
 </blockquote>
 
-## Remove a Command
+## Удалить команду
 
 `!command remove <prefix><command_name>`
 
-!> Default permission is **MODERATOR**
+!> Разрешение по умолчанию - **МОДЕРАТОР**
 
-### Parameters
+### Параметры
 
-- `prefix`
-  - *required* - the prefix of the command to be removed
-- `command_name`
-  - *required* - the name of the command to be removed
+- `префикс`
+   - *обязательно* - префикс удаляемой команды
+- `имя_команды`
+   - *обязательно* - имя удаляемой команды
 
 
-### Examples
+### Примеры
 
 <blockquote>
   <strong>yourModerator:</strong> !command remove !no yes<br>
@@ -56,23 +56,23 @@
   <strong>user1337:</strong> nothing happend :c<br>
 </blockquote>
 
-## Update a Command
+## Обновить команду
 
 `!command update <prefix><command_name> <response>`
 
-!> Default permission is **MODERATOR**
+!> Разрешение по умолчанию - **МОДЕРАТОР**
 
-### Parameters
+### Параметры
 
-- `prefix`
-  - *required* - can be any special character
-- `command_name`
-  - *required* - the name for your command
-- `response`
-  - *required* - the response the bot should give when triggerd.
+- `префикс`
+   - *обязательно* - может быть любым специальным символом
+- `имя_команды`
+   - *обязательно* - имя вашей команды
+- `ответ`
+   - *обязательно* - ответ, который должен дать бот при срабатывании.
 
 
-### Examples
+### Примеры
 
 <blockquote>
   <strong>yourModerator:</strong> !command add !hey gello<br>
@@ -83,21 +83,21 @@
   <strong>bot:</strong> hello<br>
 </blockquote>
 
-## Show a Command
+## Показать команду
 
 `!command show <prefix><command_name>`
 
-!> Default permission is **MODERATOR**
+!> Разрешение по умолчанию - **МОДЕРАТОР**
 
-### Parameters
+### Параметры
 
-- `prefix`
-  - *required* - can be any special character
-- `command_name`
-  - *required* - the name for your command
+- `префикс`
+   - *обязательно* - может быть любым специальным символом
+- `имя_команды`
+   - *обязательно* - имя вашей команды
 
 
-### Examples
+### Примеры
 
 <blockquote>
   <strong>yourModerator:</strong> !command add !dice ${username}, rolled a ${random 1 10}<br>

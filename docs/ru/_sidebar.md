@@ -1,9 +1,9 @@
-* [Introduction](/)
-* Quick Start
-  * [Setup](/setup.md)
-* [FAQ](/faq.md)
-* Built-ins
-  * [Commands](/builtins/commands.md)
-  * [Modules](/builtins/modules.md)
-* [Variables](/variables.md)
-* [Custom Commands](/custom-commands.md)
+* [Введение](/ru/)
+* Быстрый старт
+  * [Настроить](/ru/setup.md)
+* [часто задаваемые вопросы](/ru/faq.md)
+* Встроенные
+  * [Команды](/ru/builtins/commands.md)
+  * [Модули](/ru/builtins/modules.md)
+* [Переменные](/ru/variables.md)
+* [Пользовательские команды](/ru/custom-commands.md)

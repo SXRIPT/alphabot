@@ -1,37 +1,37 @@
-# **FAQ**
+# **ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ**
 <br/>
 
-**Question:** How do I get alphabot?
+**Вопрос:** Как получить alphabot?
 
-**Answer:** Head over to the <a href="https://alphabot.wtf/">alphabot website</a> and download the latest version!
-
-***
-**Question:** What if I have a question or need help?
-
-**Answer:** Please send us <a href= "mailto:filip.adamovic@studierende.htl-donaustadt.at">email</a> or send us a tweet. We are more than happy to help.
+**Ответ:** Перейдите на <a href="https://alphabot.wtf/"> веб-сайт alphabot </a> и загрузите последнюю версию!
 
 ***
+**Вопрос:** Что делать, если у меня есть вопрос или мне нужна помощь?
 
-**Question:** I found a bug, where can I report it?
-
-**Answer:** We would be happy if you could <a href= "mailto:filip.adamovic@studierende.htl-donaustadt.at">report</a> here. We'll reply as soon as we can.
+**Ответ:** Отправьте нам <a href= "mailto:filip.adamovic@studierende.htl-donaustadt.at"> электронную почту </a> или напишите нам в твиттере. Мы более чем рады помочь.
 
 ***
 
-**Question:** I have a new feature idea, where do I share it?
+**Вопрос:** Я обнаружил ошибку, где я могу сообщить о ней?
 
-**Answer:** Please send me a <a href= "mailto:filip.adamovic@studierende.htl-donaustadt.at">email</a> and I'll look at it!
-
-***
-**Question:** Does the bot support more than one channel?
-
-**Answer:** Yes, alphabot supports **multi** channel usage, which means one bot instance = multiple channels
+**Ответ:** Мы были бы рады, если бы вы могли <a href= "mailto:filip.adamovic@studierende.htl-donaustadt.at"> сообщить </a> здесь. Мы ответим, как только сможем.
 
 ***
 
-**Question:** Why is the bot not sending whisper messages?
+**Вопрос:** У меня есть идея новой функции, где мне поделиться?
 
-**Answer:** Please read https://discuss.dev.twitch.tv/t/have-a-chat-whisper-bot-let-us-know/10651 and register your bot in application form. To get your bot user_id use curl command below.
+**Ответ:** Отправьте мне <a href= "mailto:filip.adamovic@studierende.htl-donaustadt.at"> письмо </a>, и я его посмотрю!
+
+***
+**Вопрос:** Поддерживает ли бот более одного канала?
+
+**Ответ:** Да, alphabot поддерживает ** использование нескольких ** каналов, что означает, что один экземпляр бота = несколько каналов.
+
+***
+
+**Вопрос:** Почему бот не отправляет сообщения шепотом?
+
+**Ответ:** Прочтите https://discuss.dev.twitch.tv/t/have-a-chat-whisper-bot-let-us-know/10651 и зарегистрируйте своего бота в форме заявки. Чтобы получить user_id бота, используйте команду curl ниже.
 
     curl -X GET 'https://api.twitch.tv/helix/users?login=<botusername>' \
         -H 'Authorization: Bearer <Bearer Token>' \

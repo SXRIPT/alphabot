@@ -1,54 +1,54 @@
-## Fun Commands
-### Vanish
+## Веселые команды
+### Исчезнуть
 
 `!vanish`
 
-!> Default permission is **EVERYONE**
+!> Разрешение по умолчанию - **ВСЕ**
 
-#### Parameters
+#### Параметры
 
-- No parameters required for this command
+- Для этой команды не требуются параметры
 
-#### Examples
+#### Примеры
 
 <blockquote>
   <strong>funnyDude:</strong> !vanish<br>
   <strong>twitch:</strong> bot timed out funnyDude for 1 second. Reason: VANISH.
 </blockquote>
 
-### Get Channel Commands
+### Получить команды канала
 
 `!commands`
 
-!> Default permission is **EVERYONE**
+!> Разрешение по умолчанию - **ВСЕ**
 
-#### Parameters
+#### Параметры
 
-- No parameters required for this command
+- Для этой команды не требуются параметры
 
-#### Examples
+#### Примеры
 
 <blockquote>
   <strong>interestedViewer:</strong> !commands<br>
   <strong>bot:</strong> interestedViewer | http://alphabot.wtf/streamerName/commands.
 </blockquote>
 
-## Moderation Commands
-### Ban
+## Команды модерации
+### Запрет
 
 `![un]ban @<username> (<reason>)`
 
-!> Default permission is **MODERATOR**
+!> Разрешение по умолчанию - **МОДЕРАТОР**
 
-#### Parameters
+#### Параметры
 
-- `username`
-  - *required* - must be a valid twitch username
-- `reason`
-  - *optional string* - can be used to add a reason for the ban
-  - *default value:* empty string
+- `имя пользователя`
+   - *обязательно* - должно быть действующее имя пользователя twitch
+- `причина`
+   - *необязательная строка* - можно использовать для добавления причины бана
+   - *значение по умолчанию:* пустая строка
 
-#### Examples
+#### Примеры
 
 <blockquote>
   <strong>baduser:</strong> F**k you<br>
@@ -64,21 +64,21 @@
   <strong>bot:</strong> @coolGuy, has been unbanned.
 </blockquote>
 
-### Timeout
+### Тайм-аут
 
 `!timeout @<username> (<duration>)`
 
-!> Default permission is **MODERATOR**
+!> Разрешение по умолчанию - **МОДЕРАТОР**
 
-#### Parameters
+#### Параметры
 
-- `username`
-  - *required* - must be a valid twitch username
-- `duration`
-  - *optional number* - Seconds user should be timedout
-  - *default value:* 300
+- `имя пользователя`
+   - *обязательно* - должно быть действующее имя пользователя twitch
+- `продолжительность`
+   - *необязательное число* - время ожидания секунд у пользователя должно быть истекло
+   - *значение по умолчанию:* 300
 
-#### Examples
+#### Примеры
 
 <blockquote>
   <strong>annoyinggUser:</strong> Can you play another game? This is so boring ResidentSleeper<br>
@@ -86,36 +86,36 @@
   <strong>twitch:</strong> bot timed out annoyinggUser for 400 seconds.
 </blockquote>
 
-### Clear
+### Очистить
 
 `!clear`
 
-!> Default permission is **MODERATOR**
+!> Разрешение по умолчанию - **МОДЕРАТОР**
 
-#### Parameters
+#### Параметры
 
-- No parameters required for this command
+- Для этой команды не требуются параметры
 
-#### Example
+#### Пример
 
 <blockquote>
   <strong>yourModerator: </strong>!clear<br>
   <strong>twitch: </strong> bot cleared chat for this room.
 </blockquote>
 
-### Commercial
+### Коммерческий
 
 `!commercial (<duration>)`
 
-!> Default permission is **MODERATOR**
+!> Разрешение по умолчанию - **МОДЕРАТОР**
 
-#### Parameters
+#### Параметры
 
-- `duration`
-  - *one of these numbers 30, 60, 90, 120, 150, 180* - to set the duration of the commercial break
-  - *default value:* 30
+- `продолжительность`
+   - *одно из этих чисел 30, 60, 90, 120, 150, 180* - для установки продолжительности рекламной паузы
+   - *значение по умолчанию:* 30
 
-#### Example
+#### Пример
 
 <blockquote>
   <strong>yourModerator:</strong> !commercial 180<br>
@@ -126,13 +126,13 @@
 
 `!emoteonly[off]`
 
-!> Default permission is **MODERATOR**
+!> Разрешение по умолчанию - **МОДЕРАТОР**
 
-#### Parameters
+#### Параметры
 
-- No parameters required for this command
+- Для этой команды не требуются параметры
 
-#### Examples
+#### Примеры
 
 <blockquote>
   <strong>yourModerator:</strong> !emoteonly<br>
@@ -144,20 +144,20 @@
   <strong>twitch:</strong> bot disabled emote-only for this room.
 </blockquote>
 
-### Followersonly
+### Только для подписчиков
 
 `!followersonly[off] (<duration>)`
 
-!> Default permission is **MODERATOR**
+!> Разрешение по умолчанию - **МОДЕРАТОР**
 
-#### Parameters
+#### Параметры
 
-- `duration`
-  - *optional number* - Number of minutes a user has to be followed to write in Chat
-  - *default value:* 30
+- `продолжительность`
+   - *необязательное число* - количество минут, в течение которых пользователь должен писать в чате
+   - *значение по умолчанию:* 30
 
 
-#### Examples
+#### Примеры
 
 <blockquote>
   <strong>yourModerator:</strong> !followersonly 40<br>
@@ -169,18 +169,18 @@
   <strong>twitch:</strong> bot disabled followers-only mode for this room.
 </blockquote>
 
-### Host
+### Хост
 
 `![un]host @<channel>`
 
-!> Default permission is **MODERATOR**
+!> Разрешение по умолчанию - **МОДЕРАТОР**
 
-#### Parameters
+#### Параметры
 
-- `channel`
-  - *required* - Valid twitch username name
+- `канал`
+   - *обязательно* - Действительное имя пользователя twitch
 
-#### Examples
+#### Примеры
 
 <blockquote>
   <strong>yourModerator:</strong> !host scriptx<br>
@@ -192,18 +192,18 @@
   <strong>twitch:</strong> streamer stopped hosting scriptx.
 </blockquote>
 
-### Mod
+### Мод
 
 `![un]mod @<username>`
 
-!> Default permission is **SUPERMODERATOR**
+!> Разрешение по умолчанию - **СУПЕРМОДЕРАТОР**
 
-#### Parameters
+#### Параметры
 
-- `username`
-  - *required* - Valid twitch username name
+- `имя пользователя`
+   - *обязательно* - Действительное имя пользователя twitch
 
-#### Examples
+#### Примеры
 
 <blockquote>
   <strong>yourModerator:</strong> !mod scriptx<br>
@@ -215,18 +215,18 @@
   <strong>twitch:</strong> bot removed scriptx as a moderator of this channel.
 </blockquote>
 
-### Vip
+### VIP
 
 `![un]vip @<username>`
 
-!> Default permission is **SUPERMODERATOR**
+!> Разрешение по умолчанию - **СУПЕРМОДЕРАТОР**
 
-#### Parameters
+#### Параметры
 
-- `username`
-  - *required* - Valid twitch username name
+- `имя пользователя`
+   - *обязательно* - Действительное имя пользователя twitch
 
-#### Examples
+#### Примеры
 
 <blockquote>
   <strong>yourModerator:</strong> !vip scriptx<br>
@@ -242,13 +242,13 @@
 
 `!r9kbeta[off]`
 
-!> Default permission is **MODERATOR**
+!> Разрешение по умолчанию - **МОДЕРАТОР**
 
-#### Parameters
+#### Параметры
 
-- No parameters required for this command
+- Для этой команды не требуются параметры
 
-#### Examples
+#### Примеры
 
 <blockquote>
   <strong>yourModerator:</strong> !r9kbeta<br>
@@ -260,19 +260,19 @@
   <strong>twitch:</strong> bot disabled unique-chat mode for this room.
 </blockquote>
 
-### Slow
+### Медленный
 
 `!slow[off]`
 
-!> Default permission is **MODERATOR**
+!> Разрешение по умолчанию - **МОДЕРАТОР**
 
-#### Parameters
+#### Параметры
 
-- `duration`
-  - *optional number* - Number of seconds a user has to wait until sending a new message.
-  - *default value:* 30
+- `продолжительность`
+   - *необязательное число* - количество секунд, в течение которых пользователь должен ждать отправки нового сообщения.
+   - *значение по умолчанию:* 30
 
-#### Examples
+#### Примеры
 
 <blockquote>
   <strong>yourModerator:</strong> !slow 40<br>
@@ -284,17 +284,17 @@
   <strong>twitch:</strong> bot disabled slow mode for this room.
 </blockquote>
 
-### Subscribers
+### Подписчики
 
 `!subscribers[off]`
 
-!> Default permission is **MODERATOR**
+!> Разрешение по умолчанию - **МОДЕРАТОР**
 
-#### Parameters
+#### Параметры
 
-- No parameters required for this command
+- Для этой команды не требуются параметры
 
-#### Examples
+#### Примеры
 
 <blockquote>
   <strong>yourModerator:</strong> !subscribers<br>
@@ -306,20 +306,20 @@
   <strong>twitch:</strong> bot disabled subscribers-only mode for this room.
 </blockquote>
 
-### Banphrase
+### Банфраза
 
 `!banphrase [add|remove] <banphrase>`
 
-!> Default permission is **MODERATOR**
+!> Разрешение по умолчанию - **МОДЕРАТОР**
 
-#### Parameters
+#### Параметры
 
-- `add or remove`
-  - *required* - Option to either add or remove a banphrase
-- `banphrase`
-  - *required* - The banphrase to be added or removed
+- `добавить или удалить`
+   - *обязательно* - Возможность добавить или удалить банфразу
+- `банфраза`
+   - *обязательно* - банфраза, которую нужно добавить или удалить
 
-#### Examples
+#### Примеры
 
 <blockquote>
   <strong>yourModerator:</strong> !banphrase add you are not cool<br>

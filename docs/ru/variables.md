@@ -1,15 +1,15 @@
-# Variables
+# Переменные
 
-Variables can be used for custom commands.
+Переменные можно использовать для пользовательских команд.
 
-## Arguments
+## Аргументы
 
 `${1}-${n}`
 
-When creating a command, arguments can be used. What they do is basically they take the n-th argument when a user calls the message.
+При создании команды можно использовать аргументы. По сути, они принимают n-й аргумент, когда пользователь вызывает сообщение.
 
-### Examples
-For example we create a command which returns the 3rd argument of arguments a user provided. Look at this chat scenario:
+### Примеры
+Например, мы создаем команду, которая возвращает третий аргумент аргументов, предоставленных пользователем. Взгляните на этот сценарий чата:
 <blockquote>
   <strong>yourModerator:</strong> !command add !argsGuide ${3}<br>
   <strong>bot:</strong> @yourModerator, successfully added command argsGuide.<br>
@@ -17,14 +17,14 @@ For example we create a command which returns the 3rd argument of arguments a us
   <strong>bot:</strong> third
 </blockquote>
 
-## Random
+## Случайно
 
 `${random}`
 
-Random will return a random number between the two provided.
+Random вернет случайное число из двух предоставленных.
 
-### Examples
-For example we create a command which imitates an dice.
+### Примеры
+Например, мы создаем команду, имитирующую игральные кости.
 <blockquote>
   <strong>yourModerator:</strong> !command add !dice ${random 1 6}<br>
   <strong>bot:</strong> @yourModerator, successfully added command dice.<br>
@@ -34,14 +34,14 @@ For example we create a command which imitates an dice.
   <strong>bot:</strong> 6
 </blockquote>
 
-## Url
+## URL
 
 `${url}`
 
-Url will return the channel url.
+Url вернет URL-адрес канала.
 
-### Examples
-For example we create a command which will return the channel url.
+### Примеры
+Например, мы создаем команду, которая вернет URL-адрес канала.
 <blockquote>
   <strong>streamer:</strong> !command add !url ${url}<br>
   <strong>bot:</strong> @streamer, successfully added command url.<br>
@@ -49,14 +49,14 @@ For example we create a command which will return the channel url.
   <strong>bot:</strong> https://twitch.tv/streamer
 </blockquote>
 
-## Username
+## Имя пользователя
 
 `${username}`
 
-Username will return the users login name.
+Имя пользователя вернет имя пользователя для входа.
 
-### Examples
-For example we create a command which will return the username.
+### Примеры
+Например, мы создаем команду, которая вернет имя пользователя.
 <blockquote>
   <strong>streamer:</strong> !command add !user ${username}<br>
   <strong>bot:</strong> @streamer, successfully added command user.<br>
@@ -64,14 +64,14 @@ For example we create a command which will return the username.
   <strong>bot:</strong> makamakgaga
 </blockquote>
 
-## Display Name
+## Отображаемое имя
 
 `${display}`
 
-Display will return the display name of the user.
+Дисплей вернет отображаемое имя пользователя.
 
-### Examples
-For example we create a command which will return the display name.
+### Примеры
+Например, мы создаем команду, которая вернет отображаемое имя.
 <blockquote>
   <strong>streamer:</strong> !command add !user ${username}<br>
   <strong>bot:</strong> @streamer, successfully added command user.<br>
@@ -79,14 +79,14 @@ For example we create a command which will return the display name.
   <strong>bot:</strong> makamakgaga
 </blockquote>
 
-## Viewers
+## Зрители
 
 `${viewers}`
 
-Viewers will return the current viewer count if the streamer is live. If the streamer is offline it will return "Streamer not live".
+Зрители вернут текущее количество зрителей, если стример активен. Если стример не в сети, он вернет «Streamer not live».
 
-### Examples
-For example we create a command which will return the viewer count.
+### Примеры
+Например, мы создаем команду, которая вернет количество зрителей.
 <blockquote>
   <strong>streamer:</strong> !command add !viewers ${viewers}<br>
   <strong>bot:</strong> @streamer, successfully added command viewers.<br>
@@ -94,14 +94,14 @@ For example we create a command which will return the viewer count.
   <strong>bot:</strong> 50
 </blockquote>
 
-## Game
+## Игра
 
 `${game}`
 
-Game will return the current category of the stream if live. If the channel is offline it will return "Streamer not live".
+Игра вернет текущую категорию трансляции, если она транслируется. Если канал не в сети, он вернет «Streamer not live».
 
-### Examples
-For example we create a command which will return the current category of the stream.
+### Примеры
+Например, мы создаем команду, которая вернет текущую категорию потока.
 <blockquote>
   <strong>streamer:</strong> !command add !cat ${game}<br>
   <strong>bot:</strong> @streamer, successfully added command cat.<br>
@@ -109,14 +109,14 @@ For example we create a command which will return the current category of the st
   <strong>bot:</strong> Just Chatting
 </blockquote>
 
-## Title
+## Заглавие
 
 `${title}`
 
-Title will return the current title of the stream if live. If the channel is offline it will return "Streamer not live".
+Title вернет текущий заголовок трансляции, если она транслируется. Если канал не в сети, он вернет «Streamer not live».
 
-### Examples
-For example we create a command which will return the current title of the stream.
+### Примеры
+Например, мы создаем команду, которая вернет текущий заголовок потока.
 <blockquote>
   <strong>streamer:</strong> !command add !title ${title}<br>
   <strong>bot:</strong> @streamer, successfully added command title.<br>
@@ -124,14 +124,14 @@ For example we create a command which will return the current title of the strea
   <strong>bot:</strong> New Personal Best today PogChamp
 </blockquote>
 
-## Language
+## Язык
 
 `${language}`
 
-Language will return the current language the channel is set to, this only works if the channel is live. If the channel is offline it will return "Streamer not live".
+Язык вернет текущий язык, на котором установлен канал, это работает, только если канал активен. Если канал не в сети, он вернет «Streamer not live».
 
-### Examples
-For example we create a command which will return the current language of the stream.
+### Примеры
+Например, мы создаем команду, которая вернет текущий язык потока.
 <blockquote>
   <strong>streamer:</strong> !command add !language ${language}<br>
   <strong>bot:</strong> @streamer, successfully added command language.<br>
@@ -139,14 +139,14 @@ For example we create a command which will return the current language of the st
   <strong>bot:</strong> EN  
 </blockquote>
 
-## Uptime
+## Время работы
 
 `${uptime}`
 
-Uptime will return the current uptime of the channel if live. If the channel is offline it will return "Streamer not live".
+Uptime вернет текущее время работы канала, если он работает. Если канал не в сети, он вернет «Streamer not live».
 
-### Examples
-For example we create a command which will return the current uptime of the stream.
+### Примеры
+Например, мы создаем команду, которая вернет текущее время безотказной работы потока.
 <blockquote>
   <strong>streamer:</strong> !command add !uptime ${uptime}<br>
   <strong>bot:</strong> @streamer, successfully added command language.<br>
@@ -155,14 +155,14 @@ For example we create a command which will return the current uptime of the stre
 </blockquote>
 
 
-## Greater
+## Больше
 
 `${greater}`
 
-Greater will return the greater value of two provided values.
+Больше вернет большее из двух предоставленных значений.
 
-### Examples
-For example we create a command which takes two arguments. Look at this chat scenario:
+### Примеры
+Например, мы создаем команду, которая принимает два аргумента. Взгляните на этот сценарий чата:
 <blockquote>
   <strong>yourModerator:</strong> !command add !greater ${1} ${2}<br>
   <strong>bot:</strong> @yourModerator, successfully added command greater.<br>
@@ -170,14 +170,14 @@ For example we create a command which takes two arguments. Look at this chat sce
   <strong>bot:</strong> 5400
 </blockquote>
 
-## Smaller
+## Меньше
 
 `${smaller}`
 
-Smaller will return the smaller value of two provided values.
+Меньший вернет меньшее из двух предоставленных значений.
 
-### Examples
-For example we create a command which takes two arguments. Look at this chat scenario:
+### Примеры
+Например, мы создаем команду, которая принимает два аргумента. Взгляните на этот сценарий чата:
 <blockquote>
   <strong>yourModerator:</strong> !command add !smaller ${1} ${2}<br>
   <strong>bot:</strong> @yourModerator, successfully added command smaller.<br>
@@ -185,14 +185,14 @@ For example we create a command which takes two arguments. Look at this chat sce
   <strong>bot:</strong> 299
 </blockquote>
 
-## Equal
+## Равно
 
 `${equal}`
 
-Equal will return true or false depending if the two provided values match.
+Equal вернет true или false в зависимости от совпадения двух предоставленных значений.
 
-### Examples
-For example we create a command which takes two arguments. Look at this chat scenario:
+### Примеры
+Например, мы создаем команду, которая принимает два аргумента. Взгляните на этот сценарий чата:
 <blockquote>
   <strong>yourModerator:</strong> !command add !equal ${1} ${2}<br>
   <strong>bot:</strong> @yourModerator, successfully added command equal.<br>

@@ -1,26 +1,26 @@
-## Moderation
+## На модерации
 
 ### Ascii
 
-This module if enabled timeouts all users that send Non-ascii characters.<br>
-The default timeout duration is 600 seconds which can be changed on the <a href="https://alphabot.wtf">website</a>.
+Если этот модуль включен, таймауты для всех пользователей, отправляющих символы, отличные от ascii. <br>
+По умолчанию время ожидания составляет 600 секунд, которое можно изменить на <a href="https://alphabot.wtf"> веб-сайте </a>.
 
 
-### Banphrase
+### Банфраза
 
-This module if enabled timeouts all users that send messages that are included in the banphrases list. <br>
-The default timeout duration is 600 seconds which can be changed on the <a href="https://alphabot.wtf">website</a>.
-
-
-### Link
-
-This module if enabled timeouts all users that send links. The default timeout duration is 600 seconds which can be changed on the <a href="https://alphabot.wtf">website</a>.
+Этот модуль, если включен, таймауты для всех пользователей, отправляющих сообщения, которые включены в список банфраз. <br>
+По умолчанию время ожидания составляет 600 секунд, которое можно изменить на <a href="https://alphabot.wtf"> веб-сайте </a>.
 
 
-### Caps Spam
+### Ссылка
 
-This module if enabled timeouts all users that write messages which contain to many uppercase Letters. The default timeout duration is 600 seconds and the default uppercase percentage is 70 both can be changed on the <a href="https://alphabot.wtf">website</a>.
+В этом модуле включены таймауты всех пользователей, отправляющих ссылки. По умолчанию время ожидания составляет 600 секунд, которое можно изменить на <a href="https://alphabot.wtf"> веб-сайте </a>.
 
-### Message Length
 
-This module if enabled timeouts all users that write messages which are too long. The default timeout duration is 600 seconds and the default max message length is 60 both can be changed on the <a href="https://alphabot.wtf">website</a>.
+### Ограничивает спам
+
+Этот модуль, если включен, таймауты для всех пользователей, которые пишут сообщения, содержащие много заглавных букв. По умолчанию продолжительность тайм-аута составляет 600 секунд, а процентное значение по умолчанию - 70, и оба значения можно изменить на <a href="https://alphabot.wtf"> веб-сайте </a>.
+
+### Длина сообщения
+
+Если этот модуль включен, таймауты для всех пользователей, которые пишут слишком длинные сообщения. Продолжительность тайм-аута по умолчанию составляет 600 секунд, а максимальная длина сообщения по умолчанию - 60, оба значения можно изменить на <a href="https://alphabot.wtf"> веб-сайте </a>.
