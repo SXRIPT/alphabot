@@ -1,22 +1,22 @@
-# Custom Commands
+# Benutzerdefinierte Befehle
 
-## Add a new Command
+## Neuen Befehl hinzufügen
 
 `!command add <prefix><command_name> <response>`
 
-!> Default permission is **MODERATOR**
+!> Standardberechtigung ist **MODERATOR**
 
-### Parameters
+### Parameter
 
 - `prefix`
-  - *required* - can be any special character
+   - *erforderlich* - kann ein beliebiges Sonderzeichen sein
 - `command_name`
-  - *required* - the name for your command
+   - *erforderlich* - der Name für Ihren Befehl
 - `response`
-  - *required* - the response the bot should give when triggerd.
+   - *erforderlich* - die Antwort, die der Bot beim Auslösen geben soll.
 
 
-### Examples
+### Beispiele
 
 <blockquote>
   <strong>yourModerator:</strong> !command add !no yes<br>
@@ -33,21 +33,21 @@
   <strong>bot:</strong> @user150 rolled a 4
 </blockquote>
 
-## Remove a Command
+## Befehl entfernen
 
 `!command remove <prefix><command_name>`
 
-!> Default permission is **MODERATOR**
+!> Standardberechtigung ist **MODERATOR**
 
-### Parameters
+### Parameter
 
 - `prefix`
-  - *required* - the prefix of the command to be removed
+   - *erforderlich* - das Präfix des zu entfernenden Befehls
 - `command_name`
-  - *required* - the name of the command to be removed
+   - *erforderlich* - Der Name des zu entfernenden Befehls
 
 
-### Examples
+### Beispiele
 
 <blockquote>
   <strong>yourModerator:</strong> !command remove !no yes<br>
@@ -56,23 +56,23 @@
   <strong>user1337:</strong> nothing happend :c<br>
 </blockquote>
 
-## Update a Command
+## Befehl aktualisieren
 
 `!command update <prefix><command_name> <response>`
 
-!> Default permission is **MODERATOR**
+!> Standardberechtigung ist **MODERATOR**
 
-### Parameters
+### Parameter
 
 - `prefix`
-  - *required* - can be any special character
+   - *erforderlich* - kann ein beliebiges Sonderzeichen sein
 - `command_name`
-  - *required* - the name for your command
+   - *erforderlich* - der Name für Ihren Befehl
 - `response`
-  - *required* - the response the bot should give when triggerd.
+   - *erforderlich* - die Antwort, die der Bot beim Auslösen geben soll.
 
 
-### Examples
+### Beispiele
 
 <blockquote>
   <strong>yourModerator:</strong> !command add !hey gello<br>
@@ -83,21 +83,21 @@
   <strong>bot:</strong> hello<br>
 </blockquote>
 
-## Show a Command
+## Befehl anzeigen
 
 `!command show <prefix><command_name>`
 
-!> Default permission is **MODERATOR**
+!> Standardberechtigung ist **MODERATOR**
 
-### Parameters
+### Parameter
 
 - `prefix`
-  - *required* - can be any special character
+  - *erforderlich* - kann ein beliebiges Sonderzeichen sein
 - `command_name`
-  - *required* - the name for your command
+  - *erforderlich* - der Name für Ihren Befehl
 
 
-### Examples
+### Beispiele
 
 <blockquote>
   <strong>yourModerator:</strong> !command add !dice ${username}, rolled a ${random 1 10}<br>

@@ -1,54 +1,54 @@
-## Fun Commands
-### Vanish
+## Fun-Befehle
+### Verschwinden
 
 `!vanish`
 
-!> Default permission is **EVERYONE**
+!> Standardberechtigung ist **JEDER**
 
-#### Parameters
+#### Parameter
 
-- No parameters required for this command
+- Für diesen Befehl sind keine Parameter erforderlich
 
-#### Examples
+#### Beispiele
 
 <blockquote>
   <strong>funnyDude:</strong> !vanish<br>
   <strong>twitch:</strong> bot timed out funnyDude for 1 second. Reason: VANISH.
 </blockquote>
 
-### Get Channel Commands
+### Kanalbefehle abrufen
 
 `!commands`
 
-!> Default permission is **EVERYONE**
+!> Standardberechtigung ist **JEDER**
 
-#### Parameters
+#### Parameter
 
-- No parameters required for this command
+- Für diesen Befehl sind keine Parameter erforderlich
 
-#### Examples
+#### Beispiele
 
 <blockquote>
   <strong>interestedViewer:</strong> !commands<br>
   <strong>bot:</strong> interestedViewer | http://alphabot.wtf/streamerName/commands.
 </blockquote>
 
-## Moderation Commands
+## Moderationsbefehle
 ### Ban
 
 `![un]ban @<username> (<reason>)`
 
-!> Default permission is **MODERATOR**
+!> Standardberechtigung ist **MODERATOR**
 
-#### Parameters
+#### Parameter
 
-- `username`
-  - *required* - must be a valid twitch username
+- `Benutzername`
+   - *erforderlich* - muss ein gültiger zuckender Benutzername sein
 - `reason`
-  - *optional string* - can be used to add a reason for the ban
-  - *default value:* empty string
+   - *optionaler String* - kann verwendet werden, um einen Grund für das Verbot hinzuzufügen
+   - *Standardwert:* leere Zeichenfolge
 
-#### Examples
+#### Beispiele
 
 <blockquote>
   <strong>baduser:</strong> F**k you<br>
@@ -64,21 +64,21 @@
   <strong>bot:</strong> @coolGuy, has been unbanned.
 </blockquote>
 
-### Timeout
+### Auszeit
 
 `!timeout @<username> (<duration>)`
 
-!> Default permission is **MODERATOR**
+!> Standardberechtigung ist **MODERATOR**
 
-#### Parameters
+#### Parameter
 
 - `username`
-  - *required* - must be a valid twitch username
+  - *erforderlich* - muss ein gültiger zuckender Benutzername sein
 - `duration`
-  - *optional number* - Seconds user should be timedout
-  - *default value:* 300
+  - *optionale Nummer* - Der Benutzer sollte eine Zeitüberschreitung von Sekunden haben
+   - *Standardwert:* 300
 
-#### Examples
+#### Beispiele
 
 <blockquote>
   <strong>annoyinggUser:</strong> Can you play another game? This is so boring ResidentSleeper<br>
@@ -86,36 +86,36 @@
   <strong>twitch:</strong> bot timed out annoyinggUser for 400 seconds.
 </blockquote>
 
-### Clear
+### Klar
 
 `!clear`
 
-!> Default permission is **MODERATOR**
+!> Standardberechtigung ist **MODERATOR**
 
-#### Parameters
+#### Parameter
 
-- No parameters required for this command
+- Für diesen Befehl sind keine Parameter erforderlich
 
-#### Example
+#### Beispiel
 
 <blockquote>
   <strong>yourModerator: </strong>!clear<br>
   <strong>twitch: </strong> bot cleared chat for this room.
 </blockquote>
 
-### Commercial
+### Kommerziell
 
 `!commercial (<duration>)`
 
-!> Default permission is **MODERATOR**
+!> Standardberechtigung ist **MODERATOR**
 
-#### Parameters
+#### Parameter
 
 - `duration`
-  - *one of these numbers 30, 60, 90, 120, 150, 180* - to set the duration of the commercial break
-  - *default value:* 30
+  - *eine dieser Nummern 30, 60, 90, 120, 150, 180* - um die Dauer der Werbeunterbrechung festzulegen
+  - *Standardwert:* 30
 
-#### Example
+#### Beispiele
 
 <blockquote>
   <strong>yourModerator:</strong> !commercial 180<br>
@@ -126,13 +126,13 @@
 
 `!emoteonly[off]`
 
-!> Default permission is **MODERATOR**
+!> Standardberechtigung ist **MODERATOR**
 
-#### Parameters
+#### Parameter
 
-- No parameters required for this command
+- Für diesen Befehl sind keine Parameter erforderlich
 
-#### Examples
+#### Beispiele
 
 <blockquote>
   <strong>yourModerator:</strong> !emoteonly<br>
@@ -148,16 +148,16 @@
 
 `!followersonly[off] (<duration>)`
 
-!> Default permission is **MODERATOR**
+!> Standardberechtigung ist **MODERATOR**
 
-#### Parameters
+#### Parameter
 
 - `duration`
-  - *optional number* - Number of minutes a user has to be followed to write in Chat
-  - *default value:* 30
+  - *optionale Nummer* - Anzahl der Minuten, die ein Benutzer befolgen muss, um im Chat zu schreiben
+  - *Standardwert:* 30
 
 
-#### Examples
+#### Beispiele
 
 <blockquote>
   <strong>yourModerator:</strong> !followersonly 40<br>
@@ -173,14 +173,14 @@
 
 `![un]host @<channel>`
 
-!> Default permission is **MODERATOR**
+!> Standardberechtigung ist **MODERATOR**
 
-#### Parameters
+#### Parameter
 
 - `channel`
-  - *required* - Valid twitch username name
+  - *erforderlich* - Gültiger zuckender Benutzername
 
-#### Examples
+#### Beispiele
 
 <blockquote>
   <strong>yourModerator:</strong> !host scriptx<br>
@@ -196,14 +196,14 @@
 
 `![un]mod @<username>`
 
-!> Default permission is **SUPERMODERATOR**
+!> Standardberechtigung ist **SUPERMODERATOR**
 
 #### Parameters
 
 - `username`
-  - *required* - Valid twitch username name
+- *erforderlich* - Gültiger zuckender Benutzername
 
-#### Examples
+#### Beispiele
 
 <blockquote>
   <strong>yourModerator:</strong> !mod scriptx<br>
@@ -219,14 +219,14 @@
 
 `![un]vip @<username>`
 
-!> Default permission is **SUPERMODERATOR**
+!> Standardberechtigung ist **SUPERMODERATOR**
 
-#### Parameters
+#### Parameter
 
 - `username`
-  - *required* - Valid twitch username name
+  - *erforderlich* - Gültiger zuckender Benutzername
 
-#### Examples
+#### Beispiele
 
 <blockquote>
   <strong>yourModerator:</strong> !vip scriptx<br>
@@ -242,13 +242,13 @@
 
 `!r9kbeta[off]`
 
-!> Default permission is **MODERATOR**
+!> Standardberechtigung ist **MODERATOR**
 
-#### Parameters
+#### Parameter
 
-- No parameters required for this command
+- Für diesen Befehl sind keine Parameter erforderlich
 
-#### Examples
+#### Beispiele
 
 <blockquote>
   <strong>yourModerator:</strong> !r9kbeta<br>
@@ -264,15 +264,15 @@
 
 `!slow[off]`
 
-!> Default permission is **MODERATOR**
+!> Standardberechtigung ist **MODERATOR**
 
-#### Parameters
+#### Parameter
 
 - `duration`
-  - *optional number* - Number of seconds a user has to wait until sending a new message.
-  - *default value:* 30
+  - *optionale Nummer* - Anzahl der Sekunden, die ein Benutzer warten muss, bis eine neue Nachricht gesendet wird.
+  - *Standardwert:* 30
 
-#### Examples
+#### Beispiele
 
 <blockquote>
   <strong>yourModerator:</strong> !slow 40<br>
@@ -284,17 +284,17 @@
   <strong>twitch:</strong> bot disabled slow mode for this room.
 </blockquote>
 
-### Subscribers
+### Abonnenten/Abonnentinnen
 
 `!subscribers[off]`
 
-!> Default permission is **MODERATOR**
+!> Standardberechtigung ist **MODERATOR**
 
-#### Parameters
+#### Parameter
 
-- No parameters required for this command
+- Für diesen Befehl sind keine Parameter erforderlich
 
-#### Examples
+#### Beispiele
 
 <blockquote>
   <strong>yourModerator:</strong> !subscribers<br>
@@ -310,16 +310,15 @@
 
 `!banphrase [add|remove] <banphrase>`
 
-!> Default permission is **MODERATOR**
+!> Standardberechtigung ist **MODERATOR**
 
-#### Parameters
-
+#### Parameter
 - `add or remove`
-  - *required* - Option to either add or remove a banphrase
+  - *erforderlich* - Option zum Hinzufügen oder Entfernen einer Banphrase
 - `banphrase`
-  - *required* - The banphrase to be added or removed
+  - *erforderlich* - Die Banphrase, die hinzugefügt oder entfernt werden soll
 
-#### Examples
+#### Beispiele
 
 <blockquote>
   <strong>yourModerator:</strong> !banphrase add you are not cool<br>

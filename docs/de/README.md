@@ -4,7 +4,7 @@
   <a href="https://alphabot.wtf/"><img src="./_media/logo.png " width="450" height="350" alt="alphabot"></a>
 </h1>
 
-<h4 align="center">A high-quality stream bot made for everyone.</h4>
+<h4 align="center">Ein hochwertiger Stream-Bot für alle.</h4>
 
 <p align="center">
     <img src="https://forthebadge.com/images/badges/made-with-javascript.svg" alt="Made with JS">
@@ -23,17 +23,17 @@
   <li><a href="https://github.com/LeM4">Mario Schrolmberger</a></li>
 </ul>
 
-## What it is
-alphabot is a service that offers a Twitch bot and a variety of tools for managing, monitoring and securing your streaming experience.
+## Was es ist
+alphabot ist ein Dienst, der einen Twitch-Bot und eine Vielzahl von Tools zum Verwalten, Überwachen und Sichern Ihres Streaming-Erlebnisses bietet.
 
-Example of alphabot in action:<br/>
+Beispiel von alphabot in Aktion:<br/>
 <img src="./_media/example.png"  alt="example">
 
-## Architectural Overview
+## Architekturübersicht
 <img src="./_media/architecture.png"  alt="architecural overview">
 
 
-## Bundlephobia results
+## Bundlephobie Resultat
 
 <br/>
 

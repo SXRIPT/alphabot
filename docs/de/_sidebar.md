@@ -1,9 +1,9 @@
-* [Introduction](/)
-* Quick Start
-  * [Setup](/setup.md)
-* [FAQ](/faq.md)
+* [Einführung](/de/)
+* Schnellstart
+  * [Setup](/de/setup.md)
+* [FAQ](/de/faq.md)
 * Built-ins
-  * [Commands](/builtins/commands.md)
-  * [Modules](/builtins/modules.md)
-* [Variables](/variables.md)
-* [Custom Commands](/custom-commands.md)
+  * [Befehle](/de/builtins/commands.md)
+  * [Module](/de/builtins/modules.md)
+* [Variablen](/de/variables.md)
+* [Benutzerdefinierte Befehle](/de/custom-commands.md)

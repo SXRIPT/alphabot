@@ -2,25 +2,22 @@
 
 ### Ascii
 
-This module if enabled timeouts all users that send Non-ascii characters.<br>
-The default timeout duration is 600 seconds which can be changed on the <a href="https://alphabot.wtf">website</a>.
-
+Wenn dieses Modul aktiviert ist, treten bei allen Benutzern, die Nicht-ASCII-Zeichen senden, Zeitüberschreitungen auf. <br>
+Die Standard-Timeout-Dauer beträgt 600 Sekunden und kann auf der <a href="https://alphabot.wtf"> Website </a> geändert werden.
 
 ### Banphrase
 
-This module if enabled timeouts all users that send messages that are included in the banphrases list. <br>
-The default timeout duration is 600 seconds which can be changed on the <a href="https://alphabot.wtf">website</a>.
-
+Wenn dieses Modul aktiviert ist, treten bei allen Benutzern, die Nachrichten senden, die in der Banphrasenliste enthalten sind, Timeouts auf. <br>
+Die Standard-Timeout-Dauer beträgt 600 Sekunden und kann auf der <a href="https://alphabot.wtf"> Website </a> geändert werden.
 
 ### Link
 
-This module if enabled timeouts all users that send links. The default timeout duration is 600 seconds which can be changed on the <a href="https://alphabot.wtf">website</a>.
-
+Wenn dieses Modul aktiviert ist, treten bei allen Benutzern, die Links senden, Zeitüberschreitungen auf. Die Standard-Timeout-Dauer beträgt 600 Sekunden und kann auf der <a href="https://alphabot.wtf"> Website </a> geändert werden.
 
 ### Caps Spam
 
-This module if enabled timeouts all users that write messages which contain to many uppercase Letters. The default timeout duration is 600 seconds and the default uppercase percentage is 70 both can be changed on the <a href="https://alphabot.wtf">website</a>.
+Wenn dieses Modul aktiviert ist, treten bei allen Benutzern, die Nachrichten schreiben, die zu viele Großbuchstaben enthalten, Zeitüberschreitungen auf. Die Standard-Timeout-Dauer beträgt 600 Sekunden und der Standard-Prozentsatz für Großbuchstaben beträgt 70 Sekunden. Beide können auf der <a href="https://alphabot.wtf"> Website </a> geändert werden.
 
-### Message Length
+### Nachrichtenlänge
 
-This module if enabled timeouts all users that write messages which are too long. The default timeout duration is 600 seconds and the default max message length is 60 both can be changed on the <a href="https://alphabot.wtf">website</a>.
+Wenn dieses Modul aktiviert ist, treten bei allen Benutzern, die zu lange Nachrichten schreiben, Zeitüberschreitungen auf. Die Standardzeitüberschreitungsdauer beträgt 600 Sekunden und die maximale Standardnachrichtenlänge beträgt 60 Sekunden. Beide können auf der <a href="https://alphabot.wtf"> Website </a> geändert werden.

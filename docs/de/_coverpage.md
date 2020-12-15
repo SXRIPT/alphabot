@@ -1,11 +1,11 @@
 <img src="./_media/logo.svg" alt="alphabot"
 	title="alphabot" width="350" height="350" />
 	
-> A high-quality stream bot made for everyone
+> Ein hochwertiger Stream-Bot für alle
 
-- Easy to use
-- Best of both worlds 
-- Simple and lightweight
+- Einfach zu verwenden
+- Beste aus beiden Welten
+- Einfach und leicht
 
 [Website](https://alphabot.wtf/)
-[Get Started](#team)
+[Loslegen](#Team)

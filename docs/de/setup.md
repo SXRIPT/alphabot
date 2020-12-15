@@ -1,57 +1,57 @@
-## Prerequisites
+## Voraussetzungen
 
-- **Browsers**: only latest Chrome/Chromium stable are supported
-- **Compute Engine Instance**: We used CentOS as our distro
-    - **RAM**: Minimum 512MB, Recommended 1024MB
-    - **HDD**: Minimum 1GB
-- Twitch bot account 
-- CircleCI account
+- **Browser**: Es werden nur die neuesten Chrome / Chromium-Stables unterstützt
+- **Compute Engine Instanz**: Wir haben CentOS als unsere Distribution verwendet
+     - **RAM**: Mindestens 512 MB, empfohlen 1024 MB
+     - **HDD**: Mindestens 1 GB
+- Bot-Konto zucken
+- CircleCI-Konto
 
-!> You need **separate** account for your bot, bot **won't** work on your
-   broadcaster account
+!> Du brauchst ein **separates** Konto für deinen Bot, Bot **funktioniert nicht** auf deinem
+    Rundfunkkonto
 
 # Compute Engine Setup
 
-The first thing you want to do when you connect to your instance is to check for updates and update yum.
+Das erste, was Sie tun möchten, wenn Sie eine Verbindung zu Ihrer Instanz herstellen, ist nach Updates zu suchen und yum zu aktualisieren.
 
 ```
 yum check-update
 yum -y update
 ```
 
-## Create non-root user with sudo privileges
+## Benutzer ohne Rootberechtigung mit Sudo-Berechtigungen erstellen
 
-Now we have to do the following as root:
+Jetzt müssen wir als root Folgendes tun:
 
 ```
 adduser alphabot
 ```
 
-## Set password for user alphabot
+## Passwort für Benutzeralphabot festlegen
 
 ```
 passwd alphabot
 ```
 
-## Give sudo privileges
+## Geben Sie Sudo-Berechtigungen
 
 ```
 usermod -aG wheel alphabot
 ```
 
-## Generate ssh keys for circleci
+## Generiere SSH-Schlüssel für Circleci
 
 ```
 ssh-keygen -m pem -t rsa
 ```
 
-Now that the ssh keys are generated copy the private key to circleci
-and copy the public key to your virtual machine in google cloud.
-When you are done delete the public and private key from the .ssh directory.
+Nachdem die SSH-Schlüssel generiert wurden, kopieren Sie den privaten Schlüssel nach circleci
+und kopieren Sie den öffentlichen Schlüssel auf Ihre virtuelle Maschine in der Google Cloud.
+Wenn Sie fertig sind, löschen Sie den öffentlichen und den privaten Schlüssel aus dem .ssh-Verzeichnis.
 
-## Disable SSH login as root
+## SSH-Login als root deaktivieren
 
-To disable ssh login as root uncomment the following line PermitRootLogin and set it to PermitRootLogin no. To search faster in vim you can use '/PermitRootLogin'. When you are done safe the changes and now you will have to reload.
+Um die SSH-Anmeldung als Root zu deaktivieren, kommentieren Sie die folgende Zeile PermitRootLogin aus und setzen Sie sie auf PermitRootLogin Nr. Um in vim schneller zu suchen, können Sie '/ PermitRootLogin' verwenden. Wenn Sie mit den Änderungen fertig sind, müssen Sie sie neu laden.
 
 ```
 vim /etc/ssh/sshd_config
@@ -61,11 +61,11 @@ vim /etc/ssh/sshd_config
 systemctl reload sshd
 ```
 
-## Setup Firewall
+## Firewall einrichten
 
-If you are using Compute Engine you will not have to setup the firewall since it already is setup by google per default.
+Wenn Sie Compute Engine verwenden, müssen Sie die Firewall nicht einrichten, da sie standardmäßig bereits von Google eingerichtet wurde.
 
-## Setup Swap file
+## Setup Swap-Datei
 
 ```
 fallocate -l 4G /swapfile
@@ -75,15 +75,15 @@ swapon /swapfile
 sh -c 'echo "/swapfile none swap sw 0 0" >> /etc/fstab'
 ```
 
-## Setup docker
+## Docker einrichten
 
-first install [containerd.io](http://containerd.io/) without you will not be able to install docker.
+Installieren Sie zuerst [containerd.io](http://containerd.io/), ohne dass Sie Docker nicht installieren können.
 
 ```
 yum install -y [https://download.docker.com/linux/centos/7/x86_64/stable/Packages/containerd.io-1.2.6-3.3.el7.x86_64.rpm](https://download.docker.com/linux/centos/7/x86_64/stable/Packages/containerd.io-1.2.6-3.3.el7.x86_64.rpm)
 ```
 
-Now you can install docker and add the user alphabot to the docker group so the user will be able to execute docker commands without using sudo.
+Jetzt können Sie Docker installieren und den Benutzeralphabot zur Docker-Gruppe hinzufügen, damit der Benutzer Docker-Befehle ohne Verwendung von sudo ausführen kann.
 
 ```
 curl -fsSL [https://get.docker.com/](https://get.docker.com/) | sh
@@ -94,50 +94,50 @@ sudo systemctl enable docker
 
 ## Setup GIT
 
-First you will have to install git you can do this with the following command.
+Zuerst müssen Sie git installieren. Dies können Sie mit dem folgenden Befehl tun.
 
 ```
 yum install -y git
 ```
 
-Now we will add the username and email to git which will be used to authenticate later.
+Jetzt fügen wir den Benutzernamen und die E-Mail zu git hinzu, die später zur Authentifizierung verwendet werden.
 
 ```
 git config --global user.name <username>
 git config --global user.email <email>
 ```
 
-Now to authenticate over SSH we need to generate SSH-keys for git.
+Um sich nun über SSH zu authentifizieren, müssen wir SSH-Schlüssel für Git generieren.
 
 ```
 ssh-keygen -t rsa -b 4096 -C <email>
 ```
 
-### Adding your SSH key to the ssh-agent
+### Hinzufügen Ihres SSH-Schlüssels zum SSH-Agenten
 
-- Start the ssh-agent in the background.
+- Starten Sie den ssh-agent im Hintergrund.
 
 ```
 $ eval "$(ssh-agent -s)"
 > Agent pid 59566
 ```
 
-- Add your SSH private key to the SSH-agent. If you created your key with a different name, or if you are adding an existing key that has a different name, replace id_rsa in the command with the name of your private key file.
+- Fügen Sie dem SSH-Agenten Ihren privaten SSH-Schlüssel hinzu. Wenn Sie Ihren Schlüssel mit einem anderen Namen erstellt haben oder wenn Sie einen vorhandenen Schlüssel mit einem anderen Namen hinzufügen, ersetzen Sie id_rsa im Befehl durch den Namen Ihrer privaten Schlüsseldatei.
 
 ```
 $ ssh-add ~/.ssh/id_rsa
 ```
 
-When you followed the steps above add the public SSH key to GitHub and you should be done. You can add you SSH key on GitHub under Settings → SSH and GPG keys → New SSH key
+Wenn Sie die obigen Schritte ausgeführt haben, fügen Sie den öffentlichen SSH-Schlüssel zu GitHub hinzu, und Sie sollten fertig sein. Sie können Ihren SSH-Schlüssel auf GitHub unter Einstellungen → SSH- und GPG-Schlüssel → Neuer SSH-Schlüssel hinzufügen
 
-## Setup DNS entry
-[Google Cloud Quickstart Guide](https://cloud.google.com/dns/docs/quickstart)
+## DNS-Eintrag einrichten
+[Google Cloud-Kurzanleitung](https://cloud.google.com/dns/docs/quickstart)
 
 <br/><br/>
 
-# Deployment Script 
+# Bereitstellungsskript
 
-Create a file and insert the script below. :rocket:
+Erstellen Sie eine Datei und fügen Sie das folgende Skript ein. :rocket:
 
 ```bash
 #!/bin/bash
@@ -181,92 +181,92 @@ echo "Removing old image"
 docker rmi alphabot:old
 ```
 
-# Nginx Setup
+# Nginx-Setup
 
-### Check if SE Linux is installed
+### Überprüfen Sie, ob SE Linux installiert ist
 
-if the following command returns enforcing SE Linux is installed and you will not have to do any extra steps.
+Wenn der folgende Befehl zurückgegeben wird, wird erzwungen, dass SE Linux installiert ist, und Sie müssen keine zusätzlichen Schritte ausführen.
 
 ```
 getenforce
 ```
 
-### Set bool variables for SE Linux
+### Bool-Variablen für SE Linux setzen
 
 ```
 setsebool -P httpd_can_network_connect on
 setsebool -P httpd_enable_homedirs on
 ```
 
-### Install following
+### Installiere folgendes
 
-To be able to install nginx we will need **epel-release**
+Um nginx installieren zu können, benötigen wir **epel-release**
 
 ```
 yum install -y epel-release
 yum install -y nginx
 ```
 
-Now that we installed nginx we can start it. The second command is used to see if everything worked fine.
+Nachdem wir nginx installiert haben, können wir es starten. Der zweite Befehl wird verwendet, um festzustellen, ob alles einwandfrei funktioniert hat.
 
 ```
 systemctl start nginx
 systemctl status nginx
 ```
 
-To have nginx restart even after the system is rebooted we will have to do the following:
+Damit Nginx auch nach dem Neustart des Systems neu gestartet werden kann, müssen wir Folgendes tun:
 
 ```
 systemctl enable nginx
 ```
 
-To write our own config we will create our own nginx config file which has to be located under */etc/nginx/conf.d/alphabot.conf*
+Um unsere eigene Konfiguration zu schreiben, erstellen wir unsere eigene Nginx-Konfigurationsdatei, die sich unter */etc/nginx/conf.d/alphabot.conf* befinden muss.
 
-After we wrote our config we need to check if the config we wrote even works we can achieve this with an easy nginx comman
+Nachdem wir unsere Konfiguration geschrieben haben, müssen wir überprüfen, ob die von uns geschriebene Konfiguration überhaupt funktioniert. Dies können wir mit einem einfachen Nginx-Komman erreichen
 
 ```
 nginx -t
 ```
 
-## Setup HTTPS
+## HTTPS einrichten
 
-There is a great tool for creating certificates which we will use now.
+Es gibt ein großartiges Tool zum Erstellen von Zertifikaten, das wir jetzt verwenden werden.
 
 ```
 yum -y install certbot
 ```
 
-We will now be able to request a certificate with certbot and certbot will do the heavy lifting for us.
+Wir können jetzt ein Zertifikat mit certbot anfordern und certbot erledigt das schwere Heben für uns.
 
 ```
 certbot certonly --standalone -d <DOMAIN>
 ```
 
-Now we should create an backup of our certificate in case something happens
+Jetzt sollten wir eine Sicherungskopie Ihres Zertifikats erstellen, falls etwas passiert
 
 ```
 cp -r /etc/letsencrypt/ /home/alphabot
 tar czf letsencrypt.tar.gz letsencrypt/
 ```
 
-We have done almost everything now, the last thing to do will be to edit our nginx config to only allow https traffic. Mozilla has built a great toll which we will use [https://ssl-config.mozilla.org/](https://ssl-config.mozilla.org/)
+Wir haben jetzt fast alles getan. Das Letzte, was wir tun müssen, ist, unsere Nginx-Konfiguration so zu bearbeiten, dass nur https-Verkehr zugelassen wird. Mozilla hat eine große Gebühr erhoben, die wir verwenden werden [https://ssl-config.mozilla.org/](http: //ssl-config.mozilla.org/)
 
-### Setup Crontab to auto renew certificates
+### Richten Sie Crontab so ein, dass Zertifikate automatisch erneuert werden
 
-First we will have to start crontab and enable it so it will start automatically on machine restart.
+Zuerst müssen wir crontab starten und aktivieren, damit es beim Neustart der Maschine automatisch startet.
 
 ```bash
 sudo systemctl start crond.service
 sudo systemctl enable crond.service
 ```
 
-With `sudo crontab -e` you can add a crontab. The following crontab will try to renew the SSL certificates every Monday at 6:30 am if it renewed successfully it will reload nginx.
+Mit `sudo crontab -e` können Sie eine crontab hinzufügen. Die folgende Crontab versucht, die SSL-Zertifikate jeden Montag um 6:30 Uhr zu erneuern. Bei erfolgreicher Erneuerung wird nginx neu geladen.
 
 ```bash
 30 6 * * 1 certbot renew -n -q --pre-hook "systemctl stop nginx" --deploy-hook "systemctl start nginx"
 ```
 
-My final config looks like this:
+Meine endgültige Konfiguration sieht folgendermaßen aus:
 
 ```bash
 upstream alphabot {
@@ -341,7 +341,7 @@ server {
 
 # Redis Setup
 
-For the redis setup we recommend you to follow the <a href="https://redis.io/topics/quickstart">Redis Quickstart Guide</a>.
+Für das Redis-Setup empfehlen wir Ihnen, die <a href="https://redis.io/topics/quickstart"> Redis-Schnellstartanleitung</a> zu befolgen.
 
 # .env Setup
 ```
@@ -357,42 +357,42 @@ ACCESS_TOKEN=<ACCESS_TOKEN>
 ```
 
 ## TOKEN_SECRET
-Is the token which is used with passport to encrypt and decrypt the API user credentials. You can use a password generator or you could just press all buttons on your keyboard :clown_face:. 
+Ist das Token, das mit dem Pass zum Ver- und Entschlüsseln der API-Benutzeranmeldeinformationen verwendet wird. Sie können einen Passwortgenerator verwenden oder einfach alle Tasten auf Ihrer Tastatur drücken: clown_face:.
 
-## Redis Credentials
+## Redis Anmeldeinformationen
 
 ### REDIS_PORT
-The redis port should be 6379 if you followed the redis setup.
+Der Redis-Port sollte 6379 sein, wenn Sie das Redis-Setup befolgt haben.
 
 ### REDIS_HOST
-The redis host should be 127.0.0.1 if you followed the redis setup.
+Der Redis-Host sollte 127.0.0.1 sein, wenn Sie das Redis-Setup befolgt haben.
 
 ### REDIS_PASSWORD
-You can remove this from your .env file if you have not set a password for redis.
+Sie können dies aus Ihrer .env-Datei entfernen, wenn Sie kein Kennwort für redis festgelegt haben.
 
 ## Twitch Credentials
 
-1. Go to <a href="https://dev.twitch.tv/">dev.twitch.tv</a> login with your bot twitch account.
-2. Press Your Console
-3. Then press Create app <br/>
- <img src="./_media/twitchRegisterApp.png" width="40%" height="40%">
-4. Fill in the name of the application and press create  <br/>
- <img src="./_media/twitchCreateApp.png" width="40%" height="40%"> 
-5. Now presse **manage** on your created application <br/>
- <img src="./_media/twitchManageApp.png" width="40%" height="40%">
+1. Gehen Sie zu <a href="https://dev.twitch.tv/"> dev.twitch.tv </a> und melden Sie sich mit Ihrem Bot Twitch-Konto an.
+2. Drücken Sie auf Ihre Konsole
+3. Drücken Sie dann App erstellen <br/>
+  <img src="../_media/twitchRegisterApp.png" >
+4. Geben Sie den Namen der Anwendung ein und klicken Sie auf Erstellen <br/>
+  <img src= "../_media/twitchCreateApp.png" >
+5. Drücken Sie nun ** verwalten ** auf Ihre erstellte Anwendung <br/>
+  <img src = "../_media/twitchManageApp.png">
 
 ### CLIENT_SECRET
-After you pressed **manage** on your application, press New Secret and copy it.
+Nachdem Sie in Ihrer Anwendung auf ** Verwalten ** geklickt haben, drücken Sie auf Neues Geheimnis und kopieren Sie es.
 
-<img src="./_media/twitchClientSecret.png" width="40%" height="40%">
+<img src ="../_media/twitchClientSecret.png" >
 
 
-### CLIENT_ID
-After you pressed **manage** on your application copy the Client id.
+### KUNDEN ID
+Nachdem Sie in Ihrer Anwendung ** verwalten ** gedrückt haben, kopieren Sie die Client-ID.
 
-<img src="./_media/twitchClientID.png" width="40%" height="40%">
+<img src ="../_media/twitchClientID.png">
 <br/><br/><br/><br/>
 
-# CircleCI Setup
+# CircleCI-Setup
 
-On CircleCI conntet the GitHub Repository which contains the code. Under Project Settings add the Github SSH key and add a SSH key from your Compute Eninge.  
+Auf CircleCI verbinden Sie das GitHub-Repository, das den Code enthält. Fügen Sie unter Projekteinstellungen den Github-SSH-Schlüssel und einen SSH-Schlüssel aus Ihrem Compute Eninge hinzu.
