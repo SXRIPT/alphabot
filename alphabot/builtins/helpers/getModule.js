@@ -5,7 +5,7 @@ const getModule = async (channel, moduleName) => {
   const cacheKey = `${channel}-modules`;
 
   let modules = await cache.checkCache(cacheKey);
-  if (modules === null || !(modules.length > 0)) {
+  if (modules === null || modules.length <= 0) {
     modules = await findModule(channel, moduleName);
   } else {
     modules.forEach(m => {

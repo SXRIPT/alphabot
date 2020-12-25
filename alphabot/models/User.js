@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Command = require('./Command');
 const Module = require('./Module');
+const Linktree = require('./Linktree');
 
 const userSchema = mongoose.Schema({
   username: {
@@ -11,6 +12,7 @@ const userSchema = mongoose.Schema({
   },
   commands: [Command.schema],
   modules: [Module.schema],
+  links: [Linktree.schema],
 });
 
-module.exports = mongoose.model('User', userSchema, 'TwitchUsers'); 
+module.exports = mongoose.model('User', userSchema, 'TwitchUsers');

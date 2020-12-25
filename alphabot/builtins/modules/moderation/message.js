@@ -12,7 +12,7 @@ const message = async (channel, msg, modules, username) => {
     maxMsgLength = isNumber(filteredModule.parameters[0]) && isFinite(filteredModule.parameters[0]) ? Number(filteredModule.parameters[0]) : DEFAULT_MAX_MESSAGE_LENGTH
   } else maxMsgLength = DEFAULT_MAX_MESSAGE_LENGTH;
   if(msg.length > maxMsgLength) {
-    await executePenalty(channel, username, filteredModule.penalty, filteredModule.timeoutDuration, MODULE);
+    executePenalty(channel, username, filteredModule.penalty, filteredModule.timeoutDuration, MODULE);
     return true;
   }
   return false;

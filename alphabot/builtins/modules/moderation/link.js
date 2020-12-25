@@ -8,7 +8,7 @@ const re=new RegExp(strRegex);
 const link = async (channel, message, modules, username) => {
   const filteredModule = await filterModules(modules, MODULE);
   if(re.test(message)) {
-    await executePenalty(channel, username, filteredModule.penalty, filteredModule.timeoutDuration, MODULE);
+    executePenalty(channel, username, filteredModule.penalty, filteredModule.timeoutDuration, MODULE);
     return true;
   }
   return false;
