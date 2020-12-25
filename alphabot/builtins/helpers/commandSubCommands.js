@@ -4,13 +4,11 @@ const { isCommand } = require('../../helpers/checkCommand');
 const { setExpire } = require('../../middleware/cacheCommands');
 const {addCommand, deleteCommand, updateCommand} = require('../../db/commandFunctions');
 
-const buildCommandObj = async (args) => {
-  return {
+const buildCommandObj = async (args) => ({
     prefix: args[2].substring(0, 1),
     command: args[2].substring(1),
     message: args.slice(3).join(' '),
-  };
-};
+  });
 
 const add = async ({channel, args}, userstate) => {
   const commandObj = await buildCommandObj(args);

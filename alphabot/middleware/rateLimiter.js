@@ -1,5 +1,6 @@
 const {RateLimiterMemory} = require('rate-limiter-flexible');
 const logger = require('../config/logger');
+
 const opts = {
   points: 10, // 10 requests
   duration: 1, // per 1 second by IP

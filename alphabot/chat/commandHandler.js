@@ -47,11 +47,9 @@ const isBuiltIn = async (command) => [
   'banphrase',
   'linktree'].includes(command);
 
-const parseMessage = async (message) => {
-  return message.indexOf(' ') === -1
+const parseMessage = async (message) => message.indexOf(' ') === -1
       ? message.substring(1)
-      : message.substring(1, message.indexOf(' '));
-}
+      : message.substring(1, message.indexOf(' '))
 
 const tokenizer = async (channel, user, message) => {
   /*

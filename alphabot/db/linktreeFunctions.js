@@ -35,7 +35,7 @@ const addLink = async (channel, linktreeJSON) => {
   if (goOn) {
     await User.updateOne(query, updateQuery, (err) => {
       if (err) return logger.error(err);
-      let key = channel + "-linktree";
+      const key = channel + "-linktree";
       setExpire(key , 5);
       logger.info('Document inserted successfully');
     });
@@ -69,7 +69,7 @@ const deleteLink = async (channel, link) => {
         logger.error(err);
         throw new Error(err);
       }
-      let key = channel + '-linktree';
+      const key = channel + '-linktree';
       setExpire(key, 5);
       logger.info('Link deleted successfully');
     });
@@ -81,7 +81,7 @@ const deleteLink = async (channel, link) => {
 
 const findAllLinks = async (user) => {
   let links = [];
-  let key = user + "-linktree";
+  const key = user + "-linktree";
   const cache = await checkCache(key);
   if (cache) {
     logger.info('Existing CACHE found!');
