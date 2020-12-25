@@ -24,7 +24,7 @@ app.enable("trust proxy");
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(helmet());
 app.use(compression());
-app.use(morgan('dev'));
+app.use(morgan(':remote-addr :remote-user :method :url :status :response-time ms - :res[content-length]'));
 app.use(rateLimiterMiddleware);
 app.use(favicon(path.join(__dirname, '../public/images/favicon.ico')));
 app.use(express.json());
