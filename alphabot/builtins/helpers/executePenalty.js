@@ -4,7 +4,7 @@ const logger = require('../../config/logger');
 const TIMEOUT = 'timeout';
 const BAN = 'ban';
 
-const executePenalty = async (channel, username, penalty, timeoutDuration, reason) => {
+const executePenalty = (channel, username, penalty, timeoutDuration, reason) => {
   if(penalty === TIMEOUT) {
     client.timeout(channel, username, timeoutDuration)
       .then((data) => {

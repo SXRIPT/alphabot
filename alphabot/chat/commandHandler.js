@@ -44,7 +44,8 @@ const isBuiltIn = async (command) => [
   'commands',
   'vanish',
   'commands',
-  'banphrase'].includes(command);
+  'banphrase',
+  'linktree'].includes(command);
 
 const parseMessage = async (message) => {
   return message.indexOf(' ') === -1

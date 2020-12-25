@@ -2,7 +2,7 @@ const client = require('../../src/alphabot');
 const logger = require('../../config/logger');
 const { isCommand } = require('../../helpers/checkCommand');
 const { setExpire } = require('../../middleware/cacheCommands');
-const {addCommand, deleteCommand, updateCommand} = require('../../db/commandFunctions')
+const {addCommand, deleteCommand, updateCommand} = require('../../db/commandFunctions');
 
 const buildCommandObj = async (args) => {
   return {

@@ -10,7 +10,6 @@ const { signupValidation } = require('../helpers/validation');
 const router = express.Router();
 
 router.post('/signup', passport.authenticate('signup', { session: false }), async (req, res) => {
-
   const { error } = signupValidation(req.body);
   if (error) {
     return res.status(400).json(error.details[0].message);

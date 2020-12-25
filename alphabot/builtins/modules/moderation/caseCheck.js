@@ -21,7 +21,7 @@ const caseCheck = async (channel, message, modules, username) => {
   } else maxPercent = DEFAULT_MAX_PERCENT;
 
   if (percent > maxPercent) {
-    await executePenalty(channel, username, filteredModule.penalty, filteredModule.timeoutDuration, MODULE);
+    executePenalty(channel, username, filteredModule.penalty, filteredModule.timeoutDuration, MODULE);
     return true;
   }
   return false;
