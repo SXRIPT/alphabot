@@ -87,22 +87,17 @@ const findAllLinks = async (user) => {
     logger.info('Existing CACHE found!');
     return cache;
   }
-  const result = await findOneUser(user);
-  links = result.links
-
-  if(links.length>0)
-    await addToCache(user, JSON.stringify(links));
-  return links;
-};
-
-const findOneUser = async (user) => {
   await User.findOne({ username: user }, (err, res) => {
     if (err) {
       logger.error('ERROR: ' + err);
       throw new Error(err);
     }
-    return res;
+    links = res.links;
   });
+
+  if(links.length>0)
+    await addToCache(user, JSON.stringify(links));
+  return links;
 };
 
 module.exports = {
