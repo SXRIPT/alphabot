@@ -1,5 +1,4 @@
 const {RateLimiterMemory} = require('rate-limiter-flexible');
-const logger = require('../config/logger');
 
 const opts = {
   points: 10, // 10 requests
@@ -10,7 +9,6 @@ const opts = {
 const rateLimiter = new RateLimiterMemory(opts);
 
 const rateLimiterMiddleware = (req, res, next) => {
-  logger.info(req.ip)
   rateLimiter.consume(req.ip)
     .then(() => {
       next();
