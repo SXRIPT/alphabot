@@ -5,10 +5,10 @@ const logger = require('../../config/logger');
 const { addLink, deleteLink } = require('../../db/linktreeFunctions');
 
 router.post('/add', async (req, res) => {
-  const {channel} = req.body;
-  if(!req.body || !channel) {
+  if(!req.body || !req.body.channel) {
     return res.status(400).json({status: 400, message: 'Something is wrong with the provided data!'});
   }
+  const {channel} = req.body;
 
   try {
     logger.info(`Adding Linktree: ${JSON.stringify(req.body)}`)
@@ -21,10 +21,10 @@ router.post('/add', async (req, res) => {
 });
 
 router.post('/delete', async (req, res) => {
-  const {channel, link} = req.body;
-  if(!req.body || !channel || !link) {
+  if(!req.body || !req.body.channel || !req.body.link) {
     return res.status(400).json({status: 400, message: 'Something is wrong with the provided data!'});
   }
+  const {channel, link} = req.body;
 
   try {
     logger.info(`Adding Linktree: ${JSON.stringify(req.body)}`)
