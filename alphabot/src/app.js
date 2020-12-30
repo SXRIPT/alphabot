@@ -17,7 +17,7 @@ const moderation = require('../routes/dashboard/moderation');
 const commands = require('../routes/dashboard/commands');
 const modCommands = require('../routes/dashboard/moderationCommands');
 const auth = require('../routes/auth');
-
+const linktree = require('../routes/dashboard/linktree');
 
 // middleware
 app.enable("trust proxy");
@@ -44,6 +44,7 @@ app.use('/response/moderation', moderation);
 app.use('/response/custom', commands);
 app.use('/user', auth);
 app.use('/modCommands', modCommands);
+app.use('/commands/linktree', linktree);
 
 app.use((req, res) => {
   res.status(404).json({status: 404, message: `Unknown Request: ${req.method} ${req.originalUrl}`});
