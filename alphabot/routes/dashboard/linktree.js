@@ -27,9 +27,9 @@ router.post('/delete', async (req, res) => {
   const {channel, link} = req.body;
 
   try {
-    logger.info(`Adding Linktree: ${JSON.stringify(req.body)}`)
+    logger.info(`Deleting Linktree: ${JSON.stringify(req.body)}`)
     await deleteLink(channel, link)
-    return res.status(200).json({status:200, message:'Link has been added'})
+    return res.status(200).json({status:200, message:'Link has been deleted'})
   } catch (e) {
     logger.error("Something went wrong! " + e);
     return res.status(500).json({status: 500, message: 'Something went wrong!'});
