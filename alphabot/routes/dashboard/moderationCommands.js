@@ -8,11 +8,7 @@ router.post('/update', async (req, res) => {
   // Spread Operator not good since the order might not be the same everytime
   // let {channel, ...moduleJSON} = req.body;
   try {
-    await updateModule(req.body.channel, {
-      'penalty':req.body.penalty,
-      'enabled':req.body.enabled,
-      'timeoutDuration':req.body.timeoutDuration,
-      'name':req.body.name});
+    await updateModule(req.body.channel, req.body);
   } catch (error) {
     return res.status(500).send('Something went wrong! ' + JSON.stringify(error));
   }
