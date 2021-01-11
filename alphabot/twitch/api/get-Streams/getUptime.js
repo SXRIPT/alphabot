@@ -1,7 +1,7 @@
 const getStreams = require('./getStreams');
 
 const buildDateString = (date) => {
-  let seconds = Math.floor(date/1000);
+  let seconds = Math.floor(date);
   let minutes = Math.floor(seconds/60);
   let hours = Math.floor(minutes/60);
   let days = Math.floor(hours/24);
@@ -23,8 +23,8 @@ const getUptime = async (channel) => {
   const response = await getStreams(channel);
   if(Object.entries(response.data.data).length !== 0) {
     const start = new Date(response.data.data[0].started_at);
-    const diffDate = new Date(start - new Date());
-    return buildDateString(diffDate);
+    const diff =  Math.floor((Date.now() - (start))/1000);
+    return buildDateString(diff);
   }
   return 'Streamer not live';
 }
