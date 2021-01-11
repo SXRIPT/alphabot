@@ -43,7 +43,7 @@ app.use('/session', session);
 app.use('/response/moderation', moderation);
 app.use('/response/custom', commands);
 app.use('/user', auth);
-app.use('/modCommands', modCommands);
+app.use('/modules', modCommands);
 app.use('/commands/linktree', linktree);
 
 app.use((req, res) => {
