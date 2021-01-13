@@ -36,14 +36,9 @@ const isModeration = async (command) => [
 ].includes(command);
 
 const isBuiltIn = async (command) => [
-  'accountage',
-  'settitle',
-  'setgame',
-  'followage',
   'command',
   'commands',
   'vanish',
-  'commands',
   'banphrase',
   'linktree'].includes(command);
 

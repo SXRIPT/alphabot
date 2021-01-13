@@ -41,8 +41,6 @@ client.on("chat", async (channel, userstate, message, self) => {
     await executeBuiltInCommands(temp[1], userstate);
     return;
   }
-  logger.info("PERMISSIONS: " + command.permission);
-  logger.info("BADGES " + userstate.badges);
 
   if(!command.enabled) return;
   const hasPermission = await isAuthorized(channel, userstate.badges, command.permission);
