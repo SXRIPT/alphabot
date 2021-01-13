@@ -3,6 +3,7 @@ const logger = require('../../config/logger');
 const { isCommand } = require('../../helpers/checkCommand');
 const { setExpire } = require('../../middleware/cacheCommands');
 const {addCommand, deleteCommand, updateCommand} = require('../../db/commandFunctions');
+const {loadCommands} = require('../../db/commandFunctions');
 
 const buildCommandObj = async (args) => ({
     prefix: args[2].substring(0, 1),
@@ -19,6 +20,7 @@ const add = async ({channel, args}, userstate) => {
       logger.error(err.message);
     });
     await setExpire(channel, 0);
+    await loadCommands(channel);
   }
 };
 

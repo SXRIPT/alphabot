@@ -133,9 +133,22 @@ const updateCommand = async (user, commandJSON) => {
     throw new Error('Command was not found');
   }
 };
+
+const loadCommands = async (channel) => {
+  let response = await User.findOne({ username: channel }, (err, res) => {
+    if (err) {
+      logger.error('ERROR: ' + err);
+      throw new Error(err);
+    }
+  });
+
+  if(response && response.commands && response.commands.length>0)
+   await addToCache(channel, JSON.stringify(response.commands));
+};
 module.exports = {
   addCommand,
   deleteCommand,
   findAllCommands,
   updateCommand,
+  loadCommands,
 };
