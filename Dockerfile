@@ -1,4 +1,4 @@
-FROM node:15-slim
+FROM node:16-slim
 
 LABEL maintainer="filip.adamovic@studierende.htl-donaustadt.at"
 
