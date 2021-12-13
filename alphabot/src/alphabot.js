@@ -11,8 +11,8 @@ const options = {
     reconnect: true,
   },
   identity: {
-    username: 'pizzachaboy',
-    password: 'mrmdogmyamgswnympbliyak8we78qt',
+    username: process.env.username,
+    password: process.env.password,
   },
   channels: channelNames,
   logger,
