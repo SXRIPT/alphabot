@@ -9,7 +9,7 @@
 <p align="center">
     <img src="https://forthebadge.com/images/badges/made-with-javascript.svg" alt="Made with JS">
     <img src="https://forthebadge.com/images/badges/built-with-love.svg" alt="Built with Love">
-    <a href="https://alphabot.wtf/"><img src="https://forthebadge.com/images/badges/check-it-out.svg" alt="Check it out"></a>
+    <a href="https://sxript.github.io/alphabot/"><img src="https://forthebadge.com/images/badges/check-it-out.svg" alt="Check it out"></a>
     
 </p>
 
